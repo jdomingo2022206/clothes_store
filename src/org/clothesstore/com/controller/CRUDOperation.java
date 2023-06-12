@@ -2,9 +2,13 @@ package org.clothesstore.com.controller;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import org.clothesstore.com.views.GeneralModelCrudComponent;
+import org.clothesstore.com.controller.entities.GeneralModelCrudComponent;
 
 import javax.swing.JOptionPane;
+
+/*
+* Defines the operations and the logic behind the buttons
+* */
 
 public class CRUDOperation<M> {
     private final GeneralModelCrudComponent<M> component;

@@ -4,10 +4,14 @@ import eu.schudt.javafx.controls.calendar.DatePicker;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import org.clothesstore.com.views.GeneralModelCrudComponent;
+import org.clothesstore.com.controller.entities.GeneralModelCrudComponent;
 
 import java.util.Map;
 
+/*
+* this class is used to perform operations on the form
+* like clearing the fields, disabling the fields, etc.
+* */
 public class FormOperationsController<M> {
 
     private final GeneralModelCrudComponent<M> component;

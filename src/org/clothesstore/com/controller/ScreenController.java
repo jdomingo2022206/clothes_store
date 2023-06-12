@@ -7,18 +7,23 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.clothesstore.com.utils.Pantallas;
 
-import java.io.IOException;
 import java.util.HashMap;
 
+/*
+* handle the screen changes, this class is a singleton
+* it is used as ScreenController.getInstance().activate(Pantallas.LOGIN);
+* */
 public class ScreenController {
     Parent currentScreen;
     Stage currentStage;
 
+    // this is where you put the screens
     private HashMap<Pantallas, ScreenChanger> screenMap = new HashMap<Pantallas, ScreenChanger>() {
         {
             /*
-            // Usage Example
+            // Usage Example, with a component
             put(Pantallas.EMPRESAS, () -> new CompanyComponent());
+            // if you want to use a fxml file, instead of a component, use this:
             put(Pantallas.PROGRAMADOR, () -> {
                 try {
                     return FXMLLoader.load(this.getClass().getResource("../view/ProgramadorView.fxml"));
