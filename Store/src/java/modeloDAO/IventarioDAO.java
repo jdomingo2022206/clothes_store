@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IventarioDAO {
+    /* Abarca todo el codigo
+    
     public List<Inventario> listar() {
         List<Inventario> inventarios = new ArrayList<>();
         try {
@@ -101,5 +103,6 @@ public class IventarioDAO {
         final int stock = resultSet.getInt("stock");
         return new Inventario(idInventario, nombreInventario, idEstablecimiento, idProducto, stock);
     }
-
+    
+    */
 }
