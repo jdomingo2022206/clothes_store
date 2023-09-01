@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 public class CategoriaDAO {
   
-   Conexion conect = new Conexion();
-   Connection con;
-   PreparedStatement ps;
-   ResultSet rs;
-   Categoria nCategoria = new Categoria();
+   Conexion cn = new Conexion();
+    Connection con;
+    PreparedStatement ps;
+    ResultSet rs;
+    int resp;
    
    public List listar(){
        ArrayList<Categoria> listaCategoria = new ArrayList<>();
        String sql = "select * from Categoria";
        try {
-            con = conect.getConnection();
+            con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
