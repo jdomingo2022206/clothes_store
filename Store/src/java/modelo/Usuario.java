@@ -1,6 +1,7 @@
+package modelo;
+
 public class Usuario {
-    
-    private int idUsuario;
+     private int idUsuario;
     private String nombreUsuario;
     private String apellidoUsuario;
     private String usuario;
@@ -56,6 +57,4 @@ public class Usuario {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
-    
 }
