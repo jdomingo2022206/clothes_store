@@ -14,7 +14,7 @@ public class Conexion {
     public Connection Conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DB_TiendaRopa?useSSL=false", "root", "admin");  //recuerden poner su usuario y contaseña
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBJavaEEVentas2022234?useSSL=false", "root", "admin");
             
         } catch (Exception e) {
             e.printStackTrace();
