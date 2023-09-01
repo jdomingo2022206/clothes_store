@@ -1,4 +1,4 @@
-package modelo;
+package modeloDAO;
 
 import config.Conexion;
 import java.sql.Connection;
@@ -6,19 +6,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Proveedor;
 
 public class ProveedorDAO {
-    Conexion conect = new Conexion();
+    Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    Proveedor nProveedor = new Proveedor();
+    int resp;
     
     public List Listar(){
         ArrayList<Proveedor> listaProveedor = new ArrayList<>();
         String sql = "select * from proveedor";
         try{
-            con = conect.getConnection();
+            con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
