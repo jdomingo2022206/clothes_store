@@ -20,23 +20,23 @@
 
                         <div class="form-group">
                             <label>Id Cliente</label>
-                            <input type="text" value="${pedidoCliente.getIdCliente()}" name="txtNombreProducto" class="form-control">
+                            <input type="text" value="${pedidoCliente.getIdCliente()}" name="txtIdCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Id Producto</label>
-                            <input type="text" value="${pedidoCliente.getIdProducto()}" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${pedidoCliente.getIdProducto()}" name="txtIdProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="text" value="${pedidoCliente.getCantidad()}" name="txtPrecio" class="form-control">
+                            <input type="text" value="${pedidoCliente.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="text" value="${pedidoCliente.getFecha()}" name="txtIdProveedor" class="form-control">
+                            <input type="text" value="${pedidoCliente.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
-                            <input type="text" value="${pedidoCliente.getTotal()}" name="txtIdCategoría" class="form-control">
+                            <input type="text" value="${pedidoCliente.getTotal()}" name="txtTotal" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">

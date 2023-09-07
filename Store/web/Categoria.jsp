@@ -3,8 +3,9 @@
     Created on : 21/07/2023, 04:49:38 PM
     Author     : Garcia
 --%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,7 +48,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="categoria" items="${categoria}">
+                        <%
+                                List<String> lista = new ArrayList<String>();
+                                lista.add("ID CATEGORIA");
+                                lista.add("NOMBRE CATEGORIA");
+                                lista.add("DESCRIPCION");
+                                lista.add("FECHA CREACION");
+                        %>
+                    <custom:table titles="<%=lista%>">
+                        <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
+                        <c:forEach var="categoria" items="${categorias}">
                             <tr>
                                 <td>${categoria.getIdCategoria()}</td>
                                 <td>${categoria.getNombreCategoria()}</td>
@@ -59,6 +69,8 @@
                                 </td>
                             </tr>
                         </c:forEach>
+                    </custom:table>
+                        
                     </tbody>
                 </table>
             </div>
