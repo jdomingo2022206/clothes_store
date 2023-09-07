@@ -1,3 +1,51 @@
+
+
+## ¿Qué es un Componente.tag?
+
+Un componente.tag es como una etiqueta especial que puedes usar en tus páginas web escritas en JSP (JavaServer Pages) para hacer que tus páginas se vean geniales y ordenadas. Piensa en ello como una especie de plantilla que puedes usar una y otra vez en diferentes partes de tu página web.
+
+## Importando el Componente.tag
+
+Para empezar a usar tu componente.tag, primero debes decirle a tu página web dónde encontrarlo. Es como darle a tu página web un mapa para que sepa dónde buscar este componente especial.
+
+```jsp
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+```
+
+En esta línea, `<%@taglib ... %>` es como darle el mapa a tu página web. Le dice que necesita buscar algo llamado "c" en una ubicación especial que es "http://java.sun.com/jsp/jstl/core". Esto es como decirle a tu página web dónde encontrar tu herramienta especial.
+
+## Uso del Componente.tag
+
+Ahora que tu página web sabe dónde encontrar el componente.tag, puedes usarlo en tu página para hacer cosas geniales. Imagina que quieres mostrar una tabla en tu página web con títulos de columnas personalizados. Aquí es donde entra en juego el componente.tag.
+
+```jsp
+<custom:table titles="${titles}">
+    <!-- Aquí va el contenido de la tabla -->
+</custom:table>
+```
+
+La parte `<custom:table>` es como decirle a tu página web que quieres usar tu herramienta especial (componente.tag) para crear una tabla. Es como decir: "¡Oye, quiero hacer una tabla aquí!"
+
+## Personalizando la Tabla
+
+Dentro de la etiqueta `<custom:table>`, puedes personalizar cómo quieres que se vea tu tabla. Por ejemplo, puedes decirle a tu herramienta especial que quieres que los títulos de las columnas sean diferentes y que el contenido de la tabla sea dinámico.
+
+```jsp
+<custom:table titles="${titles}">
+    <c:forEach var="item" items="${items}">
+        <!-- Contenido de cada fila de la tabla -->
+    </c:forEach>
+</custom:table>
+```
+
+Dentro de `<c:forEach>`, puedes iterar sobre una lista de elementos y mostrarlos en tu tabla. Es como decirle a tu herramienta especial cómo llenar la tabla con datos emocionantes.
+
+## Resumen
+
+En resumen, un componente.tag es como una herramienta especial que puedes usar en tus páginas web escritas en JSP. Primero, le dices a tu página web dónde encontrar esta herramienta. Luego, la usas para crear elementos geniales en tu página web, como tablas personalizadas. Puedes personalizar cómo se ve y se llena la tabla para que se adapte a tus necesidades específicas. ¡Es una forma súper divertida de hacer que tus páginas web sean más impresionantes!
+
+aqui un ejemplo de como se veria una pagina completa:
+
 <%-- 
     Document   : Usuario
     Created on : 21/07/2023, 07:51:01 PM
@@ -5,6 +53,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
