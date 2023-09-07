@@ -1,0 +1,36 @@
+<%-- 
+    Document   : Usuario
+    Created on : 21/07/2023, 07:51:01 PM
+    Author     : diego
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <!-- en TITLES VAN UN ARRAYLIST DE STRINGS -->
+        <custom:table titles="${titles}">
+            <jsp:useBean id="products" scope="request" type="java.util.List<modelo.Product>"/>
+                <!-- AQUI ITERAMOS SOBRE UNA LISTA PARA PODER CREAR LAS FILAS -->
+            <c:forEach var="producto" items="${products}">
+                <tr>
+                    <td>${producto.id}</td>
+                    <td>${producto.productName}</td>
+                    <td>${producto.price}</td>
+                    <td>${producto.stock}</td>
+                        <%--<td>${producto.state}</td>--%>
+                    <td>
+                        <!-- AQUI VAN LAS ACCIONES -->
+                        <a class="btn btn-warning" href="ProductController?id=${producto.id}">Editar</a>
+                        <button class="btn btn-danger" onclick="deleteProduct(${producto.id})">Eliminar</button>
+                    </td>
+                </tr>
+            </c:forEach>
+        </custom:table>   
+    </body>
+</html>
