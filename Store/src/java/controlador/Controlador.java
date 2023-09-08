@@ -7,10 +7,16 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Categoria;
+import modelo.Establecimiento;
+import modeloDAO.CategoriaDAO;
+import modeloDAO.EstablecimientoDAO;
+import java.sql.Date;
 
 /**
  *
@@ -29,19 +35,110 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+
+        Categoria categoria = new Categoria();
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        int codCategoria = 0;
+        
+        Establecimiento establecimiento = new Establecimiento();
+        EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO();
+        int idEstableci = 0;
+
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        if (menu.equals("Principal")) {
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        } else if (menu.equals("Categoria")) {
+
+            switch (accion) {
+                case "Listar":
+                    List listaCategoria = categoriaDAO.listar();
+                    request.setAttribute("categoria", listaCategoria);
+                    break;
+
+                case "Agregar":
+                    String nombreCategoria = request.getParameter("txtNombreCategoria");
+                    String descripcion = request.getParameter("txtDescripcion");
+                    String fechaCreacion = request.getParameter("txtFechaCreacion");
+                    categoria.setNombreCategoria(nombreCategoria);
+                    categoria.setDescripcion(descripcion);
+                    categoria.setFechaCreacion(fechaCreacion);
+                    categoriaDAO.agregar(categoria);
+                    request.getRequestDispatcher("Controlador?menu=Categoria&accion=listar").forward(request, response);
+                    break;
+
+                case "Eliminar":
+                    int categoriaId = Integer.parseInt(request.getParameter("idCategoria"));
+                    categoriaDAO.eliminar(categoriaId);
+                    request.getRequestDispatcher("Controlador?menu=Categoria&accion=listar").forward(request, response);
+                    break;
+
+                case "Editar":
+                    codCategoria = Integer.parseInt(request.getParameter("idCategoria"));
+                    Categoria cat = categoriaDAO.listarCodigoCategoria(codCategoria);
+                    request.setAttribute("categoria", cat);
+                    request.getRequestDispatcher("Controlador?menu=Categoria&accion=listar").forward(request, response);
+                    break;
+
+                case "Actualizar":
+                    String categoriaNombre = request.getParameter("txtNombreCategoria");
+                    String descrip = request.getParameter("txtDescripcion");
+                    String creacionFecha = request.getParameter("txtFechaCreacion");
+                    categoria.setNombreCategoria(categoriaNombre);
+                    categoria.setDescripcion(descrip);
+                    categoria.setFechaCreacion(creacionFecha);
+                    categoria.setIdCategoria(codCategoria);
+                    categoriaDAO.actualizar(categoria);
+                    request.getRequestDispatcher("Controlador?menu=Categoria&accion=listar").forward(request, response);
+                    break;
+
+            }
+
+            request.getRequestDispatcher("Categoria.jsp").forward(request, response);
+
+        }else if(menu.equals("Establecimiento")){
+                switch(accion){
+                    case "listar":
+                        List listaEstablecimiento = establecimientoDAO.listar();
+                        request.setAttribute("establecimiento", listaEstablecimiento);
+                        break;
+                    case "Agregar":
+                        String nomEstablecimiento = request.getParameter("txtNombreEstablecimiento");
+                        String direcEs = request.getParameter("txtDireccion");
+                        String tel = request.getParameter("txtTelefono");
+                        establecimiento.setNombreEstablecimiento(nomEstablecimiento);
+                        establecimiento.setDireccion(direcEs);
+                        establecimiento.setTelefono(tel);
+                        establecimientoDAO.agregar(establecimiento);
+                        
+                        request.getRequestDispatcher("Controlador?menu=Establecimiento&accion=listar").forward(request, response);                        
+                        break;
+                    case "Editar":
+                        idEstableci = Integer.parseInt(request.getParameter("idEstablecimiento"));
+                        Establecimiento es = establecimientoDAO.listaCodigoEstablecimiento(idEstableci);
+                        request.setAttribute("establecimiento", es);
+                        request.getRequestDispatcher("Controlador?menu=Establecimiento&accion=listar").forward(request, response);                        
+                        break;
+                    case "Actualizar":
+                        String idEstable = request.getParameter("txtIdEstablecimiento");
+                        String nomEstablecimiento2 = request.getParameter("txtNombreEstablecimiento");
+                        String direcEs2 = request.getParameter("txtDireccion");
+                        String tel2 = request.getParameter("txtTelefono");
+                        
+                        establecimiento.setNombreEstablecimiento(nomEstablecimiento2);
+                        establecimiento.setDireccion(direcEs2);
+                        establecimiento.setTelefono(tel2);
+                        establecimiento.setIdEstablecimiento(idEstableci);
+                        establecimientoDAO.actualizar(establecimiento);
+                        request.getRequestDispatcher("Controlador?menu=Establecimiento&accion=listar").forward(request, response);                        
+                        break;
+                    case "Eliminar":
+                        idEstableci = Integer.parseInt(request.getParameter("idEstablecimiento"));
+                        establecimientoDAO.eliminar(idEstableci);
+                        request.getRequestDispatcher("Controlador?menu=Establecimiento&accion=listar").forward(request, response);                                                
+                        break;
+                }
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
