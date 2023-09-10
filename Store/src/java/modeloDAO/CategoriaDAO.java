@@ -28,7 +28,7 @@ public class CategoriaDAO {
                 nuevoProducto.setIdCategoria(rs.getInt("idCategoria"));
                 nuevoProducto.setNombreCategoria(rs.getString("nombreCategoria"));
                 nuevoProducto.setDescripcion(rs.getString("descripcion"));
-                nuevoProducto.setFechaCreacion(rs.getDate("fechaCreacion"));
+                nuevoProducto.setFechaCreacion(rs.getString("fechaCreacion"));
                 listaCategoria.add(nuevoProducto);
             }
            
@@ -45,7 +45,7 @@ public class CategoriaDAO {
            ps = con.prepareStatement(sql);
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
-           ps.setDate(3, ca.getFechaCreacion());
+           ps.setString(3, ca.getFechaCreacion());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
@@ -65,7 +65,7 @@ public class CategoriaDAO {
                ca.setIdCategoria(rs.getInt(1));
                ca.setNombreCategoria(rs.getString(2));
                ca.setDescripcion(rs.getString(3));
-               ca.setFechaCreacion(rs.getDate(4));
+               ca.setFechaCreacion(rs.getString(4));
            }
        } catch (Exception e){
            e.printStackTrace();
@@ -91,7 +91,7 @@ public class CategoriaDAO {
            ps = con.prepareStatement(sql);
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
-           ps.setDate(3, ca.getFechaCreacion());
+           ps.setString(3, ca.getFechaCreacion());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
