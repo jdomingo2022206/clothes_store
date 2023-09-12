@@ -1,9 +1,8 @@
 <%-- 
-    Document   : PedidoCliente
-    Created on : 21/07/2023, 07:07:19 PM
-    Author     : 50257
+    Document   : Producto
+    Created on : 20/07/2023, 09:21:48 PM
+    Author     : A_flo
 --%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,26 +21,30 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Categoria" method="POST">
+                    <form action="Controlador?menu=Producto" method="POST">
                         <div class="form-group">
-                            <label>ID Cliente </label>
-                            <input type="text" value="" name="txtIdCliente" class="form-control">
+                            <label>Nombre Producto</label>
+                            <input type="text" value="" name="name="txtNombreProducto" " class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>ID Producto</label>
-                            <input type="text" value="" name="txtIdProducto" class="form-control">
+                            <label>Descripcion</label>
+                            <input type="text" value="" name="txtDescripcion" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="text" value="" name="txtCantidad" class="form-control">
+                            <label>Precio</label>
+                            <input type="text" value="" name="txtPrecio" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Fecha</label>
-                            <input type="text" value="" name="txtFecha" class="form-control">
+                            <label for="imagenProducto">Imagen</label>
+                            <input type="file" id="imagenProducto" name="imagenProducto" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Total</label>
-                            <input type="text" value="" name="txtTotal" class="form-control">
+                            <label>Id Proveedor</label>
+                            <input type="text" value="" name="txtIdProveedor" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Id Categoria</label>
+                            <input type="text" value="" name="txtIdCategoria" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
@@ -51,35 +54,31 @@
             <div class="col-sm-8">
                 <%
                     List<String> lista = new ArrayList<String>();
-                    lista.add("ID PEDIDO CLIENTE");
-                    lista.add("ID CLIENTE");
-                    lista.add("ID PRODUCTO");
-                    lista.add("CANTIDAD");
-                    lista.add("FECHA");
-                    lista.add("TOTAL");
+                    lista.add("ID");
+                    lista.add("NOMBRE");
+                    lista.add("DESCRIPCION");
+                    lista.add("PRECIO");
+                    lista.add("IMAGEN");
+                    lista.add("IDPROVEEDOR");
+                    lista.add("IDCATEGORIA");
                 %>
                 <custom:table titles="<%=lista%>">
                     <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
-                    <c:forEach var="pedidoCliente" items="${pedidoClientes}">
+                    <c:forEach var="producto" items="${productos}">
                         <tr>
-                            <td>${pedidoCliente.getIdPedidoCliente()}</td>
-                            <td>${pedidoCliente.getIdCliente}</td>
-                            <td>${pedidoCliente.getIdProducto()}</td>
-                            <td>${pedidoCliente.getCantidad()}</td>
-                            <td>${pedidoCliente.getFecha()}</td>
-                            <td>${pedidoCliente.getTotal()}</td>
+                                <td>${producto.getIdProducto()}</td>
+                                <td>${producto.getNombreProducto()}</td>
+                                <td>${producto.getDescripcion()}</td>
+                                <td>${producto.getPrecio()}</td>
+                                <td>${producto.getImagen()}</td>
+                                <td>${producto.getIdProveedor()}</td>
+                                <td>${producto.getIdCategoria()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=PedidoCliente&accion=Editar&codigoPedidoCliente=${categoria.getIdPedidoCliente()}">Editar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&codigoCategoria=${categoria.getIdCategoria()}">Editar</a>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
-                        <tr>
-                            <td>.getIdCategoria</td>
-                            <td>categoria.getNombreCategoria()</td>
-                            <td>categoria.getDescripcion()</td>
-                            <td>Edit</td>
-                        </tr>
                 </custom:table>
             </div>
         </div>
@@ -88,4 +87,3 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
-
