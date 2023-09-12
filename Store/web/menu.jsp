@@ -21,43 +21,43 @@
             </div>
 
             <ul id="list-entities" class="flex flex-col gap-2 list-none">
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Detalle venta" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-chart-pie"></i>
                     <span class="hide-on-click">Detalle venta</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Provedor" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-people-carry-box"></i>
                     <span class="hide-on-click">Provedor</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
                     <span class="hide-on-click">Productos</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Clientes" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-users-line"></i>
                     <span class="hide-on-click">Clientes</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Categoria" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-file-invoice"></i>
                     <span class="hide-on-click">Categoria</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Establecimiento" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-location-dot"></i>
                     <span class="hide-on-click">Establecimiento</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-store"></i>
                     <span class="hide-on-click">Compra</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
                     <span class="hide-on-click">Productos</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Clientes" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-users-line"></i>
                     <span class="hide-on-click">Clientes</span>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Detalle Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-file-invoice"></i>
                     <span class="hide-on-click">Detalle Compra</span>
                 </li>
@@ -142,6 +142,15 @@
        </div>
 
         <script>
+
+            document.addEventListener("click", (e) => {
+                const link = e.target.closest("[data-url]");
+                if (!link) return;
+
+                const url = link.dataset.url;
+                // reload Iframe
+                document.querySelector("iframe").src = `https"//localhost:8080/clothes_store/${url.split(" ").join("")}.jsp`
+            })
             // console.log(list)
             // list.addEventListener("mouseenter", (e) => {
             //     console.log("AHHH")
