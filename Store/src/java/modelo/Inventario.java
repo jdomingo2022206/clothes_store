@@ -24,6 +24,10 @@ public class Inventario {
         this.stock = stock;
     }
 
+
+    public Inventario() {
+    }
+
     // Getters
     public int getIdInventario() {
         return idInventario;
