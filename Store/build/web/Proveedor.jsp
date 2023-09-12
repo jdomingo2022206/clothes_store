@@ -4,19 +4,26 @@
     Author     : Marco
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
+                 
         <title>Proveedor</title>
     </head>
     <body>
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Proovedor" method="POST">
+                    <form action="Controlador?menu=Proveedor" method="POST">
                         
                         <div class="form-group">
                             <label>Nombre</label>
@@ -24,33 +31,43 @@
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <input type="text" value="${proveedor.getDescripcion()}" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${proveedor.getDireccion()}" name="txtDireccion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Teléfono</label>
                             <input type="text" value="${proveedor.getTelefono()}" name="txtTelefono" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <custom:table>
+            <div class="overflow-hidden overflow-y-scroll">
+                <%List titulos= new ArrayList<String>();
+                titulos.add("Id Proveedor");
+                titulos.add("Nombre Proveeedor");
+                titulos.add("Direccion");
+                titulos.add("Teléfono");
+                titulos.add("Acciones");
+                titulos.add("Acciones");
+                %>
+                <custom:table titles="<%=titulos%>">
                     
-                        <c:forEach var="proveedor" items="${proveedor}">
+                        <c:forEach var="proveedor" items="${proveedores}">
                         <tr>
                             <td>${proveedor.getIdProveedor()}</td>
                             <td>${proveedor.getNombreProveedor()}</td>
-                            <td>${proveedor.getDescripcion()}</td>
+                            <td>${proveedor.getDireccion()}</td>
                             <td>${proveedor.getTelefono()}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${prooveedor.getIdProveedor()}">Editar</a>
+                            </td>
+                            <td>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
-                                                </custom:table>
+                </custom:table>
 
             </div>            
         </div>

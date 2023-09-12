@@ -20,7 +20,7 @@
     <div id="table-container" class="overflow-y-scroll rounded-lg border">
       <table
         id="table"
-        class="table-auto [&_td]:py-2 [&_th]:py-2 min-w-[700px]"
+        class="table-fixed [&_td]:py-2 [&_th]:py-2 min-w-[700px]"
       >
         <thead class="bg-gray-200 [&_>_*]:cursor-pointer [&_>_*]:font-semibold">
     <tr>
@@ -35,7 +35,7 @@
         </thead>
         <tbody class="[&_td]:border-t last:[&_td]:text-indigo-600 last:[&_td]:underline last:[&_td]:cursor-pointer rounded-sm [&_td]:text-gray-500 first:[&_td]:font-semibold first:[&_td]:text-black [&_td]:ps-3 [&_td]:pe-3 [&_tr]:hidden first:[&_tr]:table-row">
           <tr id="spinner">
-            <td colspan="5">
+            <td colspan="${titles.size()}">
               <div role="status" class="flex justify-center items-center">
                 <svg
                   aria-hidden="true"
