@@ -27,6 +27,7 @@ import javax.servlet.http.Part;
 import modelo.Cliente;
 import modelo.Compra;
 import modelo.DetalleCompra;
+import modelo.Inventario;
 import modelo.PedidoCliente;
 import modelo.PedidoProveedor;
 import modelo.Producto;
@@ -90,6 +91,10 @@ public class Controlador extends HttpServlet {
 
         Establecimiento establecimiento = new Establecimiento();
         EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO();
+
+        InventarioDAO inventarioDAO = new InventarioDAO();
+        Inventario inventario = new Inventario();
+
         int codEstableci = 0;
 
         Proveedor proveedor = new Proveedor();
@@ -561,7 +566,46 @@ public class Controlador extends HttpServlet {
                     break;
             }
 
-            request.getRequestDispatcher("PedidoProveedor.jsp").forward(request, response);
+            request.getRequestDispatcher("Inventario.jsp").forward(request, response);
+        } else if (menu.equals("Inventario")) {
+            switch (accion) {
+                case "Listar":
+                    List listaInventario = inventarioDAO.listar();
+                    request.setAttribute("Inventario", listaInventario);
+                    break;
+
+                case "Agregar":
+                    inventario.setName(request.getParameter("txtName"))
+                    inventario.setIdEstablecimiento(request.getParameter("txtIdEstablecimiento"))
+                    inventario.setStock(request.getParameter("txtStock"))
+                    inventario.setIdProducto(request.getParameter("txtIdProducto"))
+
+                    inventarioDAO.addInventario(inventario);
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
+                    break;
+
+                case "Eliminar":
+                    inventarioDAO.deleteInventario(request.getParameter("codigoInventario"));
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
+                    break;
+
+                case "Editar":
+                    Inventario p = inventarioDAO.getInventarioByID(request.getParameter("codigoInventario"));
+                    request.setAttribute("Inventario", p);
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
+                    break;
+
+                case "Actualizar":
+                    inventario.setName(request.getParameter("txtName"))
+                    inventario.setIdEstablecimiento(request.getParameter("txtIdEstablecimiento"))
+                    inventario.setStock(request.getParameter("txtStock"))
+                    inventario.setIdProducto(request.getParameter("txtIdProducto"))
+                    inventarioDAO.updateInventario(inventario);
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
+                    break;
+            }
+
+            request.getRequestDispatcher("Inventario.jsp").forward(request, response);
         }
     }
 
