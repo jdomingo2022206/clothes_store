@@ -29,7 +29,7 @@ public class PedidoProveedorDAO {
                 pp.setIdProveedor(rs.getInt(2));
                 pp.setIdProducto(rs.getInt(3));
                 pp.setCantidad(rs.getInt(4));
-                //pp.setFecha(rs.getDate(5));
+                pp.setFecha(rs.getDate(5));
                 pp.setTotal(rs.getDouble(6));
                 ppList.add(pp);
             }
@@ -47,7 +47,7 @@ public class PedidoProveedorDAO {
             ps.setInt(1, pp.getIdProveedor());
             ps.setInt(2, pp.getIdProducto());
             ps.setInt(3, pp.getCantidad());
-             //ps.setDate(4, (Date) pp.getFecha());
+            ps.setDate(4, (Date) pp.getFecha());
             ps.setDouble(5, pp.getTotal());
             ps.executeUpdate();
         } catch(Exception e) {
@@ -68,7 +68,7 @@ public class PedidoProveedorDAO {
                 pp.setIdProveedor(rs.getInt(2));
                 pp.setIdProducto(rs.getInt(3));
                 pp.setCantidad(rs.getInt(4));
-                //pp.setFecha(rs.getDate(5));
+                pp.setFecha(rs.getDate(5));
                 pp.setTotal(rs.getDouble(6));
                 }
         } catch (Exception e) {
@@ -85,7 +85,7 @@ public class PedidoProveedorDAO {
             ps.setInt(1, pp.getIdProveedor());
             ps.setInt(2, pp.getIdProducto());
             ps.setInt(3, pp.getCantidad());
-            //ps.setDate(4, (Date) pp.getFecha());
+            ps.setDate(4, (Date) pp.getFecha());
             ps.setDouble(5, pp.getTotal());
             ps.setInt(6, pp.getIdPedidoProveedor());
             ps.executeUpdate();

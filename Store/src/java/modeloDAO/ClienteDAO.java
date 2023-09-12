@@ -1,4 +1,3 @@
-
 package modeloDAO;
 
 import config.Conexion;
@@ -38,19 +37,19 @@ public class ClienteDAO {
     }
     
     public List listar(){
-        String sql = "Select * from cliente";
-        List<Cliente> listaCliente = new ArrayList<>();
+        ArrayList<Cliente> listaCliente = new ArrayList<>();
+        String sql = "select * from cliente";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 Cliente cl = new Cliente();
-                cl.setIdCliente(rs.getInt(1));
-                cl.setNombreCliente(rs.getString(2));
-                cl.setApellidoCliente(rs.getString(3));
-                cl.setDireccion(rs.getString(4));
-                cl.setTelefono(rs.getString(5));
+                cl.setIdCliente(rs.getInt("idCliente"));
+                cl.setNombreCliente(rs.getString("nombreCliente"));
+                cl.setApellidoCliente(rs.getString("apellidoCliente"));
+                cl.setDireccion(rs.getString("direccion"));
+                cl.setTelefono(rs.getString("telefono"));
                 listaCliente.add(cl);
             }
         } catch (Exception e) {
