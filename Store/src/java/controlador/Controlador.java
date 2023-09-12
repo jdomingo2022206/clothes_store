@@ -10,7 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -22,11 +21,11 @@ import modelo.Establecimiento;
 import modeloDAO.CategoriaDAO;
 import modeloDAO.EstablecimientoDAO;
 import modeloDAO.ProveedorDAO;
-import java.util.Date;
 import javax.servlet.http.Part;
 import modelo.Cliente;
 import modelo.Compra;
 import modelo.DetalleCompra;
+import modelo.Inventario;
 import modelo.PedidoCliente;
 import modelo.PedidoProveedor;
 import modelo.Producto;
@@ -34,6 +33,7 @@ import modelo.Proveedor;
 import modeloDAO.ClienteDAO;
 import modeloDAO.CompraDAO;
 import modeloDAO.DetalleCompraDAO;
+import modeloDAO.IventarioDAO;
 import modeloDAO.PedidoClienteDAO;
 import modeloDAO.PedidoProveedorDAO;
 import modeloDAO.ProductoDAO;
@@ -90,6 +90,10 @@ public class Controlador extends HttpServlet {
 
         Establecimiento establecimiento = new Establecimiento();
         EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO();
+
+        IventarioDAO inventarioDAO = new IventarioDAO();
+        Inventario inventario = new Inventario();
+
         int codEstableci = 0;
 
         Proveedor proveedor = new Proveedor();
@@ -511,59 +515,46 @@ public class Controlador extends HttpServlet {
             }
 
             request.getRequestDispatcher("PedidoCliente.jsp").forward(request, response);
-
-        } else if (menu.equals("PedidoProveedor")) {
+        } else if (menu.equals("Inventario")) {
             switch (accion) {
                 case "Listar":
-                    List listaPedidoProveedor = pedidoProveedorDAO.listPedidoProveedor();
-                    request.setAttribute("pedidoProveedor", listaPedidoProveedor);
+                    List listaInventario = inventarioDAO.listar();
+                    request.setAttribute("Inventario", listaInventario);
                     break;
 
                 case "Agregar":
-                    int idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor"));
-                    int idProducto = Integer.parseInt(request.getParameter("txtIDProducto"));
-                    int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
-                    //Date fecha = (request.getParameter("txtFecha"));
-                    double total = Double.parseDouble(request.getParameter("txtTotal"));
-                    pedidoProveedor.setIdProveedor(idProveedor);
-                    pedidoProveedor.setIdProducto(idProducto);
-                    pedidoProveedor.setCantidad(cantidad);
-                    //pedidoProveedor.setFecha(fecha); //linea comentada, nmotivos de definicion de fecha
-                    pedidoProveedor.setTotal(total);
-                    pedidoProveedorDAO.addPedidoProveedor(pedidoProveedor);
-                    request.getRequestDispatcher("Controlador?menu=PedidoProveedor&accion=Listar").forward(request, response);
+                    inventario.setNombreInventario(request.getParameter("txtName"));
+                    inventario.setIdEstablecimiento(Integer.parseInt(request.getParameter("txtIdEstablecimiento")));
+                    inventario.setStock(Integer.parseInt(request.getParameter("txtStock")));
+                    inventario.setIdProducto(Integer.parseInt(request.getParameter("txtIdProducto")));
+
+                    inventarioDAO.agregar(inventario);
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Eliminar":
-                    codPedidoProveedor = Integer.parseInt(request.getParameter("IdPedidoProveedor"));
-                    pedidoProveedorDAO.deletePedidoProveedor(codPedidoProveedor);
-                    request.getRequestDispatcher("Controlador?menu=PedidoProveedor&accion=Listar").forward(request, response);
+                    inventarioDAO.eliminar(Integer.parseInt(request.getParameter("codigoInventario")));
+                    Inventario p = inventarioDAO.buscar(Integer.parseInt(request.getParameter("codigoInventario")));
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Editar":
-                    codPedidoProveedor = Integer.parseInt(request.getParameter("IdPedidoProveedor"));
-                    PedidoProveedor p = pedidoProveedorDAO.getPedidoProveedorByID(codPedidoProveedor);
-                    request.setAttribute("pedidoProveedor", p);
-                    request.getRequestDispatcher("Controlador?menu=PedidoProveedor&accion=Listar").forward(request, response);
+                    Inventario pe = inventarioDAO.buscar(Integer.parseInt(request.getParameter("codigoInventario")));
+                    request.setAttribute("Inventario", pe);
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
-                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor"));
-                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto"));
-                    cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
-                    //fecha = request.getParameter("txtFecha"); // la variable ya estaba definida y se comento por motivos de defnicion de fecha
-                    total = Double.parseDouble(request.getParameter("txtTotal"));
-                    pedidoProveedor.setIdProveedor(idProveedor);
-                    pedidoProveedor.setIdProducto(idProducto);
-                    pedidoProveedor.setCantidad(cantidad);
-                    // pedidoProveedor.setFecha(fecha); // linea comentada motivo de definicion de fecha
-                    pedidoProveedor.setTotal(total);
-                    pedidoProveedorDAO.updatePedidoProveedor(pedidoProveedor);
-                    request.getRequestDispatcher("Controlador?menu=PedidoProveedor&accion=Listar").forward(request, response);
+                    inventario.setNombreInventario(request.getParameter("txtName"));
+                    inventario.setIdEstablecimiento(Integer.parseInt(request.getParameter("txtIdEstablecimiento")));
+                    inventario.setStock(Integer.parseInt(request.getParameter("txtStock")));
+                    inventario.setIdProducto(Integer.parseInt(request.getParameter("txtIdProducto")));
+                    inventarioDAO.actualizar(inventario);
+                    request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
             }
 
-            request.getRequestDispatcher("PedidoProveedor.jsp").forward(request, response);
+            request.getRequestDispatcher("Inventario.jsp").forward(request, response);
         }
     }
 
