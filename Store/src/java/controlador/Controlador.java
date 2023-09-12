@@ -10,7 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -22,11 +21,6 @@ import modelo.Establecimiento;
 import modeloDAO.CategoriaDAO;
 import modeloDAO.EstablecimientoDAO;
 import modeloDAO.ProveedorDAO;
-import javax.servlet.http.Part;
-import modelo.Cliente;
-import modelo.Compra;
-import modelo.DetalleCompra;
-import java.util.Date;
 import javax.servlet.http.Part;
 import modelo.Cliente;
 import modelo.Compra;
@@ -534,18 +528,19 @@ public class Controlador extends HttpServlet {
                     inventario.setStock(Integer.parseInt(request.getParameter("txtStock")));
                     inventario.setIdProducto(Integer.parseInt(request.getParameter("txtIdProducto")));
 
-                    inventarioDAO.addInventario(inventario);
+                    inventarioDAO.agregar(inventario);
                     request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Eliminar":
-                    inventarioDAO.deleteInventario(request.getParameter("codigoInventario"));
+                    inventarioDAO.eliminar(Integer.parseInt(request.getParameter("codigoInventario")));
+                    Inventario p = inventarioDAO.buscar(Integer.parseInt(request.getParameter("codigoInventario")));
                     request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Editar":
-                    Inventario p = inventarioDAO.getInventarioByID(request.getParameter("codigoInventario"));
-                    request.setAttribute("Inventario", p);
+                    Inventario pe = inventarioDAO.buscar(Integer.parseInt(request.getParameter("codigoInventario")));
+                    request.setAttribute("Inventario", pe);
                     request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
@@ -554,7 +549,7 @@ public class Controlador extends HttpServlet {
                     inventario.setIdEstablecimiento(Integer.parseInt(request.getParameter("txtIdEstablecimiento")));
                     inventario.setStock(Integer.parseInt(request.getParameter("txtStock")));
                     inventario.setIdProducto(Integer.parseInt(request.getParameter("txtIdProducto")));
-                    inventarioDAO.updateInventario(inventario);
+                    inventarioDAO.actualizar(inventario);
                     request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
             }
