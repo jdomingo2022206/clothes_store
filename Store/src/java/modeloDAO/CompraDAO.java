@@ -2,6 +2,7 @@ package modeloDAO;
 
 import config.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, comp.getIdProveedor());
-            ps.setDate(2, comp.getFecha());
+            ps.setDate(2, (Date) comp.getFecha());
             ps.setDouble(3, comp.getTotal());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -90,7 +91,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, comp.getIdProveedor());
-            ps.setDate(2, comp.getFecha());
+            ps.setDate(2, (Date) comp.getFecha());
             ps.setDouble(3, comp.getTotal());
             ps.setInt(4, comp.getIdCompra());
             ps.executeUpdate();

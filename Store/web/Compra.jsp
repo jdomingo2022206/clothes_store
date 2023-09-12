@@ -3,13 +3,18 @@
     Created on : 21/07/2023, 04:51:30 PM
     Author     : RODRIGO MAC
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>Compra</title>
     </head>
     <body>
@@ -40,30 +45,28 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <table class="table table-hober">
-                    <thead>
-                        <tr>
-                            <td>IdCompra</td>
-                            <td>IdProveedor</td>
-                            <td>Fecha</td>
-                            <td>Total</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="compra" items="${compra}">
-                        <tr>
+                <%List titulos = new ArrayList<String>();
+                titulos.add("id Compra");
+                titulos.add("Id Proveedor");
+                titulos.add("Fecha");
+                titulos.add("Total");
+                titulos.add("Acciones");
+                %>
+                <custom:table titles="<%=titulos%>">
+                    <c:forEach var="compra" items="${compras}">
+                       <tr>
                             <td>${compra.getIdCompra()}</td>
                             <td>${compra.getIdProveedor()}</td>
                             <td>${compra.getFecha()}</td>
                             <td>${compra.getTotal()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=compra&accion=Editar&IdCompra=${compra.getIdcompra()}">Editar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&IdCompra=${compra.getIdCompra()}">Editar</a>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
-                        </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </tr>  
+                    </c:forEach>
+                
+                </custom:table>
             </div>            
         </div>
 
