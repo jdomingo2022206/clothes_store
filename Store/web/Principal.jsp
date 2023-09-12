@@ -14,7 +14,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="Principal.css">
+        <link href="Principal.css" rel="stylesheet" type="text/css"/>
         
         <title>Slider</title>
     </head>
@@ -31,7 +31,7 @@
                         </p>
                     </div>
 
-                    <div class="illustration"><div class="inner"></div></div>
+                    <div class="illustration"><img src="https://www.clara.es/medio/2023/02/16/test-estilos-de-vestir-cual-es-el-tuyo_e3260780_230216124648_1280x720.jpg"></div>
                 </div>
                                 
                 
@@ -40,18 +40,14 @@
                     <div class="details">
                         <h1>Información</h1>
                         <p>
-                            Esto incluye las clases "Usuario" y "Login" para la autenticación de usuarios, 
-                            "Proveedores" para el registro de proveedores, "Categoria Producto" para la 
-                            categorización de productos, "Cliente" para el registro de clientes, "Producto" 
-                            para detalles de productos y stock, "Compra" y "Venta" para registrar transacciones 
-                            comerciales, "Detalle Compra" y "Detalle Venta" para seguimiento detallado de 
-                            productos en transacciones, "Pedido Cliente" y "Pedido Proveedor" para gestionar 
-                            pedidos, "Establecimiento" para múltiples ubicaciones y "Inventario" para el control 
-                            en tiempo real del stock. 
+                            En nuestro programa contamos con diversas entidades útiles para los procesos de administración
+                            y compra, entre las cuales se encuentran "Usuario", "Login", "Proveedores", "Categoria Producto",
+                            "Cliente", "Producto", "Compra", "Venta", "Detalle Compra", "Detalle Venta", "Pedido Cliente" y
+                            "Pedido Proveedor", "Establecimiento" e "Inventario".
                         </p>
                     </div>
 
-                    <div class="illustration"><div class="inner"></div></div>
+                    <div class="illustration"><img src="https://i0.wp.com/networknuts.net/wp-content/uploads/2019/11/zahir-accounting-software-have-more-than-60.000-users.png"></div>
                 </div>
                                 
                 <div class="box3 box">
@@ -66,7 +62,7 @@
                         </p>
                     </div>
 
-                    <div class="illustration"><div class="inner"></div></div>
+                    <div class="illustration"><img src="https://img.caminofinancial.com/wp-content/uploads/2019/10/09173133/iStock-1134458349.jpg"></div>
                 </div>
                                 
                 <div class="box4 box">
@@ -79,7 +75,7 @@
                         </p>
                     </div>
 
-                    <div class="illustration"><div class="inner"></div></div>
+                    <div class="illustration"><img src="https://info.pinturasdoal.com/hubfs/Fotos%20Blogs%20Febrero%202022/Featured-C%C3%B3mo%20hacer%20correctamente%20un%20inventario.jpg"></div>
                 </div>
                                 
                 <div class="box5 box">
@@ -87,11 +83,11 @@
                     <div class="details">
                         <h1>Contacto</h1>
                         <p>
-                            Tel. +502 5554-5621
+                            Tel. +502 4248-9365
                         </p>
                     </div>
 
-                    <div class="illustration"><div class="inner"></div></div>
+                    <div class="illustration"><img src="https://i.blogs.es/584741/llamadas-sin-contestacion-1/1366_2000.jpeg"></div>
                 </div>
                                 
             </div>
