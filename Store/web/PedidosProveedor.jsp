@@ -37,14 +37,14 @@
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="text" value="${pedidoproveedor.getFecha()}" name="txtFecha" class="form-control">
+                            <input type="date" value="${pedidoproveedor.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
                             <input type="text" value="${pedidoproveedor.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-success">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-info" href="">
                     </form>
                 </div>
             </div>
