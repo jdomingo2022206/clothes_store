@@ -46,6 +46,7 @@
                     lista.add("NOMBRE");
                     lista.add("DESCRIPCION");
                     lista.add("CREACION");
+                    lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
                     <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
@@ -61,12 +62,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                        <tr>
-                            <td>.getIdCategoria</td>
-                            <td>categoria.getNombreCategoria()</td>
-                            <td>categoria.getDescripcion()</td>
-                            <td>Edit</td>
-                        </tr>
                 </custom:table>
             </div>
         </div>
