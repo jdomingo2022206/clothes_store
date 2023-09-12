@@ -36,16 +36,8 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <table class="table table-hober">
-                    <thead>
-                        <tr>
-                            <td>Codigo</td>
-                            <td>Nombre</td>
-                            <td>Descripción</td>
-                            <td>Teléfono</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <custom:table>
+                    
                         <c:forEach var="proveedor" items="${proveedor}">
                         <tr>
                             <td>${proveedor.getIdProveedor()}</td>
@@ -58,8 +50,8 @@
                             </td>
                         </tr>
                         </c:forEach>
-                    </tbody>
-                </table>
+                                                </custom:table>
+
             </div>            
         </div>
 
