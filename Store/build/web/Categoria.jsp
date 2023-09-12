@@ -61,12 +61,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                        <tr>
-                            <td>.getIdCategoria</td>
-                            <td>categoria.getNombreCategoria()</td>
-                            <td>categoria.getDescripcion()</td>
-                            <td>Edit</td>
-                        </tr>
                 </custom:table>
             </div>
         </div>
