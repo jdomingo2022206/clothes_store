@@ -125,7 +125,7 @@ public class Controlador extends HttpServlet {
             switch (accion) {
                 case "Listar":
                     List listaProveedor = proveedorDAO.listar();
-                    request.setAttribute("proveedor", listaProveedor);
+                    request.setAttribute("proveedores", listaProveedor);
                     break;
 
                 case "Agregar":
