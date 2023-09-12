@@ -1,17 +1,71 @@
 <%-- 
-    Document   : Establecimiento
-    Created on : 21/07/2023, 04:44:01 PM
-    Author     : Usuario
+    Document   : Empleado
+    Created on : 20/07/2023, 01:53:36 PM
+    Author     : informatica
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pagina Establecimiento</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>        <title>Establecimiento</title>
     </head>
     <body>
-        <h1>Registro de Establecimiento</h1>
+        <div class="d-flex">
+            <div class="card col-sm-4">
+                    <form action="Controlador?menu=Establecimiento" method="POST">
+                        <div class="form-group">
+                            <label>DPI:</label>
+                            <input type="text" value="${empleado.getDPIEmpleado()}" name="txtNombreEstablecimiento" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" value="${establecimiento.getDireccion()}" name="txtDireccion" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefono:</label>
+                            <input type="text" value="${establecimiento.getTelefono()}" name="txtTelefono" class="form-control">
+                        </div>
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                    </form>
+                </div>
+            <div class="col-sm-8">
+               <%
+                    List<String> lista = new ArrayList<String>();
+                    lista.add("ID Establecimiento");
+                    lista.add("NOMBRE");
+                    lista.add("DIRECCION");
+                    lista.add("TELEFONO");
+                %>
+                <custom:table titles="<%=lista%>">
+                        <c:forEach var="establecimiento" items="${establecimientos}">
+                        <tr>
+                            <td>${establecimiento.getIdEstablecimiento()}</td>
+                            <td>${establecimiento.getNombreEstablecimiento()}</td>
+                            <td>${establecimiento.getDireccion()}</td>
+                            <td>${establecimiento.getTelefono()}</td>
+                            <td>
+                                <a class="btn btn-warning" href="">Editar</a>
+                                <a class="btn btn-danger" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                </custom:table>
+            </div>
+        </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>

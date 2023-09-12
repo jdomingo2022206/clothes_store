@@ -4,14 +4,19 @@
     Author     : informatica
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <title>Establecimiento</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>        <title>Establecimiento</title>
     </head>
     <body>
         <div class="d-flex">
@@ -34,16 +39,14 @@
                     </form>
                 </div>
             <div class="col-sm-8">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <td>CODIGO</td>
-                            <td>NOMBRE</td>
-                            <td>DIRECCION</td>
-                            <td>TELEFONO</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+               <%
+                    List<String> lista = new ArrayList<String>();
+                    lista.add("ID Establecimiento");
+                    lista.add("NOMBRE");
+                    lista.add("DIRECCION");
+                    lista.add("TELEFONO");
+                %>
+                <custom:table titles="<%=lista%>">
                         <c:forEach var="establecimiento" items="${establecimientos}">
                         <tr>
                             <td>${establecimiento.getIdEstablecimiento()}</td>
@@ -56,8 +59,7 @@
                             </td>
                         </tr>
                         </c:forEach>
-                    </tbody>
-                </table>
+                </custom:table>
             </div>
         </div>
         </div>
