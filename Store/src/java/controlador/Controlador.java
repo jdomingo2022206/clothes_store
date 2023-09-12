@@ -434,13 +434,13 @@ public class Controlador extends HttpServlet {
                     detalleCompra.setIdProducto(idProducto);
                     detalleCompra.setCantidad(cantidad);
                     detalleCompraDAO.agregar(detalleCompra);
-                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     codDetalleCompra = Integer.parseInt(request.getParameter("idDetalleCompra"));
                     DetalleCompra dc = detalleCompraDAO.listarCodigoDetalleCompra(codDetalleCompra);
                     request.setAttribute("detalleCompra", dc);
-                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
                     idCompra = Integer.parseInt(request.getParameter("txtIdCompra"));
@@ -453,15 +453,15 @@ public class Controlador extends HttpServlet {
                     detalleCompra.setCantidad(cantidad);
                     detalleCompra.setIdDetalleCompra(codDetalleCompra);
                     detalleCompraDAO.actualizar(detalleCompra);
-                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=Listar").forward(request, response);
                     break;
                 case "Eliminar":
                     codDetalleCompra = Integer.parseInt(request.getParameter("idDetalleCompra"));
                     detalleCompraDAO.eliminar(codDetalleCompra);
-                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=Listar").forward(request, response);
                     break;
             }
-
+            request.getRequestDispatcher("DetalleCompra.jsp").forward(request, response);
         } else if (menu.equals("PedidoCliente")) {
 
             switch (accion) {
