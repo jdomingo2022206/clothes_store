@@ -8,12 +8,12 @@ public class Categoria {
     private int idCategoria;
     private String nombreCategoria;
     private String descripcion;
-    private Date fechaCreacion;
+    private String fechaCreacion;
 
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, String nombreCategoria, String descripcion, Date fechaCreacion) {
+    public Categoria(int idCategoria, String nombreCategoria, String descripcion, String fechaCreacion) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.descripcion = descripcion;
@@ -44,11 +44,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public Date getFechaCreacion() {
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
