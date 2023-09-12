@@ -18,9 +18,13 @@ import modeloDAO.CategoriaDAO;
 import modeloDAO.EstablecimientoDAO;
 import modeloDAO.ProveedorDAO;
 import java.sql.Date;
+import modelo.Compra;
+import modelo.DetalleCompra;
 import modelo.PedidoCliente;
 import modelo.Producto;
 import modelo.Proveedor;
+import modeloDAO.CompraDAO;
+import modeloDAO.DetalleCompraDAO;
 import modeloDAO.PedidoClienteDAO;
 import modeloDAO.ProductoDAO;
 
@@ -57,11 +61,19 @@ public class Controlador extends HttpServlet {
         Producto producto = new Producto();
         ProductoDAO productoDAO = new ProductoDAO();
         int codProducto = 0;
-        
+
+        Compra compra = new Compra();
+        CompraDAO compraDAO = new CompraDAO();
+        int codCompra = 0;
+
+        DetalleCompra detalleCompra = new DetalleCompra();
+        DetalleCompraDAO detalleCompraDAO = new DetalleCompraDAO();
+        int codDetalleCompra = 0;
+
         PedidoCliente pedidoCliente = new PedidoCliente();
         PedidoClienteDAO pedidoClienteDAO = new PedidoClienteDAO();
         int codPedidoCliente = 0;
-        
+
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         if (menu.equals("Principal")) {
@@ -186,7 +198,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Establecimiento&accion=listar").forward(request, response);
                     break;
                 case "Actualizar": //no utiliza las mismas variables
-                    codEstableci =Integer.parseInt( request.getParameter("txtIdEstablecimiento")); //cambio varibale y variable no casteada
+                    codEstableci = Integer.parseInt(request.getParameter("txtIdEstablecimiento")); //cambio varibale y variable no casteada
                     nomEstablecimiento = request.getParameter("txtNombreEstablecimiento"); //cambio varibale 
                     direcEs = request.getParameter("txtDireccion"); //cambio varibale 
                     tel = request.getParameter("txtTelefono"); //cambio varibale 
@@ -255,6 +267,98 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
 
+        } else if (menu.equals("Compra")) {
+
+            switch (accion) {
+                case "Listar":
+                    List listaCompra = compraDAO.listar();
+                    request.setAttribute("compra", listaCompra);
+                    break;
+
+                case "Agregar":
+                    int idProveedor = Integer.parseInt(request.getParameter("txtIdProveedor")); //variables no casteadas
+//                    Date fecha = request.getParameter("txtfecha"); // comentado por motivos de definicon
+                    Double total = Double.parseDouble(request.getParameter("txtTotal")); //variable no casteada
+                    compra.setIdProveedor(idProveedor);
+//                    compra.setFecha(fecha); // comentado por definicion
+                    compra.setTotal(total);
+                    compraDAO.agregar(compra);
+                    request.getRequestDispatcher("Controlador?menu=Compra&accion=listar").forward(request, response);
+                    break;
+
+                case "Eliminar":
+                    codCompra = Integer.parseInt(request.getParameter("codCompra"));
+                    proveedorDAO.eliminar(codCompra);
+                    request.getRequestDispatcher("Controlador?menu=Compra&accion=listar").forward(request, response);
+                    break;
+
+                case "Editar":
+                    codCompra = Integer.parseInt(request.getParameter("codCompra"));
+                    compra = compraDAO.listarCodigoCompra(codCompra); // el nombre del metodo estaba mal
+                    request.setAttribute("Compra", compra);
+                    request.getRequestDispatcher("Controlador?menu=Compra&accion=listar").forward(request, response);
+                    break;
+
+                case "Actualizar":
+                    idProveedor = Integer.parseInt(request.getParameter("txtIdProveedor")); //variable ya estaba definida y no esta casteada
+//                    fecha = request.getParameter("txtFecha"); //variable ya estaba definida y comentada por definicion
+                    total = Double.parseDouble(request.getParameter("txtTotal")); //variable ya estaba definida y no esta casteada
+                    compra.setIdProveedor(idProveedor);
+//                    compra.setFecha(fecha); // comentada por definicion
+                    compra.setTotal(total);
+                    compra.setIdCompra(codCompra);
+                    compraDAO.actualizar(compra);
+                    request.getRequestDispatcher("Controlador?menu=Compra&accion=listar").forward(request, response);
+                    break;
+
+            }
+
+            request.getRequestDispatcher("Compra.jsp").forward(request, response);
+
+        } else if (menu.equals("DetalleCompra")) {
+            switch ("accion") {
+                case "listar":
+                    List listaDetalleCompra = detalleCompraDAO.listar();
+                    request.setAttribute("detalleCompra", listaDetalleCompra);
+                    break;
+                case "Agregar":
+                    int idCompra = Integer.parseInt(request.getParameter("txtIdCompra"));
+                    int idProveedor = Integer.parseInt(request.getParameter("txtIdProveedor"));
+                    int idProducto = Integer.parseInt(request.getParameter("txtIdProducto"));
+                    int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+                    detalleCompra.setIdCompra(idCompra);
+                    detalleCompra.setIdProveedor(idProveedor);
+                    detalleCompra.setIdProducto(idProducto);
+                    detalleCompra.setCantidad(cantidad);
+                    detalleCompraDAO.agregar(detalleCompra);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    break;
+                case "Editar":
+                    codDetalleCompra = Integer.parseInt(request.getParameter("idDetalleCompra"));
+                    DetalleCompra dc = detalleCompraDAO.listarCodigoDetalleCompra(codDetalleCompra);
+                    request.setAttribute("detalleCompra", dc);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    break;
+                case "Actualizar":
+                    idCompra = Integer.parseInt(request.getParameter("txtIdCompra"));
+                    idProveedor = Integer.parseInt(request.getParameter("txtIdProveedor"));
+                    idProducto = Integer.parseInt(request.getParameter("txtIdProducto"));
+                    cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+                    detalleCompra.setIdCompra(idCompra);
+                    detalleCompra.setIdProveedor(idProveedor);
+                    detalleCompra.setIdProducto(idProducto);
+                    detalleCompra.setCantidad(cantidad);
+                    detalleCompra.setIdDetalleCompra(codDetalleCompra);
+                    detalleCompraDAO.actualizar(detalleCompra);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    break;
+                case "Eliminar":
+                    codDetalleCompra = Integer.parseInt(request.getParameter("idDetalleCompra"));
+                    detalleCompraDAO.eliminar(codDetalleCompra);
+                    request.getRequestDispatcher("Controlador?menu=DetalleCompra&accion=listar").forward(request, response);
+                    break;
+            }
+
         } else if (menu.equals("PedidoCliente")) {
 
             switch (accion) {
@@ -299,7 +403,7 @@ public class Controlador extends HttpServlet {
                     total = Double.parseDouble(request.getParameter("txtTotal")); // la variable ya estaba definida y se tuvo que castear
                     pedidoCliente.setIdCliente(idCliente); // La varibale no estaba correcta, estaba a medias
                     pedidoCliente.setIdProducto(idProducto); // La varibale no estaba correcta, estaba a medias
-                    pedidoCliente.setCantidad(cantidad); 
+                    pedidoCliente.setCantidad(cantidad);
                     // pedidoCliente.setFecha(fecha); // linea comentada motivo de definicion de fecha
                     pedidoCliente.setTotal(total);
                     pedidoClienteDAO.actualizar(pedidoCliente);
