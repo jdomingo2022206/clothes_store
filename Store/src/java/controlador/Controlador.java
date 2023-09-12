@@ -5,8 +5,13 @@
  */
 package controlador;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +23,7 @@ import modeloDAO.CategoriaDAO;
 import modeloDAO.EstablecimientoDAO;
 import modeloDAO.ProveedorDAO;
 import java.sql.Date;
+import javax.servlet.http.Part;
 import modelo.Compra;
 import modelo.DetalleCompra;
 import modelo.PedidoCliente;
@@ -34,15 +40,30 @@ import modeloDAO.ProductoDAO;
  */
 public class Controlador extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private String saveImage(String nameImage, Part imagePart) throws IOException {
+        // Obtén la ruta real a la carpeta "img" en tu proyecto
+        String realPath = getServletContext().getRealPath("/img");
+
+        // Verifica si la carpeta "img" existe, y si no, créala
+        File imgFolder = new File(realPath);
+        if (!imgFolder.exists()) {
+            imgFolder.mkdir();
+        }
+
+        String pathImage = "img/" + nameImage;
+        try (InputStream inputStream = imagePart.getInputStream();
+                OutputStream outputStream = new FileOutputStream(realPath + File.separator + nameImage)) {
+            int read;
+            byte[] bytes = new byte[1024];
+
+            while ((read = inputStream.read(bytes)) != -1) {
+                outputStream.write(bytes, 0, read);
+            }
+        }
+
+        return pathImage;
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -228,15 +249,24 @@ public class Controlador extends HttpServlet {
                     String nombre = request.getParameter("txtNombreProducto");
                     String descripcion = request.getParameter("txtDescripcion");
                     String precio = request.getParameter("txtPrecio");
+                    String imagen = request.getParameter("txtImagen");
                     String idProveedor = request.getParameter("txtIdProveedor");
                     String idCategoria = request.getParameter("txtIdCategoría");
-                    producto.setNombreProducto(nombre);
-                    producto.setDescripcion(descripcion);
-                    producto.setPrecio(Double.parseDouble(precio));
-                    producto.setIdProveedor(Integer.parseInt(idProveedor));
-                    producto.setIdCategoria(Integer.parseInt(idCategoria));
-                    productoDAO.agregar(producto);
-                    request.getRequestDispatcher("Controlador?menu=Producto&accion=listar").forward(request, response);
+
+                    Part imagePart = request.getPart("imagenProducto");
+                    String nameImage = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
+                    if (nameImage != null && !nameImage.isEmpty()) {
+                        String rutaImagen = saveImage(nameImage, imagePart);
+                        producto.setNombreProducto(nombre);
+                        producto.setDescripcion(descripcion);
+                        producto.setPrecio(Double.parseDouble(precio));
+                        producto.setImagen(rutaImagen);
+                        producto.setIdProveedor(Integer.parseInt(idProveedor));
+                        producto.setIdCategoria(Integer.parseInt(idCategoria));
+                        productoDAO.agregar(producto);
+                        request.getRequestDispatcher("Controlador?menu=Producto&accion=listar").forward(request, response);
+                    }
+
                     break;
                 case "Eliminar":
                     int productoId = Integer.parseInt(request.getParameter("idProducto"));

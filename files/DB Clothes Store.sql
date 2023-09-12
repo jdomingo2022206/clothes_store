@@ -56,6 +56,7 @@ Create table Producto(
     nombreProducto varchar(100) not null,
     descripcion varchar(150) not null,
     precio decimal(6,2) not null,
+    imagen varchar(255) not null,
     idProveedor int not null,
     idCategoria int not null,
     primary key PK_idProducto (idProducto),
@@ -211,6 +212,7 @@ describe Establecimiento;
 
 
 -- TUPLAS DE LA ENTIDAD PRODUCTO --
+/*
 	INSERT INTO Producto (nombreProducto, descripcion, precio, idProveedor, idCategoria)
 		VALUES
 		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 1, 1),
@@ -218,6 +220,7 @@ describe Establecimiento;
 		('Vestido de noche', 'Elegante vestido de noche para mujer', 59.99, 3, 2),
 		('Zapatos deportivos', 'Zapatos deportivos para correr', 49.99, 4, 4),
 		('Bolsa de cuero', 'Bolsa de cuero genuino', 79.99, 5, 5);
+*/
         
 -- TUPLAS DE LA ENTIDAD COMPRA --
 	INSERT INTO Compra (idProveedor, fecha, total)
