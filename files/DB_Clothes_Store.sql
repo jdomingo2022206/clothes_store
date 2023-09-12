@@ -220,8 +220,9 @@ describe Establecimiento;
 		(4, '2023-08-04', 220.00),
 		(5, '2023-08-05', 400.00);
         
+	select * from Compra;
+        
 -- TUPLAS DE LA ENTIDAD DETALLE COMPRA --
-
 	INSERT INTO DetalleCompra (idCompra, idProveedor, idProducto, cantidad)
 		VALUES
 		(1, 1, 1, 10),

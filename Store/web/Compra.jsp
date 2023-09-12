@@ -45,9 +45,10 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <%List titulos = new ArrayList<String>();
-                titulos.add("id Compra");
-                titulos.add("Id Proveedor");
+                <%
+                List<String> titulos = new ArrayList<String>();
+                titulos.add("idCompra");
+                titulos.add("IdProveedor");
                 titulos.add("Fecha");
                 titulos.add("Total");
                 titulos.add("Acciones");

@@ -47,7 +47,7 @@
                 </li>
                 <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
-                    <a target='myTarget' href="Controlador?menu=table&accion=Listar" class="hide-on-click">Productos</a>
+                    <a target='myTarget' href="Controlador?menu=Producto&accion=Listar" class="hide-on-click">Productos</a>
                 </li>
                 <li data-url="Clientes" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-users-line"></i>

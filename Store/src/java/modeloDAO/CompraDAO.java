@@ -19,7 +19,7 @@ public class CompraDAO {
 
     public List listar() {
         ArrayList<Compra> listaCompra = new ArrayList<>();
-        String sql = "select  from compra";
+        String sql = "select * from Compra";
 
         try {
             con = cn.Conexion();

@@ -4,12 +4,17 @@
     Author     : Edwar
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>Detalle Compra</title>
     </head>
     <body>
@@ -38,34 +43,28 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <table class="table table-hober">
-                    <thead>
-                        <tr>
-                            <td>Codigo</td>
-                            <td>ID COMPRA</td>
-                            <td>ID PROVEEDOR</td>
-                            <td>ID PRODUCTO</td>
-                            <td>CANTIDAD</td>
-                            <td>ACCIONES</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="detalleCompra" items="${detalleCompras}">
+             <%
+                    List<String> lista = new ArrayList<String>();
+                    lista.add("Id DetalleCompra");
+                    lista.add("Id Compra");
+                    lista.add("id Producto");
+                    lista.add("Cantidad");
+                    lista.add("ACCIONES");
+                %>
+                <custom:table titles="<%=lista%>">
+                    <c:forEach var="detalleCompra" items="${detalleCompra}">
                         <tr>
                             <td>${detalleCompra.getIdDetalleCompra()}</td>
                             <td>${detalleCompra.getIdCompra()}</td>
                             <td>${detalleCompra.getIdProveedor()}</td>
                             <td>${detalleCompra.getIdProducto}</td>
                             <td>${detalleCompra.getCantidad}</td>
-                            <td>
-                                <a class="btn btn-warning" href="Controlador?menu=DetalleCompra&accion=Editar&idDetalleCompra=${detalleCompra.getIdDetalleCompra}">Editar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=DetalleCompra&accion=Editar&IdDetalleCompra=${detalleCompra.getIdDetalleCompra()}">Editar</a>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
-                    </tbody>
-                </table>
+                </custom:table>
             </div>            
         </div>
 

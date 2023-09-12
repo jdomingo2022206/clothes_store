@@ -374,7 +374,8 @@ public class Controlador extends HttpServlet {
             switch (accion) {
                 case "Listar":
                     List listaCompra = compraDAO.listar();
-                    request.setAttribute("compra", listaCompra);
+                    System.out.println(listaCompra);
+                    request.setAttribute("compras", listaCompra);
                     break;
 
                 case "Agregar":
