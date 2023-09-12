@@ -5,13 +5,16 @@
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>Categoria</title>
     </head>
     <body>
@@ -21,7 +24,7 @@
                     <form action="Controlador?menu=Producto" method="POST">
                         <div class="form-group">
                             <label>Nombre Producto</label>
-                            <input type="text" value="" name="txtNombreProducto" class="form-control">
+                            <input type="text" value="" name="name="txtNombreProducto" " class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
@@ -49,34 +52,20 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <table class="table table-hober">
-                    <thead>
+                <%
+                    List<String> lista = new ArrayList<String>();
+                    lista.add("ID");
+                    lista.add("NOMBRE");
+                    lista.add("DESCRIPCION");
+                    lista.add("PRECIO");
+                    lista.add("IMAGEN");
+                    lista.add("IDPROVEEDOR");
+                    lista.add("IDCATEGORIA");
+                %>
+                <custom:table titles="<%=lista%>">
+                    <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
+                    <c:forEach var="producto" items="${productos}">
                         <tr>
-                            <td>Codigo Producto</td>
-                            <td>Nombre</td>
-                            <td>Descripcion</td>
-                            <td>Precio</td>
-                            <td>Imagen</td>
-                            <td>Id Proveedor</td>
-                            <td>Id Categoria</td>
-                            <td>Acciones</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                                List<String> lista = new ArrayList<String>();
-                                lista.add("ID PRODUCTO");
-                                lista.add("NOMBRE PRODUCTO");
-                                lista.add("DESCRIPCION");
-                                lista.add("PRECIO");I
-                                lista.add("IMAGEN");
-                                lista.add("ID PROVEEDOR");
-                                lista.add("ID VATEGORIA");
-                        %>
-                    <custom:table titles="<%=lista%>">
-                        <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
-                        <c:forEach var="producto" items="${productos}">
-                            <tr>
                                 <td>${producto.getIdProducto()}</td>
                                 <td>${producto.getNombreProducto()}</td>
                                 <td>${producto.getDescripcion()}</td>
@@ -84,16 +73,13 @@
                                 <td>${producto.getImagen()}</td>
                                 <td>${producto.getIdProveedor()}</td>
                                 <td>${producto.getIdCategoria()}</td>
-                                <td>
-                                    <a class="btn btn-warning" href="Controlador?menu=Producto&accion=Editar&idProducto=${producto.getIdProducto()}">Editar</a>
-                                    <a class="btn btn-danger" href="">Eliminar</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </custom:table>
-                        
-                    </tbody>
-                </table>
+                            <td>
+                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&codigoCategoria=${categoria.getIdCategoria()}">Editar</a>
+                                <a class="btn btn-danger" href="">Eliminar</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </custom:table>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
