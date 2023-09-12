@@ -17,7 +17,7 @@ public class ProductoDAO {
     int resp;
    
    public List listar(){
-       ArrayList<Producto> listaProducto = new ArrayList<>();
+       List<Producto> listaProducto = new ArrayList<>();
        String sql = "select * from producto";
        try {
             con = cn.Conexion();
@@ -42,7 +42,7 @@ public class ProductoDAO {
    }
    
    public int agregar (Producto pr){
-       String sql = "insert into Producto (nombreProducto, descripcion, precio, imagen, idProveedor, idCategoria) values (?,?,?,?,?,?))";
+       String sql = "insert into Producto (nombreProducto, descripcion, precio, imagen, idProveedor, idCategoria) values (?,?,?,?,?,?)";
        try {
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
