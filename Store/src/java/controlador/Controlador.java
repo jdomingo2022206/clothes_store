@@ -122,9 +122,9 @@ public class Controlador extends HttpServlet {
 
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if(menu.equals("Menu")){
+        if (menu.equals("Menu")) {
             request.getRequestDispatcher("menu.jsp").forward(request, response);
-        }else if (menu.equals("Principal")) {
+        } else if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         } else if (menu.equals("Proveedor")) {
 
@@ -227,7 +227,7 @@ public class Controlador extends HttpServlet {
             switch (accion) {
                 case "Listar":
                     List listaCliente = clienteDAO.listar();
-                    request.setAttribute("cliente", listaCliente);
+                    request.setAttribute("clientes", listaCliente);
                     break;
                 case "Agregar":
                     String nombre = request.getParameter("txtNombreCliente");
@@ -517,7 +517,7 @@ public class Controlador extends HttpServlet {
 
             request.getRequestDispatcher("PedidoCliente.jsp").forward(request, response);
         } else if (menu.equals("PedidoProveedor")) {
-            switch(accion){
+            switch (accion) {
                 case "Listar":
                     List listaPedidoProveedor = pedidoProveedorDAO.listPedidoProveedor();
                     request.setAttribute("pedidoProveedor", listaPedidoProveedor);
@@ -529,8 +529,8 @@ public class Controlador extends HttpServlet {
                     int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                     //Date fecha = (request.getParameter("txtFecha"));
                     double total = Double.parseDouble(request.getParameter("txtTotal"));
-                    pedidoProveedor.setIdProveedor(idProveedor); 
-                    pedidoProveedor.setIdProducto(idProducto); 
+                    pedidoProveedor.setIdProveedor(idProveedor);
+                    pedidoProveedor.setIdProducto(idProducto);
                     pedidoProveedor.setCantidad(cantidad);
                     //pedidoProveedor.setFecha(fecha); //linea comentada, nmotivos de definicion de fecha
                     pedidoProveedor.setTotal(total);
@@ -552,13 +552,13 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Actualizar":
-                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor")); 
-                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto")); 
-                    cantidad = Integer.parseInt(request.getParameter("txtCantidad")); 
+                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor"));
+                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto"));
+                    cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                     //fecha = request.getParameter("txtFecha"); // la variable ya estaba definida y se comento por motivos de defnicion de fecha
-                    total = Double.parseDouble(request.getParameter("txtTotal")); 
-                    pedidoProveedor.setIdProveedor(idProveedor); 
-                    pedidoProveedor.setIdProducto(idProducto); 
+                    total = Double.parseDouble(request.getParameter("txtTotal"));
+                    pedidoProveedor.setIdProveedor(idProveedor);
+                    pedidoProveedor.setIdProducto(idProducto);
                     pedidoProveedor.setCantidad(cantidad);
                     // pedidoProveedor.setFecha(fecha); // linea comentada motivo de definicion de fecha
                     pedidoProveedor.setTotal(total);
@@ -566,7 +566,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=PedidoProveedor&accion=Listar").forward(request, response);
                     break;
             }
-             request.getRequestDispatcher("PedidoProveedor.jsp").forward(request, response);
+            request.getRequestDispatcher("PedidosProveedor.jsp").forward(request, response);
         } else if (menu.equals("Inventario")) {
             switch (accion) {
                 case "Listar":

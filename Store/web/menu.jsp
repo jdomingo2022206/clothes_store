@@ -44,11 +44,7 @@
                 <li data-url="Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-store"></i>
                     <a target='myTarget' href="Controlador?menu=Compra&accion=Listar" class="hide-on-click">Compra</a>
-                </li>ass="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
-                    <i class="text-2xl fa-solid fa-cubes"></i>
-                    <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
-                </li>
-                <li data-url="PedidoProveedor" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
                     <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
                 </li>

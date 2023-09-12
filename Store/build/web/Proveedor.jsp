@@ -37,8 +37,8 @@
                             <label>Teléfono</label>
                             <input type="text" value="${proveedor.getTelefono()}" name="txtTelefono" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
