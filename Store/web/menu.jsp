@@ -44,14 +44,21 @@
                 <li data-url="Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-store"></i>
                     <a target='myTarget' href="Controlador?menu=Compra&accion=Listar" class="hide-on-click">Compra</a>
+                </li>ass="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="text-2xl fa-solid fa-cubes"></i>
+                    <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
+                </li>
+                <li data-url="PedidoProveedor" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="text-2xl fa-solid fa-cubes"></i>
+                    <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
                 </li>
                 <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
-                    <a target='myTarget' href="Controlador?menu=Producto&accion=Listar" class="hide-on-click">Productos</a>
+                    <a target='myTarget' href="Controlador?menu=PedidoCliente&accion=Listar" class="hide-on-click">Pedido Cliente</a>
                 </li>
                 <li data-url="Clientes" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-users-line"></i>
-                    <a target='myTarget' href="Controlador?menu=Cliente&accion=Listar" class="hide-on-click">Clientes</a>
+                    <a target='myTarget' href="Controlador?menu=Inventario&accion=Listar" class="hide-on-click">Inventario</a>
                 </li>
                 <li data-url="Detalle Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-file-invoice"></i>
