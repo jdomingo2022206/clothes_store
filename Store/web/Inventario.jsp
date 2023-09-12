@@ -3,7 +3,7 @@
     Created on : 20/07/2023, 09:21:48 PM
     Author     : A_flo
 --%>
-<jsp:useBean id="inventario" scope="request" type="modelo.Inventario"/>
+<jsp:useBean id="inventario" scope="request" class="modelo.Inventario"/>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
