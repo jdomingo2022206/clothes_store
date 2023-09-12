@@ -35,7 +35,7 @@
         </thead>
         <tbody class="[&_td]:border-t last:[&_td]:text-indigo-600 last:[&_td]:underline last:[&_td]:cursor-pointer rounded-sm [&_td]:text-gray-500 first:[&_td]:font-semibold first:[&_td]:text-black [&_td]:ps-3 [&_td]:pe-3 [&_tr]:hidden first:[&_tr]:table-row">
           <tr id="spinner">
-            <td colspan="5">
+            <td colspan="${titles.size()}">
               <div role="status" class="flex justify-center items-center">
                 <svg
                   aria-hidden="true"
