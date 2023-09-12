@@ -30,7 +30,7 @@ public class ProductoDAO {
                 nuevoProducto.setDescripcion(rs.getString("descripcion"));
                 nuevoProducto.setPrecio(rs.getDouble("precio"));
                 nuevoProducto.setIdProveedor(rs.getInt("idProveedor"));
-                nuevoProducto.setIdCategoría(rs.getInt("idCategoria"));
+                nuevoProducto.setIdCategoria(rs.getInt("idCategoria"));
                 listaProducto.add(nuevoProducto);
             }
            
@@ -49,7 +49,7 @@ public class ProductoDAO {
            ps.setString(2, pr.getDescripcion());
            ps.setDouble(3, pr.getPrecio());
            ps.setInt(4, pr.getIdProveedor());
-           ps.setInt(5, pr.getIdCategoría());
+           ps.setInt(5, pr.getIdCategoria());
            ps.executeUpdate();
        } catch (Exception e) {
            e.printStackTrace();
@@ -73,7 +73,7 @@ public class ProductoDAO {
                     pr.setDescripcion(rs.getString(3));
                     pr.setPrecio(rs.getDouble(4));
                     pr.setIdProveedor(rs.getInt(5));
-                    pr.setIdCategoría(rs.getInt(6));                 
+                    pr.setIdCategoria(rs.getInt(6));                 
                 }
                 
             }catch(Exception e){
@@ -103,7 +103,7 @@ public class ProductoDAO {
                 ps.setString(2, pr.getDescripcion());
                 ps.setDouble(3, pr.getPrecio());
                 ps.setInt(4, pr.getIdProveedor());
-                ps.setInt(5, pr.getIdCategoría());
+                ps.setInt(5, pr.getIdCategoria());
                 ps.setInt(6, pr.getIdProducto());
                 ps.executeUpdate();
             }catch(Exception e){
