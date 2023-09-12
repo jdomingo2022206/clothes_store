@@ -23,7 +23,7 @@
             <ul id="list-entities" class="flex flex-col gap-2 list-none">
                 <li data-url="Provedor" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-people-carry-box"></i>
-                    <a target='myTarget' href="Controlador?menu=Proveedor&accion=Listar" class="hide-on-click">Provedor</a>
+                    <a target='myTarget' href="Controlador?menu=Proveedor&accion=Listar" class="hide-on-click">Proveedor</a>
                 </li>
                 <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
