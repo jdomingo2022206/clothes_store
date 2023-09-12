@@ -115,4 +115,27 @@ public class UsuarioDAO {
        
     }
     
+    public Usuario Validar(String usuario, String pass){
+        //Instanciar un objeto de tipo empleado.
+        Usuario uss = new Usuario();
+        // Agregar una variable de tipo String para la consulta.
+        String sql = "select * from Usuario where usuario = ? and clave = ?";
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                uss.setIdUsuario(rs.getInt("idUsuario"));
+                uss.setClave(rs.getString("clave"));
+                uss.setNombreUsuario(rs.getString("nombreUsuario"));
+                uss.setUsuario(rs.getString("usuario"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return uss; // Este sera el empleado que se encontro.
+    }
+    
 }

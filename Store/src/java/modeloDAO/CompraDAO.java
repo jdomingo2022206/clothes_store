@@ -19,7 +19,7 @@ public class CompraDAO {
 
     public List listar() {
         ArrayList<Compra> listaCompra = new ArrayList<>();
-        String sql = "select  from compra";
+        String sql = "select * from Compra";
 
         try {
             con = cn.Conexion();
@@ -44,7 +44,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, comp.getIdProveedor());
-            ps.setDate(2, comp.getFecha());
+            ps.setDate(2, (Date) comp.getFecha());
             ps.setDouble(3, comp.getTotal());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, comp.getIdProveedor());
-            ps.setDate(2, comp.getFecha());
+            ps.setDate(2, (Date) comp.getFecha());
             ps.setDouble(3, comp.getTotal());
             ps.setInt(4, comp.getIdCompra());
             ps.executeUpdate();
