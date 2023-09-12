@@ -3,7 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/workspace/clothes_store/Store/src/java/modeloDAO/ProductoDAO.java</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/DetalleCompra.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/index.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/Inventario.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/menu.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/Cliente.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/src/java/modeloDAO/ClienteDAO.java</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/Categoria.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/Compra.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/WEB-INF/tags/table.tag</file>
+            <file>file:/C:/workspace/clothes_store/Store/web/Proveedor.jsp</file>
+            <file>file:/C:/workspace/clothes_store/Store/src/java/controlador/Controlador.java</file>
         </group>
     </open-files>
 </project-private>
