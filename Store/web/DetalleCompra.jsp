@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,7 +53,7 @@
                     lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
-                    <c:forEach var="detalleCompra" items="${detalleCompra}">
+                    <c:forEach var="detalleCompra" items="${detalleCompras}">
                         <tr>
                             <td>${detalleCompra.getIdDetalleCompra()}</td>
                             <td>${detalleCompra.getIdCompra()}</td>
