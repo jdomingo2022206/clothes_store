@@ -137,7 +137,7 @@
             </div>   
         </div>
         <div class="p-5 h-full">
-            <iframe class="w-full h-full" src="index.jsp" frameborder="0"></iframe>
+            <iframe class="w-full h-full" src="Principal.jsp" frameborder="0"></iframe>
         </div>
        </div>
 
