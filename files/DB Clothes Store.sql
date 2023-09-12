@@ -156,3 +156,10 @@ Create table Inventario(
 		references Producto (idProducto)
 );
 
+insert into Cliente(nombreCliente, apellidoCliente, direccion, telefono) values('Juan','Toldo','Ciudad de Guatemala','12345678');
+insert into Cliente(nombreCliente, apellidoCliente, direccion, telefono) values('Maria','Toldo','Ciudad de Guatemala','12345678');
+
+insert into Proveedor (nombreProveedor, direccion, telefono) values('Juan','Ciudad de Guatemala','12345678');
+insert into Proveedor (nombreProveedor, direccion, telefono) values('Maria','Ciudad de Guatemala','12345678');
+
+

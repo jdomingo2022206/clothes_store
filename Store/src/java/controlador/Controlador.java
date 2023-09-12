@@ -219,9 +219,9 @@ public class Controlador extends HttpServlet {
 
         } else if (menu.equals("Cliente")) {
             switch (accion) {
-                case "listar":
+                case "Listar":
                     List listaCliente = clienteDAO.listar();
-                    request.setAttribute("cliente", listaCliente);
+                    request.setAttribute("clientes", listaCliente);
                     break;
                 case "Agregar":
                     String nombre = request.getParameter("txtNombreCliente");
