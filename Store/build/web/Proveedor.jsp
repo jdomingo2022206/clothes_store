@@ -37,17 +37,18 @@
                             <label>Teléfono</label>
                             <input type="text" value="${proveedor.getTelefono()}" name="txtTelefono" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="overflow-hidden overflow-y-scroll">
                 <%List titulos= new ArrayList<String>();
                 titulos.add("Id Proveedor");
                 titulos.add("Nombre Proveeedor");
                 titulos.add("Direccion");
                 titulos.add("Teléfono");
+                titulos.add("Acciones");
                 titulos.add("Acciones");
                 %>
                 <custom:table titles="<%=titulos%>">
@@ -60,6 +61,8 @@
                             <td>${proveedor.getTelefono()}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${prooveedor.getIdProveedor()}">Editar</a>
+                            </td>
+                            <td>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
