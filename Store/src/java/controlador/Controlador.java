@@ -144,20 +144,20 @@ public class Controlador extends HttpServlet {
                     proveedor.setDireccion(direccion);
                     proveedor.setTelefono(telefono);
                     proveedorDAO.agregar(proveedor);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
                 case "Eliminar":
                     codProveedor = Integer.parseInt(request.getParameter("idProveedor"));
                     proveedorDAO.eliminar(codProveedor);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
                 case "Editar":
                     codProveedor = Integer.parseInt(request.getParameter("idProveedor"));
                     Proveedor p = proveedorDAO.listarCodigoProveedor(codProveedor);
                     request.setAttribute("proveedor", p);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
@@ -169,7 +169,7 @@ public class Controlador extends HttpServlet {
                     proveedor.setTelefono(telefono);
                     proveedor.setIdProveedor(codProveedor);
                     proveedorDAO.actualizar(proveedor);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
             }
