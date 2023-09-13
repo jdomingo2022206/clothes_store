@@ -20,7 +20,7 @@
     <div id="table-container" class="overflow-y-scroll rounded-lg border">
       <table
         id="table"
-        class="table-fixed [&_td]:py-2 [&_th]:py-2 min-w-[700px]"
+        class="table-auto [&_td]:py-2 [&_th]:py-2 min-w-[700px]"
       >
         <thead class="bg-gray-200 [&_>_*]:cursor-pointer [&_>_*]:font-semibold">
     <tr>

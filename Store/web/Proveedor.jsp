@@ -42,13 +42,12 @@
                     </form>
                 </div>
             </div>
-            <div class="overflow-hidden overflow-y-scroll">
+            <div class="col-sm-8">
                 <%List titulos= new ArrayList<String>();
                 titulos.add("Id Proveedor");
                 titulos.add("Nombre Proveeedor");
                 titulos.add("Direccion");
                 titulos.add("Teléfono");
-                titulos.add("Acciones");
                 titulos.add("Acciones");
                 %>
                 <custom:table titles="<%=titulos%>">
@@ -61,8 +60,6 @@
                             <td>${proveedor.getTelefono()}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${prooveedor.getIdProveedor()}">Editar</a>
-                            </td>
-                            <td>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
