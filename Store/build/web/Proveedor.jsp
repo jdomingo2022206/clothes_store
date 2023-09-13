@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Proveedor
-    Created on : 20/07/2023, 09:21:53 PM
-    Author     : Marco
---%>
-
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,7 +24,7 @@
                             <input type="text" value="${proveedor.getNombreProveedor()}" name="txtNombreProveedor" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Descripción</label>
+                            <label>Dirección</label>
                             <input type="text" value="${proveedor.getDireccion()}" name="txtDireccion" class="form-control">
                         </div>
                         <div class="form-group">
@@ -49,7 +43,7 @@
                 titulos.add("Direccion");
                 titulos.add("Teléfono");
                 titulos.add("Acciones");
-                titulos.add("Acciones");
+                titulos.add("Acciones 2");
                 %>
                 <custom:table titles="<%=titulos%>">
                     
@@ -59,11 +53,9 @@
                             <td>${proveedor.getNombreProveedor()}</td>
                             <td>${proveedor.getDireccion()}</td>
                             <td>${proveedor.getTelefono()}</td>
+                            <td onclick="goToUrl(this)" class="btn btn-warning" data-url="Controlador?menu=Proveedor&accion=Editar&idProveedor=${proveedor.getIdProveedor()}" > Editar </td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Proveedor&accion=Editar&codigoProveedor=${prooveedor.getIdProveedor()}">Editar</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-danger" onclick="return confirm('¿Quiere eliminar este registro?')"href="Controlador?menu=Proveedor&accion=Eliminar&idProveedor=${proveedor.getIdProveedor()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
@@ -75,5 +67,11 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script>
+            const goToUrl = (e) => {
+                console.log("CLICKED")
+                window.location.href = e.dataset.url
+            }
+        </script>
     </body>
 </html>

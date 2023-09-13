@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group">
                             <label>Id Proveedor</label>
-                            <input type="text" value="0" name="txtIdProveedor" class="form-control">
+                            <input type="text" name="txtIdProveedor" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Id Categoria</label>
-                            <input type="text" value="0" name="txtIdCategoría" class="form-control">
+                            <input type="text" name="txtIdCategoria" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
