@@ -65,7 +65,7 @@
                     lista.add("TOTAL");
                 %>
                 <custom:table titles="<%=lista%>">
-                        <c:forEach var="pedidoproveedor" items="${pedidoproveedor}">
+                        <c:forEach var="pedidoproveedor" items="${pedidoProveedores}">
                         <tr>
                             <td>${pedidoproveedor.getIdPedidoProveedor()}</td>
                             <td>${pedidoproveedor.getIdProveedor()}</td>

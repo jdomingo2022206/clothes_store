@@ -21,10 +21,10 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=Producto" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nombre Producto</label>
-                            <input type="text" value="" name="name="txtNombreProducto" " class="form-control">
+                            <input type="text" value="" name="txtNombreProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group">
                             <label>Id Proveedor</label>
-                            <input type="text" value="" name="txtIdProveedor" class="form-control">
+                            <input type="text" value="0" name="txtIdProveedor" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Id Categoria</label>
-                            <input type="text" value="" name="txtIdCategoria" class="form-control">
+                            <input type="text" value="0" name="txtIdCategoría" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
@@ -52,34 +52,39 @@
                 </div>
             </div>
             <div class="col-sm-8">
-                <%
-                    List<String> lista = new ArrayList<String>();
-                    lista.add("ID");
-                    lista.add("NOMBRE");
-                    lista.add("DESCRIPCION");
-                    lista.add("PRECIO");
-                    lista.add("IMAGEN");
-                    lista.add("IDPROVEEDOR");
-                    lista.add("IDCATEGORIA");
-                %>
-                <custom:table titles="<%=lista%>">
-                    <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
-                    <c:forEach var="producto" items="${productos}">
+                <table class="table table-hover">
+                    <thead>
                         <tr>
+                            <td><strong>ID</strong></td>
+                            <td><strong>DPI</strong></td>
+                            <td><strong>Names</strong></td>
+                            <td><strong>Image</strong></td>
+                            <td><strong>Phone</strong></td>
+                            <td><strong>Status</strong></td>
+                            <td><strong>User</strong></td>
+                            <td><strong>Actions</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <c:forEach var="producto" items="${productos}">
+                            <tr>
                                 <td>${producto.getIdProducto()}</td>
                                 <td>${producto.getNombreProducto()}</td>
                                 <td>${producto.getDescripcion()}</td>
                                 <td>${producto.getPrecio()}</td>
-                                <td>${producto.getImagen()}</td>
+                                <td><img src="${producto.getImagen()}" width="50"></td>
                                 <td>${producto.getIdProveedor()}</td>
                                 <td>${producto.getIdCategoria()}</td>
-                            <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&codigoCategoria=${categoria.getIdCategoria()}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </custom:table>
+                                
+                                <td>
+                                    <a class="btn btn-warning" href="Controlador?menu=Producto&accion=Editar&idProducto=${producto.getIdProducto()}">edit</a>
+                                    <a class="btn btn-danger" onclick="return confirm('¿Quiere eliminar este registro?')" href="Controlador?menu=Producto&accion=Eliminar&idProducto=${producto.getIdProducto()}" >Eliminar</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
