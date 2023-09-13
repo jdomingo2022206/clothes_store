@@ -387,18 +387,25 @@ public class Controlador extends HttpServlet {
 
                 case "Agregar":
                     int idProveedor = Integer.parseInt(request.getParameter("txtIdProveedor")); //variables no casteadas
-//                    Date fecha = request.getParameter("txtfecha"); // comentado por motivos de definicon
+                    String fechaString = request.getParameter("txtFecha");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date fecha = null;
+                    try {
+                        fecha = new java.sql.Date(dateFormat.parse(fechaString).getTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     Double total = Double.parseDouble(request.getParameter("txtTotal")); //variable no casteada
                     compra.setIdProveedor(idProveedor);
-//                    compra.setFecha(fecha); // comentado por definicion
+                    compra.setFecha(fecha); // comentado por definicion
                     compra.setTotal(total);
                     compraDAO.agregar(compra);
                     request.getRequestDispatcher("Controlador?menu=Compra&accion=Listar").forward(request, response);
                     break;
 
                 case "Eliminar":
-                    codCompra = Integer.parseInt(request.getParameter("codCompra"));
-                    proveedorDAO.eliminar(codCompra);
+                    codCompra = Integer.parseInt(request.getParameter("idCompra"));
+                    compraDAO.eliminar(codCompra);
                     request.getRequestDispatcher("Controlador?menu=Compra&accion=Listar").forward(request, response);
                     break;
 
