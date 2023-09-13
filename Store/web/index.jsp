@@ -11,7 +11,7 @@
         <div class="container mt-4 col-lg-4">
             <div class="card col-sm-10">
                 <div class="card-body">
-                    <form class="form-sing" action="Validar" method="POST">
+                    <form class="form-sing" action="Login" method="POST">
                         <div class="form-group text-center">
                             <h3>Login</h3>
                             <img src="img/ClothesStore1.png" alt="150" width="150"/><br>
