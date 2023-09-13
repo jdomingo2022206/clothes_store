@@ -196,6 +196,14 @@ insert into Cliente (nombreCliente, apellidoCliente, direccion, telefono) values
 select * from Cliente;
 
 -- TUPLAS DE LA ENTIDAD ESTABLECIMIENTO --
+INSERT INTO Establecimiento (nombreEstablecimiento, direccion, telefono) VALUES
+('Restaurante La Cocina del Chef', 'Calle Principal #123', '1234567890'),
+('Hotel Sol y Playa', 'Avenida Costera #45', '9876543210'),
+('Tienda de Ropa Moda Elegante', 'Plaza Central #56', '5551212121'),
+('Farmacia Salud y Bienestar', 'Calle de la Salud #789', '7773334444'),
+('Gimnasio Activo Fit', 'Avenida Deportiva #12', '9998887777');
+
+
 
 describe Establecimiento;
 
@@ -241,15 +249,6 @@ describe Establecimiento;
 		(3, '2023-08-03', 210.00, 1, 15),
 		(4, '2023-08-04', 150.00, 1, 9),
 		(4, '2023-08-05', 420.00, 1, 10);
-        
--- TUPLAS DE LA ENTIDAD DETALLE VENTA --
-	/*INSERT INTO DetalleVenta (idVenta, idCliente, idProducto, cantidad)
-	VALUES
-		(1, 1, 1, 5),
-		(2, 2, 1, 3),
-		(3, 3, 1, 4),
-		(4, 4, 1, 2),
-		(5, 5, 1, 6);*/
 
 -- TUPLAS DE LA ENTIDAD PEDIDO CLIENTE --
 	INSERT INTO PedidoCliente (idCliente, idProducto, cantidad, fecha, total)
@@ -273,14 +272,14 @@ describe Establecimiento;
 	select * from PedidoCliente;
         
 -- TABLA DE LA ENTIDAD INVENTARIO --
-	/*INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
+	INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
 		VALUES
 		('Inventario1', 1, 1, 50),
 		('Inventario2', 2, 2, 75),
-		('Inventario3', 3, 3, 30),
-		('Inventario4', 4, 4, 100),
-		('Inventario5', 5, 5, 60);
-*/
+		('Inventario3', 3, 1, 30),
+		('Inventario4', 4, 2, 100),
+		('Inventario5', 5, 1, 60);
+
 
 
 
