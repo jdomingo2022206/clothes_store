@@ -144,20 +144,20 @@ public class Controlador extends HttpServlet {
                     proveedor.setDireccion(direccion);
                     proveedor.setTelefono(telefono);
                     proveedorDAO.agregar(proveedor);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
                 case "Eliminar":
                     codProveedor = Integer.parseInt(request.getParameter("idProveedor"));
                     proveedorDAO.eliminar(codProveedor);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
                 case "Editar":
                     codProveedor = Integer.parseInt(request.getParameter("idProveedor"));
                     Proveedor p = proveedorDAO.listarCodigoProveedor(codProveedor);
                     request.setAttribute("proveedor", p);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
@@ -169,7 +169,7 @@ public class Controlador extends HttpServlet {
                     proveedor.setTelefono(telefono);
                     proveedor.setIdProveedor(codProveedor);
                     proveedorDAO.actualizar(proveedor);
-                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Proveedor&accion=Listar").forward(request, response);
                     break;
 
             }
@@ -241,13 +241,13 @@ public class Controlador extends HttpServlet {
                     cliente.setDireccion(direccion);
                     cliente.setTelefono(telefono);
                     clienteDAO.agregar(cliente);
-                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=listar").forward(request, response);
                     break;
                 case "Editar":
                     codCliente = Integer.parseInt(request.getParameter("idCliente"));
                     Cliente c = clienteDAO.listarCodigoCliente(codCliente);
                     request.setAttribute("cliente", c);
-                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=listar").forward(request, response);
                     break;
                 case "Actualizar":
                     String nombree = request.getParameter("txtNombreCliente");
@@ -260,12 +260,12 @@ public class Controlador extends HttpServlet {
                     cliente.setTelefono(telefonoo);
                     cliente.setIdCliente(codCliente);
                     clienteDAO.actualizar(cliente);
-                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=listar").forward(request, response);
                     break;
                 case "Eliminar":
                     codCliente = Integer.parseInt(request.getParameter("idCliente")); //cambio la variable
                     clienteDAO.eliminar(codCliente); // cambio la variable
-                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Cliente&accion=listar").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Cliente.jsp").forward(request, response);
