@@ -33,13 +33,13 @@
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="text" value="${compra.getFecha()}" name="txtFecha" class="form-control">
+                            <input type="date" value="${compra.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
                             <input type="text" value="${compra.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="Controlador?menu=Compra&accion=Agregar&idCompra=${compra.getIdCompra()}">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
                     </form>
                 </div>
@@ -62,7 +62,7 @@
                             <td>${compra.getTotal()}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&IdCompra=${compra.getIdCompra()}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-danger" onclick="return confirm('¿Quieres eliminar este registro?')" href="Controlador?menu=Compra&accion=Eliminar&idCompra=${compra.getIdCompra()}">Eliminar</a>
                             </td>
                         </tr>  
                     </c:forEach>
