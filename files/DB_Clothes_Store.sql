@@ -219,7 +219,7 @@ describe Establecimiento;
 		('Zapatos deportivos', 'Zapatos deportivos para correr', 49.99, 4, 4),
 		('Bolsa de cuero', 'Bolsa de cuero genuino', 79.99, 5, 5);*/
 
-        
+	select * from Producto;
 -- TUPLAS DE LA ENTIDAD COMPRA --
 	INSERT INTO Compra (idProveedor, fecha, total)
 		VALUES

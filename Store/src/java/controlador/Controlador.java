@@ -57,6 +57,8 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    static String imgg; 
     private String saveImage(String nameImage, Part imagePart) throws IOException {
         // Obtén la ruta real a la carpeta "img" en tu proyecto
         String realPath = getServletContext().getRealPath("/img");
@@ -77,7 +79,7 @@ public class Controlador extends HttpServlet {
                 outputStream.write(bytes, 0, read);
             }
         }
-
+        imgg = pathImage;
         return pathImage;
     }
 
@@ -330,16 +332,18 @@ public class Controlador extends HttpServlet {
                     String precio = request.getParameter("txtPrecio");
                     ;
                     String idProveedor = request.getParameter("txtIdProveedor");
-                    String idCategoria = request.getParameter("txtIdCategoría");
+                    String idCategoria = request.getParameter("txtIdCategoria");
 
                     Part imagePart = request.getPart("imagenProducto");
                     String nameImage = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
+                    System.out.println("this is "+nameImage);
                     if (nameImage != null && !nameImage.isEmpty()) {
                         String rutaImagen = saveImage(nameImage, imagePart);
                         producto.setNombreProducto(nombre);
                         producto.setDescripcion(descripcion);
                         producto.setPrecio(Double.parseDouble(precio));
-                        producto.setImagen(rutaImagen);
+                        // test
+                        producto.setImagen(imgg);
                         producto.setIdProveedor(Integer.parseInt(idProveedor));
                         producto.setIdCategoria(Integer.parseInt(idCategoria));
                         productoDAO.agregar(producto);
