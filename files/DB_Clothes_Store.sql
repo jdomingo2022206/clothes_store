@@ -56,14 +56,14 @@ Create table Producto(
     nombreProducto varchar(100) not null,
     descripcion varchar(150) not null,
     precio decimal(6,2) not null,
-    imagen varchar(255) not null,
+    imagen varchar(255),
     idProveedor int not null,
     idCategoria int not null,
     primary key PK_idProducto (idProducto),
     constraint FK_Producto_Proveedor foreign key (idProveedor)
-		references Proveedor(idProveedor),
+		references Proveedor(idProveedor) on delete cascade,
 	constraint FK_Producto_Categoria foreign key (idCategoria)
-		references Categoria(idCategoria)
+		references Categoria(idCategoria) on delete cascade
 );
 
 Create table Compra(
@@ -73,7 +73,7 @@ Create table Compra(
     total decimal(10,2) not null,
     primary key PK_idCompra (idCompra),
     constraint FK_Compra_Proveedor foreign key (idProveedor)
-		references Proveedor (idProveedor)
+		references Proveedor (idProveedor) on delete cascade
 );
 
 Create table DetalleCompra(
@@ -84,11 +84,11 @@ Create table DetalleCompra(
     cantidad int not null,
     primary key PK_idDetalleCompra (idDetalleCompra),
     constraint FK_DetalleCompra_Compra foreign key (idCompra)
-		references Compra (idCompra),
+		references Compra (idCompra) on delete cascade,
 	constraint FK_DetalleCompra_Proveedor foreign key (idProveedor)
-		references Proveedor (idProveedor),
+		references Proveedor (idProveedor) on delete cascade,
 	constraint FK_DetalleCompra_Producto foreign key (idProducto)
-		references Producto (idProducto)
+		references Producto (idProducto)on delete cascade
 );
 
 Create table Venta(
@@ -100,9 +100,9 @@ Create table Venta(
     cantidad int not null,
     primary key PK_idVenta (idVenta),
     constraint FK_Venta_Cliente foreign key (idCliente)
-		references Cliente (idCliente),
+		references Cliente (idCliente) on delete cascade,
     constraint FK_Venta_Producto foreign key (idProducto)
-		references Producto (idProducto)
+		references Producto (idProducto) on delete cascade
 );
 
 Create table PedidoCliente(
@@ -114,9 +114,9 @@ Create table PedidoCliente(
     total decimal(10,2) not null,
     primary key PK_idPedidoCliente (idPedidoCliente),
     constraint FK_PedidoCliente_Cliente foreign key (idCliente)
-		references Cliente (idCliente),
+		references Cliente (idCliente) on delete cascade,
     constraint FK_PedidoCliente_Producto foreign key (idProducto)
-		references Producto (idProducto)    
+		references Producto (idProducto)on delete cascade    
 );
 
 Create table PedidoProveedor(
@@ -128,9 +128,9 @@ Create table PedidoProveedor(
     total decimal(10,2) not null,
     primary key PK_idPedidoProveedor (idPedidoProveedor),
     constraint FK_PedidoProveedor_Proveedor foreign key (idProveedor)
-		references Proveedor (idProveedor),
+		references Proveedor (idProveedor) on delete cascade,
     constraint FK_PedidoProveedor_Producto foreign key (idProducto)
-		references Producto (idProducto)    
+		references Producto (idProducto) on delete cascade   
 );
 
 Create table Inventario(
@@ -141,9 +141,9 @@ Create table Inventario(
     stock int not null,
     primary key PK_idInventario (idInventario),
     constraint FK_Inventario_Establecimiento foreign key (idEstablecimiento)
-		references Establecimiento (idEstablecimiento),
+		references Establecimiento (idEstablecimiento) on delete cascade,
 	constraint FK_Inventario_Producto foreign key (idProducto)
-		references Producto (idProducto)
+		references Producto (idProducto) on delete cascade
 );
 
 -- TUPLAS DE LA ENTIDAD USUARIO --
@@ -196,20 +196,29 @@ insert into Cliente (nombreCliente, apellidoCliente, direccion, telefono) values
 select * from Cliente;
 
 -- TUPLAS DE LA ENTIDAD ESTABLECIMIENTO --
+INSERT INTO Establecimiento (nombreEstablecimiento, direccion, telefono) VALUES
+('Restaurante La Cocina del Chef', 'Calle Principal #123', '1234567890'),
+('Hotel Sol y Playa', 'Avenida Costera #45', '9876543210'),
+('Tienda de Ropa Moda Elegante', 'Plaza Central #56', '5551212121'),
+('Farmacia Salud y Bienestar', 'Calle de la Salud #789', '7773334444'),
+('Gimnasio Activo Fit', 'Avenida Deportiva #12', '9998887777');
+
+
 
 describe Establecimiento;
 
 
 -- TUPLAS DE LA ENTIDAD PRODUCTO --
-/*
-	INSERT INTO Producto (nombreProducto, descripcion, precio, idProveedor, idCategoria)
+
+	INSERT INTO Producto (nombreProducto, descripcion, precio,imagen, idProveedor, idCategoria)
 		VALUES
-		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 1, 1),
-		('Jeans ajustados', 'Jeans ajustados para hombre', 39.99, 2, 2),
+		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 'img/asd.jpg', 1, 1),
+		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 'img/ClothesStore1.png', 1, 1);
+		/*('Jeans ajustados', 'Jeans ajustados para hombre', 39.99, 2, 2),
 		('Vestido de noche', 'Elegante vestido de noche para mujer', 59.99, 3, 2),
 		('Zapatos deportivos', 'Zapatos deportivos para correr', 49.99, 4, 4),
-		('Bolsa de cuero', 'Bolsa de cuero genuino', 79.99, 5, 5);
-*/
+		('Bolsa de cuero', 'Bolsa de cuero genuino', 79.99, 5, 5);*/
+
         
 -- TUPLAS DE LA ENTIDAD COMPRA --
 	INSERT INTO Compra (idProveedor, fecha, total)
@@ -226,59 +235,47 @@ describe Establecimiento;
 	INSERT INTO DetalleCompra (idCompra, idProveedor, idProducto, cantidad)
 		VALUES
 		(1, 1, 1, 10),
-		(2, 2, 2, 5),
-		(3, 3, 3, 4),
-		(4, 4, 4, 7),
-		(5, 5, 5, 12);
+		(2, 2, 1, 5),
+		(3, 3, 1, 4),
+		(4, 4, 1, 7),
+		(5, 5, 1, 12);
  
  
 -- TUPLAS DE LA ENTIDAD VENTA --
 	INSERT INTO Venta (idCliente, fecha, total ,idProducto ,cantidad)
 		VALUES
 		(1, '2023-08-01', 350.00, 1, 5),
-		(2, '2023-08-02', 280.00, 2, 10),
-		(3, '2023-08-03', 210.00, 3, 15),
-		(4, '2023-08-04', 150.00, 4, 9),
-		(4, '2023-08-05', 420.00, 5, 10);
-        
--- TUPLAS DE LA ENTIDAD DETALLE VENTA --
-	INSERT INTO DetalleVenta (idVenta, idCliente, idProducto, cantidad)
-	VALUES
-		(1, 1, 1, 5),
-		(2, 2, 2, 3),
-		(3, 3, 3, 4),
-		(4, 4, 4, 2),
-		(5, 5, 5, 6);
+		(2, '2023-08-02', 280.00, 1, 10),
+		(3, '2023-08-03', 210.00, 1, 15),
+		(4, '2023-08-04', 150.00, 1, 9),
+		(4, '2023-08-05', 420.00, 1, 10);
 
 -- TUPLAS DE LA ENTIDAD PEDIDO CLIENTE --
 	INSERT INTO PedidoCliente (idCliente, idProducto, cantidad, fecha, total)
 		VALUES
 		(1, 1, 2, '2023-08-10', 39.98),
-		(2, 2, 3, '2023-08-11', 89.97),
-		(3, 3, 1, '2023-08-12', 19.99),
-		(4, 4, 5, '2023-08-13', 149.95),
-		(5, 5, 4, '2023-08-14', 199.96);
+		(2, 1, 3, '2023-08-11', 89.97),
+		(3, 1, 1, '2023-08-12', 19.99),
+		(4, 1, 5, '2023-08-13', 149.95),
+		(5, 1, 4, '2023-08-14', 199.96);
         
 -- TUPLAS DE LA ENTIDAD PEDIDO PROVEEDOR --
 	INSERT INTO PedidoProveedor (idProveedor, idProducto, cantidad, fecha, total)
 		VALUES
 		(1, 1, 100, '2023-08-10', 1999.00),
-		(2, 2, 50, '2023-08-11', 1499.50),
-		(3, 3, 75, '2023-08-12', 2999.25),
-		(4, 4, 200, '2023-08-13', 4999.00),
-		(5, 5, 150, '2023-08-14', 7499.50);
+		(2, 1, 50, '2023-08-11', 1499.50),
+		(3, 1, 75, '2023-08-12', 2999.25),
+		(4, 1, 200, '2023-08-13', 4999.00),
+		(5, 1, 150, '2023-08-14', 7499.50);
+        
+	select * from PedidoProveedor;
+	select * from PedidoCliente;
         
 -- TABLA DE LA ENTIDAD INVENTARIO --
-	/*INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
+	INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
 		VALUES
 		('Inventario1', 1, 1, 50),
 		('Inventario2', 2, 2, 75),
-		('Inventario3', 3, 3, 30),
-		('Inventario4', 4, 4, 100),
-		('Inventario5', 5, 5, 60);
-*/
-
-
-
-    
-
+		('Inventario3', 3, 1, 30),
+		('Inventario4', 4, 2, 100),
+		('Inventario5', 5, 1, 60);
