@@ -33,6 +33,7 @@ import modelo.PedidoCliente;
 import modelo.PedidoProveedor;
 import modelo.Producto;
 import modelo.Proveedor;
+import modelo.Venta;
 import modeloDAO.ClienteDAO;
 import modeloDAO.CompraDAO;
 import modeloDAO.DetalleCompraDAO;
@@ -40,6 +41,7 @@ import modeloDAO.IventarioDAO;
 import modeloDAO.PedidoClienteDAO;
 import modeloDAO.PedidoProveedorDAO;
 import modeloDAO.ProductoDAO;
+import modeloDAO.VentaDAO;
 
 /**
  *
@@ -57,6 +59,8 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    static String imgg;
+
     private String saveImage(String nameImage, Part imagePart) throws IOException {
         // Obtén la ruta real a la carpeta "img" en tu proyecto
         String realPath = getServletContext().getRealPath("/img");
@@ -77,7 +81,7 @@ public class Controlador extends HttpServlet {
                 outputStream.write(bytes, 0, read);
             }
         }
-
+        imgg = pathImage;
         return pathImage;
     }
 
@@ -111,6 +115,10 @@ public class Controlador extends HttpServlet {
         Compra compra = new Compra();
         CompraDAO compraDAO = new CompraDAO();
         int codCompra = 0;
+        
+        Venta venta = new Venta();
+        VentaDAO ventaDAO = new VentaDAO();
+        int codVenta = 0;
 
         DetalleCompra detalleCompra = new DetalleCompra();
         DetalleCompraDAO detalleCompraDAO = new DetalleCompraDAO();
@@ -330,16 +338,18 @@ public class Controlador extends HttpServlet {
                     String precio = request.getParameter("txtPrecio");
                     ;
                     String idProveedor = request.getParameter("txtIdProveedor");
-                    String idCategoria = request.getParameter("txtIdCategoría");
+                    String idCategoria = request.getParameter("txtIdCategoria");
 
                     Part imagePart = request.getPart("imagenProducto");
                     String nameImage = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
+                    System.out.println("this is " + nameImage);
                     if (nameImage != null && !nameImage.isEmpty()) {
                         String rutaImagen = saveImage(nameImage, imagePart);
                         producto.setNombreProducto(nombre);
                         producto.setDescripcion(descripcion);
                         producto.setPrecio(Double.parseDouble(precio));
-                        producto.setImagen(rutaImagen);
+                        // test
+                        producto.setImagen(imgg);
                         producto.setIdProveedor(Integer.parseInt(idProveedor));
                         producto.setIdCategoria(Integer.parseInt(idCategoria));
                         productoDAO.agregar(producto);
@@ -476,6 +486,47 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("DetalleCompra.jsp").forward(request, response);
+        } else if (menu.equals("Ventas")) {
+            int item = 0;
+            String fecha;
+            String nombrePro;
+            int cod;
+            int SubTotal;
+            int cantid;
+            double precio;
+            double subtotal;
+
+            switch (accion) {
+                case "Agregar":
+                    item = item + 1;
+                    cod = producto.getIdProducto();
+                    nombrePro = request.getParameter("txtNombreProducto");
+                    precio = Double.parseDouble(request.getParameter("txtPrecio"));
+                    cantid = Integer.parseInt(request.getParameter("txtCantidad"));
+                    subtotal = precio * cantid;
+                    venta.setItem(item);
+                    venta.setIdProducto(cod);
+                    venta.setDescripcion(nombrePro);
+                    venta.setPrecio(precio);
+                    venta.setCantidad(cantid);
+                    venta.setSubtotal(subtotal);
+                    listaVenta.add(venta);
+                    request.setAttribute("Ventas", listaVenta);
+                    break;
+                case "BuscarCliente":
+                    int idCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
+                    cliente.setIdCliente(idCliente);
+                    cliente = ventaDAO.BuscarCliente(idCliente);
+                    request.setAttribute("cliente", cliente);
+                    //request.getRequestDispatcher("Controlador?menu=Ventas&accion=Listar").forward(request, response);
+                    break;
+                case "BuscarProducto":
+                    int idProducto = Integer.parseInt(request.getParameter("txtCodigoProducto"));
+                    producto = productoDAO.listarCodigoProducto(idProducto);
+                    request.setAttribute("producto", producto);
+                    break;
+            }
+            request.getRequestDispatcher("Venta.jsp").forward(request, response);
         } else if (menu.equals("PedidoCliente")) {
 
             switch (accion) {
