@@ -31,6 +31,7 @@ public class CompraDAO {
                 nuevaCompra.setIdProveedor(rs.getInt("idProveedor"));
                 nuevaCompra.setFecha(rs.getDate("fecha"));
                 nuevaCompra.setTotal(rs.getDouble("total"));
+                listaCompra.add(nuevaCompra);
             }
         } catch (Exception e) {
             e.printStackTrace();
