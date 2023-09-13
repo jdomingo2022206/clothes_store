@@ -55,7 +55,7 @@
                             <td>${proveedor.getTelefono()}</td>
                             <td onclick="goToUrl(this)" class="btn btn-warning" data-url="Controlador?menu=Proveedor&accion=Editar&idProveedor=${proveedor.getIdProveedor()}" > Editar </td>
                             <td>
-                                <a class="btn btn-danger" href="Controlador?menu=Proveedor&accion=Eliminar&idProveedor=${proveedor.getIdProveedor()}">Eliminar</a>
+                                <a class="btn btn-danger" onclick="return confirm('¿Quiere eliminar este registro?')"href="Controlador?menu=Proveedor&accion=Eliminar&idProveedor=${proveedor.getIdProveedor()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
