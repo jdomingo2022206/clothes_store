@@ -60,9 +60,9 @@ Create table Producto(
     idCategoria int not null,
     primary key PK_idProducto (idProducto),
     constraint FK_Producto_Proveedor foreign key (idProveedor)
-		references Proveedor(idProveedor),
+		references Proveedor(idProveedor) on delete cascade,
 	constraint FK_Producto_Categoria foreign key (idCategoria)
-		references Categoria(idCategoria)
+		references Categoria(idCategoria) on delete cascade
 );
 
 Create table Compra(
@@ -72,7 +72,7 @@ Create table Compra(
     total decimal(10,2) not null,
     primary key PK_idCompra (idCompra),
     constraint FK_Compra_Proveedor foreign key (idProveedor)
-		references Proveedor (idProveedor)
+		references Proveedor (idProveedor) on delete cascade
 );
 
 Create table DetalleCompra(
@@ -83,11 +83,11 @@ Create table DetalleCompra(
     cantidad int not null,
     primary key PK_idDetalleCompra (idDetalleCompra),
     constraint FK_DetalleCompra_Compra foreign key (idCompra)
-		references Compra (idCompra),
+		references Compra (idCompra) on delete cascade,
 	constraint FK_DetalleCompra_Proveedor foreign key (idProveedor)
-		references Proveedor (idProveedor),
+		references Proveedor (idProveedor) on delete cascade,
 	constraint FK_DetalleCompra_Producto foreign key (idProducto)
-		references Producto (idProducto)
+		references Producto (idProducto) on delete cascade
 );
 
 Create table Venta(
@@ -97,7 +97,7 @@ Create table Venta(
     total decimal(10,2) not null,
     primary key PK_idVenta (idVenta),
     constraint FK_Venta_Cliente foreign key (idCliente)
-		references Cliente (idCliente)
+		references Cliente (idCliente) on delete cascade
 );
 
 Create table DetalleVenta(
@@ -108,11 +108,11 @@ Create table DetalleVenta(
     cantidad int not null,
     primary key PK_idDetalleVenta (idDetalleVenta),
     constraint FK_DetalleVenta_Venta foreign key (idVenta)
-		references Venta (idVenta),
+		references Venta (idVenta) on delete cascade,
 	constraint FK_DetalleVenta_Cliente foreign key (idCliente)
-		references Cliente (idCliente),
+		references Cliente (idCliente) on delete cascade,
     constraint FK_DetalleVenta_Producto foreign key (idProducto)
-		references Producto (idProducto)
+		references Producto (idProducto) on delete cascade
 );
 
 Create table PedidoCliente(
@@ -124,9 +124,9 @@ Create table PedidoCliente(
     total decimal(10,2) not null,
     primary key PK_idPedidoCliente (idPedidoCliente),
     constraint FK_PedidoCliente_Cliente foreign key (idCliente)
-		references Cliente (idCliente),
+		references Cliente (idCliente) on delete cascade,
     constraint FK_PedidoCliente_Producto foreign key (idProducto)
-		references Producto (idProducto)    
+		references Producto (idProducto)  on delete cascade   
 );
 
 Create table PedidoProveedor(
@@ -138,9 +138,9 @@ Create table PedidoProveedor(
     total decimal(10,2) not null,
     primary key PK_idPedidoProveedor (idPedidoProveedor),
     constraint FK_PedidoProveedor_Proveedor foreign key (idProveedor)
-		references Proveedor (idProveedor),
+		references Proveedor (idProveedor) on delete cascade,
     constraint FK_PedidoProveedor_Producto foreign key (idProducto)
-		references Producto (idProducto)    
+		references Producto (idProducto) on delete cascade   
 );
 
 Create table Inventario(
@@ -151,9 +151,9 @@ Create table Inventario(
     stock int not null,
     primary key PK_idInventario (idInventario),
     constraint FK_Inventario_Establecimiento foreign key (idEstablecimiento)
-		references Establecimiento (idEstablecimiento),
+		references Establecimiento (idEstablecimiento) on delete cascade,
 	constraint FK_Inventario_Producto foreign key (idProducto)
-		references Producto (idProducto)
+		references Producto (idProducto) on delete cascade
 );
 
 -- TUPLAS DE LA ENTIDAD USUARIO --

@@ -107,16 +107,17 @@ public class ClienteDAO {
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("No se puede actualizar");
         }
         return resp;
     }
     
     public void eliminar(int id){
-        String sql = "delete * form Cliente where idCliente ="+id;
+        String sql = "delete from cliente where idCliente ="+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
