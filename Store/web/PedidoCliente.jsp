@@ -16,32 +16,32 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Categoria</title>
+        <title>Pedido Cliente</title>
     </head>
     <body>
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Categoria" method="POST">
+                    <form action="Controlador?menu=PedidoCliente" method="POST">
                         <div class="form-group">
                             <label>ID Cliente </label>
-                            <input type="text" value="" name="txtIdCliente" class="form-control">
+                            <input type="text" value="${pedidoCliente.getIdCliente()}" name="txtIdCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>ID Producto</label>
-                            <input type="text" value="" name="txtIdProducto" class="form-control">
+                            <input type="text" value="${pedidoCliente.getIdProducto()}" name="txtIdProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="text" value="" name="txtCantidad" class="form-control">
+                            <input type="text" value="${pedidoCliente.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="text" value="" name="txtFecha" class="form-control">
+                            <input type="date" value="${pedidoCliente.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
-                            <input type="text" value="" name="txtTotal" class="form-control">
+                            <input type="text" value="${pedidoCliente.getTotal()}" name="txtTotal" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
@@ -57,20 +57,21 @@
                     lista.add("CANTIDAD");
                     lista.add("FECHA");
                     lista.add("TOTAL");
+                    lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
                     <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
                     <c:forEach var="pedidoCliente" items="${pedidoClientes}">
                         <tr>
                             <td>${pedidoCliente.getIdPedidoCliente()}</td>
-                            <td>${pedidoCliente.getIdCliente}</td>
+                            <td>${pedidoCliente.getIdCliente()}</td>
                             <td>${pedidoCliente.getIdProducto()}</td>
                             <td>${pedidoCliente.getCantidad()}</td>
                             <td>${pedidoCliente.getFecha()}</td>
                             <td>${pedidoCliente.getTotal()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=PedidoCliente&accion=Editar&codigoPedidoCliente=${categoria.getIdPedidoCliente()}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=PedidoCliente&accion=Editar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Editar</a>
+                                <a class="btn btn-danger" onclick='return confirm("Desea eliminar el registro?")' href="Controlador?menu=PedidoCliente&accion=Eliminar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
