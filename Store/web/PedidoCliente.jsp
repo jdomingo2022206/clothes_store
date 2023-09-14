@@ -43,7 +43,7 @@
                             <label>Total</label>
                             <input type="text" value="${pedidoCliente.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="Controlador?menu=PedidoCliente&accion=Agregar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
                     </form>  
                 </div>
@@ -70,7 +70,7 @@
                             <td>${pedidoCliente.getTotal()}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=PedidoCliente&accion=Editar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Editar</a>
-                                <a class="btn btn-danger" onclick='return confirm("Desea eliminar el registro?")' href="Controlador?menu=PedidoCliente&accion=Eliminar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Eliminar</a>
+                                <a class="btn btn-danger" onclick="return confirm('Desea eliminar el registro?')" href="Controlador?menu=PedidoCliente&accion=Eliminar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
