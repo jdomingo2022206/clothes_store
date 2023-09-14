@@ -48,29 +48,27 @@
                     List<String> lista = new ArrayList<String>();
                     lista.add("Id DetalleCompra");
                     lista.add("Id Compra");
+                    lista.add("id Proveedor");
                     lista.add("id Producto");
                     lista.add("Cantidad");
                     lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
-                    <c:forEach var="detalleCompra" items="${detalleCompras}">
+                    <c:forEach var="detalleCompras" items="${detalleCompras}">
                         <tr>
-                            <td>${detalleCompra.getIdDetalleCompra()}</td>
-                            <td>${detalleCompra.getIdCompra()}</td>
-                            <td>${detalleCompra.getIdProveedor()}</td>
-                            <td>${detalleCompra.getIdProducto}</td>
-                            <td>${detalleCompra.getCantidad}</td>
-                                <a class="btn btn-warning" href="Controlador?menu=DetalleCompra&accion=Editar&IdDetalleCompra=${detalleCompra.getIdDetalleCompra()}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                            <td>${detalleCompras.getIdDetalleCompra()}</td>
+                            <td>${detalleCompras.getIdCompra()}</td>
+                            <td>${detalleCompras.getIdProveedor()}</td>
+                            <td>${detalleCompras.getIdProducto()}</td>
+                            <td>${detalleCompras.getCantidad()}</td>
+                            <td>
+                                <a class="btn btn-warning" href="Controlador?menu=DetalleCompra&accion=Editar&idDetalleCompra=${detalleCompras.getIdDetalleCompra()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=DetalleCompra&accion=Eliminar&idDetalleCompra=${detalleCompras.getIdDetalleCompra()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </custom:table>
             </div>            
-        </div>
-
-
-
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
