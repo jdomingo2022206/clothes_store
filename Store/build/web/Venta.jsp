@@ -16,11 +16,55 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <script src="https://cdn.tailwindcss.com"></script>
         <title>venta</title>
+        <style>
+            @media print{
+                body {
+                    font-family: Arial, sans-serif;
+                }
+
+                .tabla {
+                    width: 80%;
+                    margin: 0 auto;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    border: 1px solid #ccc;
+                    padding: 8px;
+                    text-align: left;
+                }
+
+                th {
+                    background-color: #f2f2f2;
+                }
+                .parte1, .boton{
+                    display: none 
+                }
+                .tabla{
+                    width: 100%;
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                table {
+                    page-break-inside: auto;
+                }
+
+                th, td {
+                    border: 1px solid #000; /* Cambia el borde a negro para impresión */
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="d-flex">
-            <div class="card col-sm-4">
-                <form action="Controlador?menu=Ventas" method="POST">
+            <div class="card col-sm-4 parte1">
+                <form action="Controlador?menu=Venta" method="POST">
                     <div class="card-body">
                         <div class="form-group">
                             <label><h6>Datos Del Cliente :</h6></label>
@@ -28,7 +72,7 @@
                         <div class="form-group d-flex">
                             <div class="col-sm-6 d-flex">
                                 <input type="text" name="txtCodigoCliente" value="${cliente.getIdCliente()}" placeholder="Codigo" class="form-control">
-                                <button type="submit" name="accion" value="BuscarCliente" href="Controlador?menu=Ventas&accion=BuscarCliente" class="btn btn-danger">Buscar</button>
+                                <button type="submit" name="accion" value="BuscarCliente" href="Controlador?menu=Venta&accion=BuscarCliente" class="btn btn-danger">Buscar</button>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="txtNombreCliente" value="${cliente.getNombreCliente()} ${cliente.getApellidoCliente()}" placeholder="Nombre"  class="form-control">
@@ -37,7 +81,7 @@
                         <div class="form-group">
                             <label><h6>Fecha :</h6></label>
                             <div class="col-sm-8">
-                                <input type="date" value="" name="" class="form-control">
+                                <input type="date" value="${fecha}" name="txtFecha" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -46,7 +90,7 @@
                         <div class="form-group d-flex">
                             <div class="col-sm-6 d-flex">
                                 <input type="text" name="txtCodigoProducto" value="${producto.getIdProducto()}" class="form-control" placeholder="Codigo">
-                                <Button type="submit" name="accion" value="BuscarProducto" href="Controlador?menu=Ventas&accion=BuscarProducto" class="btn btn-danger">Buscar</Button>
+                                <Button type="submit" name="accion" value="BuscarProducto" href="Controlador?menu=Venta&accion=BuscarProducto" class="btn btn-danger">Buscar</Button>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="txtNombreProducto" value="${producto.getNombreProducto()}" placeholder="Producto" class="form-control">
@@ -55,21 +99,21 @@
                         <div class="form-group">
                             <label><h6>Precio :</h6></label>
                             <div class="col-sm-8">
-                                <input type="text" value="Q${producto.getPrecio()}" name="txtPrecio" class="form-control" placeholder="Q0.00">
+                                <input type="text" value="${producto.getPrecio()}" name="txtPrecio" class="form-control" placeholder="0.00">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group ">
                             <label><h6>Cantidad :</h6></label>
                             <div class="col-sm-8">
-                                <input type="number" min="1" max="100" name="txtCantidad" class="form-control">
+                                <input type="number" value="1" min="1" max="100" name="txtCantidad" class="form-control">
                             </div>
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <input type="submit" name="accion" value="Agregar"  class="btn btn-info">
+                        <br>
                     </div>
                 </form>
             </div>
-            <div class="col-sm-8">
+            <div class="overflow-hidden overflow-y-scroll tabla">
                 <%
                     List<String> lista = new ArrayList<String>();
                     lista.add("Codigo");
@@ -77,21 +121,25 @@
                     lista.add("Producto");
                     lista.add("cantidad");
                     lista.add("Subtotal");
-                    lista.add("accion");
                 %>
                 <custom:table titles="<%=lista%>">
-                    <%--   <c:forEach var="ventas" items="Venta">
-            <td>${ventas.getItem()}</td>
-            <td>${venta.get}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-            <a class="btn btn-warning" href="">Editar</a>
-            <a class="btn btn-danger" href="">Eliminar</a>
-            </td>
-        </c:forEach> --%>
+                    <div class="col-sm-6">
+                        <h6>Total</h6>
+                        <input type="text" name="txtTotal" style="padding-right:auto " value="Q${totalPagar}" class="form-control">
+                    </div>
+                    <c:forEach var="list" items="${listas}">
+                        <tr>
+                            <td>${list.getItem()}</td>
+                            <td>${list.getFecha()}</td>
+                            <td>${list.getDescripcion()}</td>
+                            <td>${list.getCantidad()}</td>
+                            <td>${list.getSubtotal()}</td>
+                            <td>
+                                <a class="btn btn-danger boton" href="Controlador?menu=Venta&accion=Eliminar&Codigo=${list.getItem()}">Eliminar</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                        <input type="submit" name="accion" value="Generar Venta" onclick="print()" class="btn btn-success">
                 </custom:table>
             </div>
         </div>
