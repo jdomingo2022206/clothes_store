@@ -50,7 +50,8 @@ public class PedidoClienteDAO {
             ps.setInt(2, pr.getIdProducto());
             ps.setInt(3, pr.getCantidad());
             ps.setDate(4,(Date) pr.getFecha());
-            ps.setDouble(5, pr.getTotal());            
+            ps.setDouble(5, pr.getTotal());
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("No se pudo agregar al registro");
@@ -84,14 +85,14 @@ public class PedidoClienteDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.executeQuery();
+            ps.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
     
     public int actualizar(PedidoCliente pr){
-        String sql = "update pedidoCliente set idCliente = ?, idProducto = ?, cantidad = ?, fecha = ?, total = ?";
+        String sql = "update pedidoCliente set idCliente = ?, idProducto = ?, cantidad = ?, fecha = ?, total = ? where idPedidoCliente = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -109,3 +110,4 @@ public class PedidoClienteDAO {
     }
     
 }
+

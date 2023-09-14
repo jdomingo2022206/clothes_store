@@ -34,6 +34,7 @@ import modelo.PedidoCliente;
 import modelo.PedidoProveedor;
 import modelo.Producto;
 import modelo.Proveedor;
+import modelo.Usuario;
 import modelo.Venta;
 import modeloDAO.ClienteDAO;
 import modeloDAO.CompraDAO;
@@ -42,6 +43,7 @@ import modeloDAO.IventarioDAO;
 import modeloDAO.PedidoClienteDAO;
 import modeloDAO.PedidoProveedorDAO;
 import modeloDAO.ProductoDAO;
+import modeloDAO.UsuarioDAO;
 import modeloDAO.VentaDAO;
 
 /**
@@ -51,53 +53,55 @@ import modeloDAO.VentaDAO;
 @MultipartConfig
 public class Controlador extends HttpServlet {
 
+    Usuario usuario = new Usuario();
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+    int idUsuario = 0;
+
     Categoria categoria = new Categoria();
-        CategoriaDAO categoriaDAO = new CategoriaDAO();
-        int codCategoria = 0;
+    CategoriaDAO categoriaDAO = new CategoriaDAO();
+    int codCategoria = 0;
 
-        Cliente cliente = new Cliente();
-        ClienteDAO clienteDAO = new ClienteDAO();
-        int codCliente = 0;
+    Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
+    int codCliente = 0;
 
-        Establecimiento establecimiento = new Establecimiento();
-        EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO();
+    Establecimiento establecimiento = new Establecimiento();
+    EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO();
 
-        IventarioDAO inventarioDAO = new IventarioDAO();
-        Inventario inventario = new Inventario();
+    IventarioDAO inventarioDAO = new IventarioDAO();
+    Inventario inventario = new Inventario();
 
-        int codEstableci = 0;
+    int codEstableci = 0;
 
-        Proveedor proveedor = new Proveedor();
-        ProveedorDAO proveedorDAO = new ProveedorDAO();
-        int codProveedor = 0;
+    Proveedor proveedor = new Proveedor();
+    ProveedorDAO proveedorDAO = new ProveedorDAO();
+    int codProveedor = 0;
 
-        Producto producto = new Producto();
-        ProductoDAO productoDAO = new ProductoDAO();
-        int codProducto = 0;
+    Producto producto = new Producto();
+    ProductoDAO productoDAO = new ProductoDAO();
+    int codProducto = 0;
 
-        Compra compra = new Compra();
-        CompraDAO compraDAO = new CompraDAO();
-        int codCompra = 0;
+    Compra compra = new Compra();
+    CompraDAO compraDAO = new CompraDAO();
+    int codCompra = 0;
 
-        Venta venta = new Venta();
-        VentaDAO ventaDAO = new VentaDAO();
-        int codVenta = 0;
-        List<Venta> listaVenta = new ArrayList<>();
+    Venta venta = new Venta();
+    VentaDAO ventaDAO = new VentaDAO();
+    int codVenta = 0;
+    List<Venta> listaVenta = new ArrayList<>();
 
-        DetalleCompra detalleCompra = new DetalleCompra();
-        DetalleCompraDAO detalleCompraDAO = new DetalleCompraDAO();
-        int codDetalleCompra = 0;
+    DetalleCompra detalleCompra = new DetalleCompra();
+    DetalleCompraDAO detalleCompraDAO = new DetalleCompraDAO();
+    int codDetalleCompra = 0;
 
-        PedidoCliente pedidoCliente = new PedidoCliente();
-        PedidoClienteDAO pedidoClienteDAO = new PedidoClienteDAO();
-        int codPedidoCliente = 0;
+    PedidoCliente pedidoCliente = new PedidoCliente();
+    PedidoClienteDAO pedidoClienteDAO = new PedidoClienteDAO();
+    int codPedidoCliente = 0;
 
-        PedidoProveedor pedidoProveedor = new PedidoProveedor();
-        PedidoProveedorDAO pedidoProveedorDAO = new PedidoProveedorDAO();
-        int codPedidoProveedor = 0;
-    
-    
-    
+    PedidoProveedor pedidoProveedor = new PedidoProveedor();
+    PedidoProveedorDAO pedidoProveedorDAO = new PedidoProveedorDAO();
+    int codPedidoProveedor = 0;
+
     static String imgg;
 
     private String saveImage(String nameImage, Part imagePart) throws IOException {
@@ -133,6 +137,24 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("menu.jsp").forward(request, response);
         } else if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        } else if (menu.equals("Salir")) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else if (menu.equals("Usuario")) {
+            switch (accion) {
+                case "Agregar":
+                    String nombreUsuario = request.getParameter("txtNombreUsuario");
+                    String apellidoUsuario = request.getParameter("txtApellidoUsuario");
+                    String Usuario = request.getParameter("txtUsuario");
+                    String clave = request.getParameter("txtClave");
+                    usuario.setNombreUsuario(nombreUsuario);
+                    usuario.setApellidoUsuario(apellidoUsuario);
+                    usuario.setUsuario(Usuario);
+                    usuario.setClave(clave);
+                    usuarioDAO.agregar(usuario);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
+                    break;
+            }
+            request.getRequestDispatcher("AgregarUsuario.jsp").forward(request, response);
         } else if (menu.equals("Proveedor")) {
 
             switch (accion) {
@@ -580,13 +602,21 @@ public class Controlador extends HttpServlet {
                     idCliente = Integer.parseInt(request.getParameter("txtIdCliente")); // la variable ya estaba definida y se tuvo que castear
                     idProducto = Integer.parseInt(request.getParameter("txtIdProducto")); // la variable ya estaba definida y se tuvo que castear
                     cantidad = Integer.parseInt(request.getParameter("txtCantidad")); // la variable ya estaba definida y se tuvo que castear
-                    //fecha = request.getParameter("txtFecha"); // la variable ya estaba definida y se comento por motivos de defnicion de fecha
+                    fechaString = request.getParameter("txtFecha"); //linea comentada por motivos de definicion de fecha
+                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    fecha = null;
+                    try {
+                        fecha = new java.sql.Date(dateFormat.parse(fechaString).getTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     total = Double.parseDouble(request.getParameter("txtTotal")); // la variable ya estaba definida y se tuvo que castear
                     pedidoCliente.setIdCliente(idCliente); // La varibale no estaba correcta, estaba a medias
                     pedidoCliente.setIdProducto(idProducto); // La varibale no estaba correcta, estaba a medias
                     pedidoCliente.setCantidad(cantidad);
-                    // pedidoCliente.setFecha(fecha); // linea comentada motivo de definicion de fecha
+                    pedidoCliente.setFecha(fecha); // linea comentada motivo de definicion de fecha
                     pedidoCliente.setTotal(total);
+                    pedidoCliente.setIdPedidoCliente(codPedidoCliente);
                     pedidoClienteDAO.actualizar(pedidoCliente);
                     request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=Listar").forward(request, response);
                     break;
