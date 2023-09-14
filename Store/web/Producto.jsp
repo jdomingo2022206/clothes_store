@@ -24,27 +24,27 @@
                     <form action="Controlador?menu=Producto" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nombre Producto</label>
-                            <input type="text" value="" name="txtNombreProducto" class="form-control">
+                            <input type="text" value="${producto.getNombreProducto()}" name="txtNombreProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <input type="text" value="" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${producto.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Precio</label>
-                            <input type="text" value="" name="txtPrecio" class="form-control">
+                            <input type="text" value="${producto.getPrecio()}" name="txtPrecio" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="imagenProducto">Imagen</label>
-                            <input type="file" id="imagenProducto" name="imagenProducto" class="form-control">
+                            <input type="file" value="${producto.getImagen()}" id="imagenProducto" name="imagenProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Id Proveedor</label>
-                            <input type="text" name="txtIdProveedor" class="form-control">
+                            <input type="text" value="${producto.getIdProveedor()}" name="txtIdProveedor" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Id Categoria</label>
-                            <input type="text" name="txtIdCategoria" class="form-control">
+                            <input type="text" value="${producto.getIdCategoria()}" name="txtIdCategoria" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
@@ -55,13 +55,12 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <td><strong>ID</strong></td>
-                            <td><strong>DPI</strong></td>
-                            <td><strong>Names</strong></td>
-                            <td><strong>Image</strong></td>
-                            <td><strong>Phone</strong></td>
-                            <td><strong>Status</strong></td>
-                            <td><strong>User</strong></td>
+                            <td><strong>Nombre</strong></td>
+                            <td><strong>Descripción</strong></td>
+                            <td><strong>Precio</strong></td>
+                            <td><strong>Imagen</strong></td>
+                            <td><strong>Cod Proveedor</strong></td>
+                            <td><strong>Cod Categoría</strong></td>
                             <td><strong>Actions</strong></td>
                         </tr>
                     </thead>

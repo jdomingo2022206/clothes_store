@@ -24,10 +24,6 @@
                     <form action="Controlador?menu=Compra" method="POST">
                         
                         <div class="form-group">
-                            <label>Id Compra</label>
-                            <input type="text" value="${compra.getIdCompra()}" name="txtIdCompra" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>Id Proveedor</label>
                             <input type="text" value="${compra.getIdProveedor()}" name="txtIdProveedor" class="form-control">
                         </div>
@@ -39,8 +35,8 @@
                             <label>Total</label>
                             <input type="text" value="${compra.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="Controlador?menu=Compra&accion=Agregar&idCompra=${compra.getIdCompra()}">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -61,7 +57,7 @@
                             <td>${compra.getFecha()}</td>
                             <td>${compra.getTotal()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&IdCompra=${compra.getIdCompra()}">Editar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&idCompra=${compra.getIdCompra()}">Editar</a>
                                 <a class="btn btn-danger" onclick="return confirm('¿Quieres eliminar este registro?')" href="Controlador?menu=Compra&accion=Eliminar&idCompra=${compra.getIdCompra()}">Eliminar</a>
                             </td>
                         </tr>  
