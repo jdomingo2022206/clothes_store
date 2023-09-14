@@ -29,10 +29,11 @@ public class PedidoClienteDAO {
               PedidoCliente nuevoPedido = new PedidoCliente();
               nuevoPedido.setIdPedidoCliente(rs.getInt("idPedidoCliente"));
               nuevoPedido.setIdCliente(rs.getInt("idCliente"));
-              nuevoPedido.setIdProducto(rs.getInt("idPeoducto"));
+              nuevoPedido.setIdProducto(rs.getInt("idProducto"));
               nuevoPedido.setCantidad(rs.getInt("cantidad"));
               nuevoPedido.setFecha(rs.getDate("fecha"));
               nuevoPedido.setTotal(rs.getDouble("total"));
+              listaPedidoCliente.add(nuevoPedido);
           }
         } catch (Exception e) {
             e.printStackTrace();

@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -115,10 +116,11 @@ public class Controlador extends HttpServlet {
         Compra compra = new Compra();
         CompraDAO compraDAO = new CompraDAO();
         int codCompra = 0;
-        
+
         Venta venta = new Venta();
         VentaDAO ventaDAO = new VentaDAO();
         int codVenta = 0;
+        List<Venta> listaVenta = new ArrayList<>();
 
         DetalleCompra detalleCompra = new DetalleCompra();
         DetalleCompraDAO detalleCompraDAO = new DetalleCompraDAO();
@@ -486,7 +488,7 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("DetalleCompra.jsp").forward(request, response);
-        } else if (menu.equals("Ventas")) {
+        } else if (menu.equals("Venta")) {
             int item = 0;
             String fecha;
             String nombrePro;
@@ -497,6 +499,10 @@ public class Controlador extends HttpServlet {
             double subtotal;
 
             switch (accion) {
+//                case "Listar":
+//                    List listaVentaa = ventaDAO.listar();
+//                    request.setAttribute("ventas", listaVentaa);
+//                    break;
                 case "Agregar":
                     item = item + 1;
                     cod = producto.getIdProducto();
@@ -540,7 +546,7 @@ public class Controlador extends HttpServlet {
                     int idProducto = Integer.parseInt(request.getParameter("txtIdProducto")); //Se tuvo que castear, no estaba casteado
                     int cantidad = Integer.parseInt(request.getParameter("txtCantidad")); //Se tuvo que castear, no estaba casteado
                     String fechaString = request.getParameter("txtFecha"); //linea comentada por motivos de definicion de fecha
-                    SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd");
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     Date fecha = null;
                     try {
                         fecha = new java.sql.Date(dateFormat.parse(fechaString).getTime());
@@ -554,20 +560,20 @@ public class Controlador extends HttpServlet {
                     pedidoCliente.setFecha(fecha); //linea comentada, nmotivos de definicion de fecha
                     pedidoCliente.setTotal(total);
                     pedidoClienteDAO.agregar(pedidoCliente);
-                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=Listar").forward(request, response);
                     break;
 
                 case "Eliminar":
                     codPedidoCliente = Integer.parseInt(request.getParameter("idPedidoCliente"));
                     pedidoClienteDAO.eliminar(codPedidoCliente);
-                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=Listar").forward(request, response);
                     break;
 
                 case "Editar":
                     codPedidoCliente = Integer.parseInt(request.getParameter("idPedidoCliente"));
                     PedidoCliente p = pedidoClienteDAO.listarCodigoPedidoCliente(codPedidoCliente);
                     request.setAttribute("pedidoCliente", p);
-                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
@@ -582,9 +588,8 @@ public class Controlador extends HttpServlet {
                     // pedidoCliente.setFecha(fecha); // linea comentada motivo de definicion de fecha
                     pedidoCliente.setTotal(total);
                     pedidoClienteDAO.actualizar(pedidoCliente);
-                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=PedidoCliente&accion=Listar").forward(request, response);
                     break;
-
             }
 
             request.getRequestDispatcher("PedidoCliente.jsp").forward(request, response);

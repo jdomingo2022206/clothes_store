@@ -22,28 +22,28 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Categoria" method="POST">
+                    <form action="Controlador?menu=PedidoCliente" method="POST">
                         <div class="form-group">
                             <label>ID Cliente </label>
-                            <input type="text" value="${pedidoCliente.getIdCliente}" name="txtIdCliente" class="form-control">
+                            <input type="text" value="${pedidoCliente.getIdCliente()}" name="txtIdCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>ID Producto</label>
-                            <input type="text" value="${pedidoCliente.getIdProducto}" name="txtIdProducto" class="form-control">
+                            <input type="text" value="${pedidoCliente.getIdProducto()}" name="txtIdProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="text" value="${pedidoCliente.getCantidad}" name="txtCantidad" class="form-control">
+                            <input type="text" value="${pedidoCliente.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="date" value="${pedidoCliente.getFecha}" name="txtFecha" class="form-control">
+                            <input type="date" value="${pedidoCliente.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
-                            <input type="text" value="${pedidoCliente.getTotal}" name="txtTotal" class="form-control">
+                            <input type="text" value="${pedidoCliente.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="Controlador?menu=PedidoCliente&accion=Agregar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
                     </form>  
                 </div>
@@ -63,14 +63,14 @@
                     <c:forEach var="pedidoCliente" items="${pedidoClientes}">
                         <tr>
                             <td>${pedidoCliente.getIdPedidoCliente()}</td>
-                            <td>${pedidoCliente.getIdCliente}</td>
+                            <td>${pedidoCliente.getIdCliente()}</td>
                             <td>${pedidoCliente.getIdProducto()}</td>
                             <td>${pedidoCliente.getCantidad()}</td>
                             <td>${pedidoCliente.getFecha()}</td>
                             <td>${pedidoCliente.getTotal()}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=PedidoCliente&accion=Editar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Editar</a>
-                                <a class="btn btn-danger" onclick='return confirm("desea eliminar el registro?")' href="Controlador?menu=PedidoCliente$accion=Eliminar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Eliminar</a>
+                                <a class="btn btn-danger" onclick='return confirm("Desea eliminar el registro?")' href="Controlador?menu=PedidoCliente&accion=Eliminar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>

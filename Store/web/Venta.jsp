@@ -20,7 +20,7 @@
     <body>
         <div class="d-flex">
             <div class="card col-sm-4">
-                <form action="Controlador?menu=Ventas" method="POST">
+                <form action="Controlador?menu=Venta" method="POST">
                     <div class="card-body">
                         <div class="form-group">
                             <label><h6>Datos Del Cliente :</h6></label>
@@ -28,7 +28,7 @@
                         <div class="form-group d-flex">
                             <div class="col-sm-6 d-flex">
                                 <input type="text" name="txtCodigoCliente" value="${cliente.getIdCliente()}" placeholder="Codigo" class="form-control">
-                                <button type="submit" name="accion" value="BuscarCliente" href="Controlador?menu=Ventas&accion=BuscarCliente" class="btn btn-danger">Buscar</button>
+                                <button type="submit" name="accion" value="BuscarCliente" href="Controlador?menu=Venta&accion=BuscarCliente" class="btn btn-danger">Buscar</button>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="txtNombreCliente" value="${cliente.getNombreCliente()} ${cliente.getApellidoCliente()}" placeholder="Nombre"  class="form-control">
@@ -46,7 +46,7 @@
                         <div class="form-group d-flex">
                             <div class="col-sm-6 d-flex">
                                 <input type="text" name="txtCodigoProducto" value="${producto.getIdProducto()}" class="form-control" placeholder="Codigo">
-                                <Button type="submit" name="accion" value="BuscarProducto" href="Controlador?menu=Ventas&accion=BuscarProducto" class="btn btn-danger">Buscar</Button>
+                                <Button type="submit" name="accion" value="BuscarProducto" href="Controlador?menu=Venta&accion=BuscarProducto" class="btn btn-danger">Buscar</Button>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="txtNombreProducto" value="${producto.getNombreProducto()}" placeholder="Producto" class="form-control">
@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label><h6>Precio :</h6></label>
                             <div class="col-sm-8">
-                                <input type="text" value="Q${producto.getPrecio()}" name="txtPrecio" class="form-control" placeholder="Q0.00">
+                                <input type="text" value="${producto.getPrecio()}" name="txtPrecio" class="form-control" placeholder="0.00">
                             </div>
                         </div>
                         <div class="form-group">
