@@ -22,7 +22,7 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Producto" method="POST">
+                    <form action="Controlador?menu=Inventario" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" value="${inventario.nombreInventario}" name="txtName" class="form-control">
@@ -33,14 +33,14 @@
                         </div>
                         <div class="form-group">
                             <label>Stock</label>
-                            <input type="text" vaule="${inventario.stock}" name="txtStock" class="form-control">
+                            <input type="text" value="${inventario.stock}" name="txtStock" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>id Producto</label>
                             <input type="text" value="${inventario.idProducto}" name="txtIdProducto" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input  type="submit" name="accion" value="Actualizar" class="btn btn-success" href="Controlador?menu=Inventario&accion=Actualizar"></a>
                     </form>  
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     lista.add("ID");
                     lista.add("NOMBRE");
                     lista.add("ESTABLECIMIENTO");
-                    lista.add("PRODUCTO");
                     lista.add("STOCK");
+                    lista.add("PRODUCTO");
                     lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
@@ -65,7 +65,7 @@
                             <td>${inventario.idProducto}</td>
                             <td>
                                 <a class="btn btn-warning" href="Controlador?menu=Inventario&accion=Editar&codigoInventario=${inventario.idInventario}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Inventario&accion=Eliminar&codigoInventario=${inventario.idInventario}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
