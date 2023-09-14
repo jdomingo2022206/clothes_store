@@ -2,7 +2,6 @@ package modeloDAO;
 
 import config.Conexion;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -29,11 +28,10 @@ public class PedidoClienteDAO {
               PedidoCliente nuevoPedido = new PedidoCliente();
               nuevoPedido.setIdPedidoCliente(rs.getInt("idPedidoCliente"));
               nuevoPedido.setIdCliente(rs.getInt("idCliente"));
-              nuevoPedido.setIdProducto(rs.getInt("idProducto"));
+              nuevoPedido.setIdProducto(rs.getInt("idPeoducto"));
               nuevoPedido.setCantidad(rs.getInt("cantidad"));
               nuevoPedido.setFecha(rs.getDate("fecha"));
               nuevoPedido.setTotal(rs.getDouble("total"));
-              listaPedidoCliente.add(nuevoPedido);
           }
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,9 +47,8 @@ public class PedidoClienteDAO {
             ps.setInt(1, pr.getIdCliente());
             ps.setInt(2, pr.getIdProducto());
             ps.setInt(3, pr.getCantidad());
-            ps.setDate(4,(Date) pr.getFecha());
-            ps.setDouble(5, pr.getTotal());
-            ps.executeUpdate();
+            // ps.setDate(4, pr.getFecha());
+            ps.setDouble(5, pr.getTotal());            
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("No se pudo agregar al registro");
@@ -85,24 +82,22 @@ public class PedidoClienteDAO {
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.executeUpdate();
+            ps.executeQuery();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
     
     public int actualizar(PedidoCliente pr){
-        String sql = "update pedidoCliente set idCliente = ?, idProducto = ?, cantidad = ?, fecha = ?, total = ? where idPedidoCliente = ?";
+        String sql = "update pedidoCliente set idCliente = ?, idProducto = ?, cantidad = ?, fecha = ?, total = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, pr.getIdCliente());
             ps.setInt(2, pr.getIdProducto());
             ps.setInt(3, pr.getCantidad());
-            ps.setDate(4,(Date) pr.getFecha());
+            //ps.setDate(4, pr.getFecha());
             ps.setDouble(5, pr.getTotal());
-            ps.setInt(6, pr.getIdPedidoCliente());
-            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,4 +105,3 @@ public class PedidoClienteDAO {
     }
     
 }
-

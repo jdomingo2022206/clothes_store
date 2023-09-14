@@ -24,19 +24,23 @@
                     <form action="Controlador?menu=Compra" method="POST">
                         
                         <div class="form-group">
+                            <label>Id Compra</label>
+                            <input type="text" value="${compra.getIdCompra()}" name="txtIdCompra" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>Id Proveedor</label>
                             <input type="text" value="${compra.getIdProveedor()}" name="txtIdProveedor" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="date" value="${compra.getFecha()}" name="txtFecha" class="form-control">
+                            <input type="text" value="${compra.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
                             <input type="text" value="${compra.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
                     </form>
                 </div>
             </div>
@@ -57,8 +61,8 @@
                             <td>${compra.getFecha()}</td>
                             <td>${compra.getTotal()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&idCompra=${compra.getIdCompra()}">Editar</a>
-                                <a class="btn btn-danger" onclick="return confirm('¿Quieres eliminar este registro?')" href="Controlador?menu=Compra&accion=Eliminar&idCompra=${compra.getIdCompra()}">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Compra&accion=Editar&IdCompra=${compra.getIdCompra()}">Editar</a>
+                                <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>  
                     </c:forEach>

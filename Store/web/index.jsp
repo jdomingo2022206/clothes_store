@@ -33,7 +33,6 @@
                             </div>
                         </div>
                         <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-primary btn-block">
                     </form>
                 </div>
             </div>

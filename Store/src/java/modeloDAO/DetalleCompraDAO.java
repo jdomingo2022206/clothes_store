@@ -17,14 +17,14 @@ public class DetalleCompraDAO {
     
     public List listar() {
         ArrayList<DetalleCompra> listaDetalleCompra = new ArrayList<>();
-        String sql = "select * from detalleCompra";
+        String sql = "select * from DetalleCompra";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
                 DetalleCompra detalleCompra = new DetalleCompra();
-                detalleCompra.setIdDetalleCompra(rs.getInt("idDetalleCompra"));
+                detalleCompra.setIdDetalleCompra(rs.getInt("idDetalleVenta"));
                 detalleCompra.setIdCompra(rs.getInt("idCompra"));
                 detalleCompra.setIdProveedor(rs.getInt("idProveedor"));
                 detalleCompra.setIdProducto(rs.getInt("idProducto"));
@@ -45,7 +45,7 @@ public class DetalleCompraDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                detalleCompra.setIdDetalleCompra(rs.getInt("idDetalleCompra"));
+                detalleCompra.setIdDetalleCompra(rs.getInt("idDetalleVenta"));
                 detalleCompra.setIdCompra(rs.getInt("idCompra"));
                 detalleCompra.setIdProveedor(rs.getInt("idProveedor"));
                 detalleCompra.setIdProducto(rs.getInt("idProducto"));
@@ -76,14 +76,13 @@ public class DetalleCompraDAO {
     public int actualizar(DetalleCompra dc) {
         String sql = "update DetalleCompra set idCompra = ?, idProveedor = ?, idProducto = ?, cantidad = ? where idDetalleCompra = ?";
         try {
-            System.out.println("hola");
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, dc.getIdCompra());
             ps.setInt(2, dc.getIdProveedor());
             ps.setInt(3, dc.getIdProducto());
             ps.setInt(4, dc.getCantidad());
-            ps.setInt(5, dc.getIdDetalleCompra());
+            ps.setInt(4, dc.getIdDetalleCompra());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,7 +91,7 @@ public class DetalleCompraDAO {
     }
     
     public void eliminar(int id) {
-        String sql = "delete from DetalleCompra where idDetalleCompra = "+id;
+        String sql = "delete from DetalleCompra where idDetalleVenta = "+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -101,4 +100,7 @@ public class DetalleCompraDAO {
             e.printStackTrace();
         }
     }
+    
+    // Chamalito es gey
+
 }

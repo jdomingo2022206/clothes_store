@@ -84,9 +84,7 @@ public class Login extends HttpServlet {
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        } else if(accion.equalsIgnoreCase("Agregar")){
-            request.getRequestDispatcher("NuevoUsuario.jsp").forward(request, response);
-        }else {
+        } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

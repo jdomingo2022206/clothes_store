@@ -42,9 +42,8 @@ public class ProductoDAO {
    }
    
    public int agregar (Producto pr){
-       String sql = "INSERT INTO Producto (nombreProducto, descripcion, precio,imagen, idProveedor, idCategoria) VALUES (?, ?, ?, ?, ?, ?)";
+       String sql = "insert into Producto (nombreProducto, descripcion, precio, imagen, idProveedor, idCategoria) values (?,?,?,?,?,?)";
        try {
-           
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
            ps.setString(1, pr.getNombreProducto());
