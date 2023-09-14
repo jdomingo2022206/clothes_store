@@ -151,7 +151,7 @@ public class Controlador extends HttpServlet {
                     usuario.setUsuario(Usuario);
                     usuario.setClave(clave);
                     usuarioDAO.agregar(usuario);
-                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar");
                     break;
             }
             request.getRequestDispatcher("AgregarUsuario.jsp").forward(request, response);
@@ -243,12 +243,21 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Actualizar":
-                    String categoriaNombre = request.getParameter("txtNombreCategoria");
-                    String descrip = request.getParameter("txtDescripcion");
-                    String creacionFecha = request.getParameter("txtFechaCreacion");
-                    categoria.setNombreCategoria(categoriaNombre);
-                    categoria.setDescripcion(descrip);
-//                    categoria.setFechaCreacion(creacionFecha);
+                    nombreCategoria = request.getParameter("txtNombreCategoria");
+                    descripcion = request.getParameter("txtDescripcion");
+
+                    fechaString = request.getParameter("txtFechaCreacion");
+                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    fecha = null;
+                    try {
+                        fecha = new java.sql.Date(dateFormat.parse(fechaString).getTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    categoria.setNombreCategoria(nombreCategoria); // La varibale no estaba correcta, estaba a medias
+                    categoria.setDescripcion(descripcion); // La varibale no estaba correcta, estaba a medias
+                    categoria.setFechaCreacion(fecha); // linea comentada motivo de definicion de fecha
                     categoria.setIdCategoria(codCategoria);
                     categoriaDAO.actualizar(categoria);
                     request.getRequestDispatcher("Controlador?menu=Categoria&accion=Listar").forward(request, response);
@@ -359,7 +368,7 @@ public class Controlador extends HttpServlet {
                     String nombre = request.getParameter("txtNombreProducto");
                     String descripcion = request.getParameter("txtDescripcion");
                     String precio = request.getParameter("txtPrecio");
-                    ;
+
                     String idProveedor = request.getParameter("txtIdProveedor");
                     String idCategoria = request.getParameter("txtIdCategoria");
 
@@ -392,19 +401,30 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String nombreProducto = request.getParameter("txtNombreProducto");
-                    String descripProducto = request.getParameter("txtDescripcion");
-                    String precioProducto = request.getParameter("txtPrecio");
-                    String proveedorId = request.getParameter("txtIdProveedor");
-                    String categoriaId = request.getParameter("txtIdCategoría");
-                    producto.setNombreProducto(nombreProducto);
-                    producto.setDescripcion(descripProducto);
-                    producto.setPrecio(Double.parseDouble(precioProducto));
-                    producto.setIdProveedor(Integer.parseInt(proveedorId));
-                    producto.setIdCategoria(Integer.parseInt(categoriaId));
-                    producto.setIdProducto(codProducto);
-                    productoDAO.actualizar(producto);
-                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
+                    nombre = request.getParameter("txtNombreProducto");
+                    descripcion = request.getParameter("txtDescripcion");
+                    precio = request.getParameter("txtPrecio");
+
+                    idProveedor = request.getParameter("txtIdProveedor");
+                    idCategoria = request.getParameter("txtIdCategoria");
+
+                    imagePart = request.getPart("imagenProducto");
+                    nameImage = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
+                    System.out.println("this is " + nameImage);
+                    if (nameImage != null && !nameImage.isEmpty()) {
+                        String rutaImagen = saveImage(nameImage, imagePart);
+                        producto.setNombreProducto(nombre);
+                        producto.setDescripcion(descripcion);
+                        producto.setPrecio(Double.parseDouble(precio));
+                        // test
+                        producto.setImagen(imgg);
+                        producto.setIdProveedor(Integer.parseInt(idProveedor));
+                        producto.setIdCategoria(Integer.parseInt(idCategoria));
+                        producto.setIdProducto(codProducto);
+                        productoDAO.actualizar(producto);
+                        request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
+                    }
+
                     break;
             }
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
@@ -443,18 +463,26 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Editar":
-                    codCompra = Integer.parseInt(request.getParameter("codCompra"));
+                    codCompra = Integer.parseInt(request.getParameter("idCompra"));
                     compra = compraDAO.listarCodigoCompra(codCompra); // el nombre del metodo estaba mal
-                    request.setAttribute("Compra", compra);
+                    Date fechaCompra = compra.getFecha();
+                    request.setAttribute("compra", compra);
                     request.getRequestDispatcher("Controlador?menu=Compra&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
                     idProveedor = Integer.parseInt(request.getParameter("txtIdProveedor")); //variable ya estaba definida y no esta casteada
-//                    fecha = request.getParameter("txtFecha"); //variable ya estaba definida y comentada por definicion
+                    fechaString = request.getParameter("txtFecha"); //linea comentada por motivos de definicion de fecha
+                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    fecha = null;
+                    try {
+                        fecha = new java.sql.Date(dateFormat.parse(fechaString).getTime());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     total = Double.parseDouble(request.getParameter("txtTotal")); //variable ya estaba definida y no esta casteada
                     compra.setIdProveedor(idProveedor);
-//                    compra.setFecha(fecha); // comentada por definicion
+                    compra.setFecha(fecha); // comentada por definicion
                     compra.setTotal(total);
                     compra.setIdCompra(codCompra);
                     compraDAO.actualizar(compra);
