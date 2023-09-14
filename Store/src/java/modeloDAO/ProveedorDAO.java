@@ -90,6 +90,8 @@ public class ProveedorDAO {
             ps.setString(1, pro.getNombreProveedor());
             ps.setString(2, pro.getDireccion());
             ps.setString(3, pro.getTelefono());
+            ps.setInt(4, pro.getIdProveedor());
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }
