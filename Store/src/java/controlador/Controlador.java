@@ -598,13 +598,14 @@ public class Controlador extends HttpServlet {
                     for (Venta ventas : lista) {
                         if (venta.getItem() == idEliminar) {
                             lista.remove(venta);
+                            request.getRequestDispatcher("Controlador?menu=Venta&accion=Listar").forward(request, response);
                         }
                     }
                     request.setAttribute("producto", producto);
                     request.setAttribute("lista", lista);
                     request.setAttribute("cliente", cliente);
                     request.setAttribute("totalpagar", totalPagar);
-                    request.setAttribute("fecha", fecha);   
+                    request.setAttribute("fecha", fecha);            
                     break;
                 case "GenerarVenta":
                     int codCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
@@ -773,22 +774,21 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Editar":
-                    // inventario.setIdInventario(Integer.parseInt(request.getParameter("codigoInventario"));
+                    inventario.setIdInventario(Integer.parseInt(request.getParameter("codigoInventario")));
                     Inventario pe = inventarioDAO.buscar(Integer.parseInt(request.getParameter("codigoInventario")));
                     request.setAttribute("inventario", pe);
                     request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
-                    System.out.println(request.getParameter("txtName"));
-                    System.out.println(request.getParameter("txtIdEstablecimiento"));
+                    System.out.println(request.getParameter("txtName"));                    System.out.println(request.getParameter("txtIdEstablecimiento"));
                     System.out.println(request.getParameter("txtIdEstablecimiento"));
                     System.out.println(request.getParameter("txtStock"));
                     System.out.println(request.getParameter("txtIdProducto"));
+                    
+                    System.out.println("CODIGO INVENTARIO");                    System.out.println(inventario.getIdInventario());
+                    System.out.println(inventario.getIdInventario());
 
-                    System.out.println("CODIGO INVENTARIO");
-                    System.out.println(inventario.getIdInventario());
-                    System.out.println(inventario.getIdInventario());
 
                     inventario.setNombreInventario(request.getParameter("txtName"));
                     inventario.setIdEstablecimiento(Integer.parseInt(request.getParameter("txtIdEstablecimiento")));

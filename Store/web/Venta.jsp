@@ -109,7 +109,6 @@
                             </div>
                         </div>
                         <input type="submit" name="accion" value="Agregar"  class="btn btn-info">
-                        <input type="submit" name="accion" value="Generar Venta" onclick="print()" class="btn btn-success">
                         <br>
                     </div>
                 </form>
@@ -139,7 +138,8 @@
                                 <a class="btn btn-danger boton" href="Controlador?menu=Venta&accion=Eliminar&Codigo=${list.getItem()}">Eliminar</a>
                             </td>
                         </tr>
-                    </c:forEach> 
+                    </c:forEach>
+                        <input type="submit" name="accion" value="Generar Venta" onclick="print()" class="btn btn-success">
                 </custom:table>
             </div>
         </div>
