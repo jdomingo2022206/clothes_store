@@ -23,12 +23,7 @@
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=PedidosProveedor" method="POST">
-                        
-                        <div class="form-group">
-                            <label>ID Pedido Proveedor</label>
-                            <input type="text" value="${pedidoproveedor.getIdPedidoProveedor()}" name="txtIDPedidoProveedor" class="form-control">
-                        </div>
+                    <form action="Controlador?menu=PedidoProveedor" method="POST">
                         <div class="form-group">
                             <label>ID Proveedor</label>
                             <input type="text" value="${pedidoproveedor.getIdProveedor()}" name="txtIDProveedor" class="form-control">
@@ -63,9 +58,10 @@
                     lista.add("CANTIDAD");
                     lista.add("FECHA");
                     lista.add("TOTAL");
+                    lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
-                        <c:forEach var="pedidoproveedor" items="${pedidoproveedor}">
+                        <c:forEach var="pedidoproveedor" items="${pedidoProveedores}">
                         <tr>
                             <td>${pedidoproveedor.getIdPedidoProveedor()}</td>
                             <td>${pedidoproveedor.getIdProveedor()}</td>
