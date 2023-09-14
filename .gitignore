@@ -1,1 +1,4 @@
-/Store/dist/
+Store/nbproject/
+Store/build/
+.idea/
+Store/.idea/
