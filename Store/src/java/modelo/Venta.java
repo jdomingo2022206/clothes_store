@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Venta {
     private int idVenta;
     private int idCliente;
-    private Date fecha;
+    private String fecha;
     private double total; 
     private int idProducto; // Se Agregaron dos variables Ajuste DB
     private int cantidad;
@@ -26,7 +26,7 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int idVenta, int idCliente, Date fecha, double total, int idProducto, int cantidad, String descripcion, int item, Double precio, Double subtotal) {
+    public Venta(int idVenta, int idCliente, String fecha, double total, int idProducto, int cantidad, String descripcion, int item, Double precio, Double subtotal) {
         this.idVenta = idVenta;
         this.idCliente = idCliente;
         this.fecha = fecha;
@@ -55,11 +55,11 @@ public class Venta {
         this.idCliente = idCliente;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

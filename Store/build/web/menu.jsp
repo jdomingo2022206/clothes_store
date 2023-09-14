@@ -74,7 +74,8 @@
 
             <ul id="list" class="flex flex-col list-none hidden">
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">J</div>
+                    <!--<div class="text-sm border px-2 py-1 rounded-md">J</div> -->
+                    <img src="img/Jonathan.png" style="width: 50px">
                     <a class="hide-on-click">Jonathan Domingo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
@@ -86,39 +87,39 @@
                     <a class="hide-on-click">Juan Galicia</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">O</div>
+                    <img src="img/Flores.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Oscar Flores</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">J</div>
+                    <img src="img/Ambrocio.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Josue Ambrocio</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">J</div>
+                    <img src="img/Ceferino.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Jose Ceferino</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">R</div>
+                    <img src="img/Chanquin.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Rodrigo Chanquin</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">Y</div>
+                    <img src="img/Yojhan.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Yojhan Stanley</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">C</div>
+                    <img src="img/Escriba.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Cesar Escriba</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">G</div>
+                    <img src="img/Chuquiej.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Gerson Chuquiej</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">E</div>
+                    <img src="img/Chamale.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Edward Chamale</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">G</div>
+                    <img src="img/Gary.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Gary Galindo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
@@ -142,6 +143,7 @@
             <div class="flex items-center justify-center gap-3">
                 <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
                 <i class="text-2xl fa-solid fa-search"></i>
+                <img src="img/Kinal.png" style="width: 50px"/>
             </div>   
         </div>
         <div class="p-5 h-full">
