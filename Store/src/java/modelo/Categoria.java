@@ -1,19 +1,18 @@
-
 package modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 public class Categoria {
     private int idCategoria;
     private String nombreCategoria;
     private String descripcion;
-    private String fechaCreacion;
+    private Date fechaCreacion;
 
     public Categoria() {
     }
 
-    public Categoria(int idCategoria, String nombreCategoria, String descripcion, String fechaCreacion) {
+    public Categoria(int idCategoria, String nombreCategoria, String descripcion, Date fechaCreacion) {
         this.idCategoria = idCategoria;
         this.nombreCategoria = nombreCategoria;
         this.descripcion = descripcion;
@@ -44,11 +43,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public String getFechaCreacion() {
+    public Date getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(String fechaCreacion) {
+    public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -56,6 +55,5 @@ public class Categoria {
     public String toString() {
         return "Categoria{" + "idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", descripcion=" + descripcion + ", fechaCreacion=" + fechaCreacion + '}';
     }
-    
-    
+ 
 }
