@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Categoria
-    Created on : 21/07/2023, 04:49:38 PM
-    Author     : Garcia
---%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -24,18 +19,18 @@
                     <form action="Controlador?menu=Categoria" method="POST">
                         <div class="form-group">
                             <label>Nombre Categoria</label>
-                            <input type="text" value="" name="txtNombreCategoria" class="form-control">
+                            <input type="text" value="${categoria.getNombreCategoria()}" name="txtNombreCategoria" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <input type="text" value="" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${categoria.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha Creacion</label>
-                            <input type="text" value="" name="txtFechaCreacion" class="form-control">
+                            <input type="date" value="${categoria.getFechaCreacion()}" name="txtFechaCreacion" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>  
                 </div>
             </div>
@@ -57,8 +52,8 @@
                             <td>${categoria.getDescripcion()}</td>
                             <td>${categoria.getFechaCreacion()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&codigoCategoria=${categoria.getIdCategoria()}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&idCategoria=${categoria.getIdCategoria()}">Editar</a>
+                                <a class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar este registro?')" href="Controlador?menu=Categoria&accion=Eliminar&idCategoria=${categoria.getIdCategoria()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
