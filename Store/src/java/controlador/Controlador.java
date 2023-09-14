@@ -151,10 +151,10 @@ public class Controlador extends HttpServlet {
                     usuario.setUsuario(Usuario);
                     usuario.setClave(clave);
                     usuarioDAO.agregar(usuario);
-                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;
             }
-            request.getRequestDispatcher("AgregarUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("NuevoUsuario.jsp").forward(request, response);
         } else if (menu.equals("Proveedor")) {
 
             switch (accion) {
