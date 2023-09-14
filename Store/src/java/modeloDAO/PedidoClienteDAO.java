@@ -2,6 +2,7 @@ package modeloDAO;
 
 import config.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class PedidoClienteDAO {
             ps.setInt(1, pr.getIdCliente());
             ps.setInt(2, pr.getIdProducto());
             ps.setInt(3, pr.getCantidad());
-            // ps.setDate(4, pr.getFecha());
+            ps.setDate(4,(Date) pr.getFecha());
             ps.setDouble(5, pr.getTotal());            
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,8 +97,10 @@ public class PedidoClienteDAO {
             ps.setInt(1, pr.getIdCliente());
             ps.setInt(2, pr.getIdProducto());
             ps.setInt(3, pr.getCantidad());
-            //ps.setDate(4, pr.getFecha());
+            ps.setDate(4,(Date) pr.getFecha());
             ps.setDouble(5, pr.getTotal());
+            ps.setInt(6, pr.getIdPedidoCliente());
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
