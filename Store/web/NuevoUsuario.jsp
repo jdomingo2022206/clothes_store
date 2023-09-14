@@ -38,7 +38,7 @@
                         <div class="form-group">
                             <label>Contraseña</label>
                             <div class="input-group">
-                                <input type="password" name="txtPass" id="txtClave" class="form-control">
+                                <input type="password" value="${usuario.getClave()}" name="txtClave" id="txtClave" class="form-control">
                                 <div class="input-group-append">
                                     <button type="button" id="togglePass" class="btn btn-outline-secondary">
                                         <i id="eyeIcon" class="far fa-eye"></i>
