@@ -29,8 +29,9 @@ public class ProductoDAO {
                 nuevoProducto.setNombreProducto(rs.getString("nombreProducto"));
                 nuevoProducto.setDescripcion(rs.getString("descripcion"));
                 nuevoProducto.setPrecio(rs.getDouble("precio"));
+                nuevoProducto.setImagen(rs.getString("imagen"));
                 nuevoProducto.setIdProveedor(rs.getInt("idProveedor"));
-                nuevoProducto.setIdCategoría(rs.getInt("idCategoria"));
+                nuevoProducto.setIdCategoria(rs.getInt("idCategoria"));
                 listaProducto.add(nuevoProducto);
             }
            
@@ -41,15 +42,16 @@ public class ProductoDAO {
    }
    
    public int agregar (Producto pr){
-       String sql = "insert into Producto (nombreProducto, descripcion, precio, idProveedor, idCategoria) values (?,?,?,?,?))";
+       String sql = "insert into Producto (nombreProducto, descripcion, precio, imagen, idProveedor, idCategoria) values (?,?,?,?,?,?))";
        try {
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
            ps.setString(1, pr.getNombreProducto());
            ps.setString(2, pr.getDescripcion());
            ps.setDouble(3, pr.getPrecio());
-           ps.setInt(4, pr.getIdProveedor());
-           ps.setInt(5, pr.getIdCategoría());
+           ps.setString(4, pr.getImagen());
+           ps.setInt(5, pr.getIdProveedor());
+           ps.setInt(6, pr.getIdCategoria());
            ps.executeUpdate();
        } catch (Exception e) {
            e.printStackTrace();
@@ -72,8 +74,9 @@ public class ProductoDAO {
                     pr.setNombreProducto(rs.getString(2));//rs.getString(2)
                     pr.setDescripcion(rs.getString(3));
                     pr.setPrecio(rs.getDouble(4));
-                    pr.setIdProveedor(rs.getInt(5));
-                    pr.setIdCategoría(rs.getInt(6));                 
+                    pr.setImagen(rs.getString(5));
+                    pr.setIdProveedor(rs.getInt(6));
+                    pr.setIdCategoria(rs.getInt(7));                 
                 }
                 
             }catch(Exception e){
@@ -95,16 +98,17 @@ public class ProductoDAO {
     }
    
    public int actualizar(Producto pr){
-            String sql = "update producto set nombreProducto = ?, descripcion = ?, precio = ?, idProveedor = ?, idCategoria = ?  where idProducto = ?";
+            String sql = "update producto set nombreProducto = ?, descripcion = ?, precio = ?, imagen = ?, idProveedor = ?, idCategoria = ?  where idProducto = ?";
             try{
                 con = cn.Conexion();
                 ps = con.prepareStatement(sql);
                 ps.setString(1, pr.getNombreProducto());
                 ps.setString(2, pr.getDescripcion());
                 ps.setDouble(3, pr.getPrecio());
-                ps.setInt(4, pr.getIdProveedor());
-                ps.setInt(5, pr.getIdCategoría());
-                ps.setInt(6, pr.getIdProducto());
+                ps.setString(4, pr.getImagen());
+                ps.setInt(5, pr.getIdProveedor());
+                ps.setInt(6, pr.getIdCategoria());
+                ps.setInt(7, pr.getIdProducto());
                 ps.executeUpdate();
             }catch(Exception e){
                 e.printStackTrace();

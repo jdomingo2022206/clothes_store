@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="932f12e4-f545-45e3-87b0-f93edc793564" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Store/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Store/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/src/java/config/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Store/src/java/config/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Store/src/java/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Store/src/java/controlador/Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/build/web/Categoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Store/build/web/Categoria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/build/web/Proveedor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Store/build/web/Proveedor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/build/web/WEB-INF/glassfish-web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Store/build/web/WEB-INF/glassfish-web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Store/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Store/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/web/Categoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Store/web/Categoria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/web/Proveedor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/Store/web/Proveedor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Store/web/WEB-INF/tags/table.tag" beforeDir="false" afterPath="$PROJECT_DIR$/Store/web/WEB-INF/tags/table.tag" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,25 +47,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "develop",
-    "last_opened_file_path": "C:/Users/brand/WORKSPACE/clothes_store/Store/web",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.applicationServers",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/brand/WORKSPACE/clothes_store/Store/web&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.applicationServers&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="GlassFish 5.0.0" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 5.0.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/test" />
@@ -142,6 +148,7 @@
       <updated>1689975082258</updated>
       <workItem from="1689975093734" duration="875000" />
       <workItem from="1689976183872" duration="8905000" />
+      <workItem from="1694491697000" duration="168000" />
     </task>
     <servers />
   </component>

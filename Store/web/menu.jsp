@@ -21,45 +21,48 @@
             </div>
 
             <ul id="list-entities" class="flex flex-col gap-2 list-none">
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
-                    <i class="text-2xl fa-solid fa-chart-pie"></i>
-                    <span class="hide-on-click">Detalle venta</span>
-                </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Provedor" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-people-carry-box"></i>
-                    <span class="hide-on-click">Provedor</span>
+                    <a target='myTarget' href="Controlador?menu=Proveedor&accion=Listar" class="hide-on-click">Proveedor</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
-                    <span class="hide-on-click">Productos</span>
+                    <a target='myTarget' href="Controlador?menu=Producto&accion=Listar" class="hide-on-click">Productos</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Clientes" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-users-line"></i>
-                    <span class="hide-on-click">Clientes</span>
+                    <a target='myTarget' href="Controlador?menu=Cliente&accion=Listar" class="hide-on-click">Clientes</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Categoria" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-file-invoice"></i>
-                    <span class="hide-on-click">Categoria</span>
+                    <a target='myTarget' href="Controlador?menu=Categoria&accion=Listar" class="hide-on-click">Categoria</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Establecimiento" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span class="hide-on-click">Establecimiento</span>
+                    <a target='myTarget' href="Controlador?menu=Establecimiento&accion=Listar" class="hide-on-click">Establecimiento</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-store"></i>
-                    <span class="hide-on-click">Compra</span>
-                </li>
+                    <a target='myTarget' href="Controlador?menu=Compra&accion=Listar" class="hide-on-click">Compra</a>
                 <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
-                    <span class="hide-on-click">Productos</span>
+                    <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Productos" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="text-2xl fa-solid fa-cubes"></i>
+                    <a target='myTarget' href="Controlador?menu=PedidoCliente&accion=Listar" class="hide-on-click">Pedido Cliente</a>
+                </li>
+                <li data-url="Clientes" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-users-line"></i>
-                    <span class="hide-on-click">Clientes</span>
+                    <a target='myTarget' href="Controlador?menu=Inventario&accion=Listar" class="hide-on-click">Inventario</a>
                 </li>
-                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                <li data-url="Detalle Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-file-invoice"></i>
-                    <span class="hide-on-click">Detalle Compra</span>
+                    <a target='myTarget' href="Controlador?menu=DetalleCompra&accion=Listar" class="hide-on-click">Detalle Compra</a>
+                </li>
+                <li data-url="Venta" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <a target='myTarget' href="Controlador?menu=Ventas&accion=default" class="hide-on-click">Venta</a>
                 </li>
             </ul>
 
@@ -71,75 +74,75 @@
             <ul id="list" class="flex flex-col list-none hidden">
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">J</div>
-                    <span class="hide-on-click">Jonathan Domingo</span>
+                    <a class="hide-on-click">Jonathan Domingo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">J</div>
-                    <span class="hide-on-click">Joao Castillo</span>
+                    <a class="hide-on-click">Joao Castillo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">J</div>
-                    <span class="hide-on-click">Juan Galicia</span>
+                    <a class="hide-on-click">Juan Galicia</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">O</div>
-                    <span class="hide-on-click">Oscar Flores</span>
+                    <a class="hide-on-click">Oscar Flores</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">J</div>
-                    <span class="hide-on-click">Josue Ambrocio</span>
+                    <a class="hide-on-click">Josue Ambrocio</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">J</div>
-                    <span class="hide-on-click">Jose Ceferino</span>
+                    <a class="hide-on-click">Jose Ceferino</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">R</div>
-                    <span class="hide-on-click">Rodrigo Chanquin</span>
+                    <a class="hide-on-click">Rodrigo Chanquin</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">Y</div>
-                    <span class="hide-on-click">Yojhan Stanley</span>
+                    <a class="hide-on-click">Yojhan Stanley</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">C</div>
-                    <span class="hide-on-click">Cesar Escriba</span>
+                    <a class="hide-on-click">Cesar Escriba</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">G</div>
-                    <span class="hide-on-click">Gerson Chuquiej</span>
+                    <a class="hide-on-click">Gerson Chuquiej</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">E</div>
-                    <span class="hide-on-click">Edward Chamale</span>
+                    <a class="hide-on-click">Edward Chamale</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">G</div>
-                    <span class="hide-on-click">Gary Galindo</span>
+                    <a class="hide-on-click">Gary Galindo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <div class="text-sm border px-2 py-1 rounded-md">D</div>
-                    <span class="hide-on-click">Diego Arriola</span>
+                    <a class="hide-on-click">Diego Arriola</a>
                 </div>
             </ul>
         </div>
-       <div class="flex flex-col w-full h-full">
-        <div class="flex justify-between border px-32 py-3">
-            <div class="flex gap-3">
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Lorem.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Tenetur?</div>
+        <div class="flex flex-col w-full h-full">
+            <div class="flex justify-between border px-32 py-3">
+                <div class="flex gap-3">
+                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Lorem.</div>
+                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
+                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
+                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Tenetur?</div>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
+                    <i class="text-2xl fa-solid fa-search"></i>
+                </div>   
             </div>
-            <div class="flex items-center justify-center gap-3">
-                <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
-                <i class="text-2xl fa-solid fa-search"></i>
-            </div>   
+            <div class="p-5 h-full">
+                <iframe name='myTarget' class="w-full h-full" src="Principal.jsp" frameborder="0"></iframe>
+            </div>
         </div>
-        <div class="p-5 h-full">
-            <iframe class="w-full h-full" src="index.jsp" frameborder="0"></iframe>
-        </div>
-       </div>
 
         <script>
             // console.log(list)
@@ -151,13 +154,13 @@
             //     console.log(liElement.firstElementChild)
             //     liElement.firstElementChild.classList.add("border-indigo-600")
             // })
-            
+
             // list.addEventListener("mouseleave", (e) => {
             //     const liElement = e.target.closest("div");
             //     if (!liElement) return;
             //     liElement.firstElementChild.classList.remove("border-indigo-600")
             // })
-            
+
             const list = document.getElementById("list");
             const sidebar = document.getElementById("sidebar");
             const btnSidebar = document.getElementById("sidebar-btn")
@@ -172,18 +175,20 @@
                 chevronDown.classList.add("hidden");
                 isShowingTeams = true;
             }
-            
+
             const hideTeams = () => {
                 list.classList.add("hidden")
                 chevronUp.classList.add("hidden");
                 chevronDown.classList.remove("hidden");
                 isShowingTeams = false;
             }
-            
+
             let isShowingTeams = false;
             teamsContainer.addEventListener("click", (e) => {
-                if (!isShowingTeams) showTeams();
-                else hideTeams()
+                if (!isShowingTeams)
+                    showTeams();
+                else
+                    hideTeams()
             })
             console.log(entitiesContainer)
             console.log(sidebar)
@@ -191,10 +196,12 @@
             let isShowingSidebar = true;
             btnSidebar.addEventListener("click", () => {
                 console.log(isShowingSidebar)
-                if (isShowingSidebar) hideSideBar();
-                else showSidebar();
+                if (isShowingSidebar)
+                    hideSideBar();
+                else
+                    showSidebar();
             })
-            
+
             const hideSideBar = () => {
                 isShowingSidebar = false;
                 const listOfElementsToHide = [...document.querySelectorAll(".hide-on-click")];
@@ -218,6 +225,6 @@
                 sidebar.classList.remove("w-fit")
                 entitiesContainer.classList.remove("items-center")
             }
-            </script>
+        </script>
     </body>
 </html>

@@ -30,7 +30,7 @@ Create table Categoria(
 	idCategoria int not null auto_increment,
 	nombreCategoria varchar (100) not null,
     descripcion varchar(150) not null,
-    fechaCreacion date not null,
+    fechaCreacion varchar(150) not null,
     primary key PK_idCategoria (idCategoria)
 );
 
@@ -56,6 +56,7 @@ Create table Producto(
     nombreProducto varchar(100) not null,
     descripcion varchar(150) not null,
     precio decimal(6,2) not null,
+    imagen varchar(255) not null,
     idProveedor int not null,
     idCategoria int not null,
     primary key PK_idProducto (idProducto),
@@ -68,7 +69,7 @@ Create table Producto(
 Create table Compra(
 	idCompra int not null auto_increment,
     idProveedor int not null,
-    fecha date not null,
+    fecha varchar(150) not null,
     total decimal(10,2) not null,
     primary key PK_idCompra (idCompra),
     constraint FK_Compra_Proveedor foreign key (idProveedor)
@@ -93,14 +94,14 @@ Create table DetalleCompra(
 Create table Venta(
 	idVenta int not null auto_increment,
 	idCliente int not null,
-    fecha date not null,
+    fecha varchar(150) not null,
     total decimal(10,2) not null,
 	idProducto int not null,
     cantidad int not null,
     primary key PK_idVenta (idVenta),
     constraint FK_Venta_Cliente foreign key (idCliente)
 		references Cliente (idCliente),
-	constraint FK_DetalleVenta_Producto foreign key (idProducto)
+    constraint FK_Venta_Producto foreign key (idProducto)
 		references Producto (idProducto)
 );
 
@@ -109,7 +110,7 @@ Create table PedidoCliente(
     idCliente int not null,
     idProducto int not null,
     cantidad int not null,
-    fecha date not null,
+    fecha varchar(150) not null,
     total decimal(10,2) not null,
     primary key PK_idPedidoCliente (idPedidoCliente),
     constraint FK_PedidoCliente_Cliente foreign key (idCliente)
@@ -123,7 +124,7 @@ Create table PedidoProveedor(
     idProveedor int not null,
     idProducto int not null,
     cantidad int not null,
-    fecha date not null,
+    fecha varchar(150) not null,
     total decimal(10,2) not null,
     primary key PK_idPedidoProveedor (idPedidoProveedor),
     constraint FK_PedidoProveedor_Proveedor foreign key (idProveedor)
@@ -200,6 +201,7 @@ describe Establecimiento;
 
 
 -- TUPLAS DE LA ENTIDAD PRODUCTO --
+/*
 	INSERT INTO Producto (nombreProducto, descripcion, precio, idProveedor, idCategoria)
 		VALUES
 		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 1, 1),
@@ -207,6 +209,7 @@ describe Establecimiento;
 		('Vestido de noche', 'Elegante vestido de noche para mujer', 59.99, 3, 2),
 		('Zapatos deportivos', 'Zapatos deportivos para correr', 49.99, 4, 4),
 		('Bolsa de cuero', 'Bolsa de cuero genuino', 79.99, 5, 5);
+*/
         
 -- TUPLAS DE LA ENTIDAD COMPRA --
 	INSERT INTO Compra (idProveedor, fecha, total)
@@ -217,6 +220,8 @@ describe Establecimiento;
 		(4, '2023-08-04', 220.00),
 		(5, '2023-08-05', 400.00);
         
+	select * from Compra;
+        
 -- TUPLAS DE LA ENTIDAD DETALLE COMPRA --
 	INSERT INTO DetalleCompra (idCompra, idProveedor, idProducto, cantidad)
 		VALUES
@@ -225,17 +230,26 @@ describe Establecimiento;
 		(3, 3, 3, 4),
 		(4, 4, 4, 7),
 		(5, 5, 5, 12);
-        
+ 
+ 
 -- TUPLAS DE LA ENTIDAD VENTA --
-	INSERT INTO Venta (idCliente, fecha, total, idProducto , cantidad)
+	INSERT INTO Venta (idCliente, fecha, total ,idProducto ,cantidad)
 		VALUES
-		(1, '2023-08-01', 350.00, 1 ,10),
-		(2, '2023-08-02', 280.00, 2 ,20),
-		(3, '2023-08-03', 210.00, 3 ,30),
-		(4, '2023-08-04', 150.00, 4 ,45),
-		(5, '2023-08-05', 420.00, 5 ,10);
+		(1, '2023-08-01', 350.00, 1, 5),
+		(2, '2023-08-02', 280.00, 2, 10),
+		(3, '2023-08-03', 210.00, 3, 15),
+		(4, '2023-08-04', 150.00, 4, 9),
+		(4, '2023-08-05', 420.00, 5, 10);
         
-        select * from Venta;
+-- TUPLAS DE LA ENTIDAD DETALLE VENTA --
+	INSERT INTO DetalleVenta (idVenta, idCliente, idProducto, cantidad)
+	VALUES
+		(1, 1, 1, 5),
+		(2, 2, 2, 3),
+		(3, 3, 3, 4),
+		(4, 4, 4, 2),
+		(5, 5, 5, 6);
+
 -- TUPLAS DE LA ENTIDAD PEDIDO CLIENTE --
 	INSERT INTO PedidoCliente (idCliente, idProducto, cantidad, fecha, total)
 		VALUES
@@ -255,14 +269,14 @@ describe Establecimiento;
 		(5, 5, 150, '2023-08-14', 7499.50);
         
 -- TABLA DE LA ENTIDAD INVENTARIO --
-	INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
+	/*INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
 		VALUES
 		('Inventario1', 1, 1, 50),
 		('Inventario2', 2, 2, 75),
 		('Inventario3', 3, 3, 30),
 		('Inventario4', 4, 4, 100),
 		('Inventario5', 5, 5, 60);
-
+*/
 
 
 

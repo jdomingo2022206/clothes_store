@@ -4,13 +4,19 @@
     Author     : Tonelito
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>Pedidos Proveedor</title>
     </head>
     <body>
@@ -37,30 +43,28 @@
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="text" value="${pedidoproveedor.getFecha()}" name="txtFecha" class="form-control">
+                            <input type="date" value="${pedidoproveedor.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
                             <input type="text" value="${pedidoproveedor.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-success">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-info" href="">
                     </form>
                 </div>
             </div>
             <div class="col-sm-8">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <td>ID Pedido Proveedor</td>
-                            <td>ID Proveedor</td>
-                            <td>ID Producto</td>
-                            <td>Cantidad</td>
-                            <td>Fecha</td>
-                            <td>Total</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+               <%
+                    List<String> lista = new ArrayList<String>();
+                    lista.add("ID PEDIDO PROVEEDOR");
+                    lista.add("ID PROVEEDOR");
+                    lista.add("ID PRODUCTO");
+                    lista.add("CANTIDAD");
+                    lista.add("FECHA");
+                    lista.add("TOTAL");
+                %>
+                <custom:table titles="<%=lista%>">
                         <c:forEach var="pedidoproveedor" items="${pedidoproveedor}">
                         <tr>
                             <td>${pedidoproveedor.getIdPedidoProveedor()}</td>
@@ -75,8 +79,7 @@
                             </td>
                         </tr>
                         </c:forEach>
-                    </tbody>
-                </table>
+                </custom:table>
             </div>            
         </div>
 

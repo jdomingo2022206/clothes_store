@@ -1,9 +1,9 @@
 <%-- 
-    Document   : PedidoCliente
-    Created on : 21/07/2023, 07:07:19 PM
-    Author     : 50257
+    Document   : Producto
+    Created on : 20/07/2023, 09:21:48 PM
+    Author     : A_flo
 --%>
-
+<jsp:useBean id="inventario" scope="request" class="modelo.Inventario"/>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,32 +16,28 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Categoria</title>
+        <title>Inventario</title>
     </head>
     <body>
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
-                    <form action="Controlador?menu=Categoria" method="POST">
+                    <form action="Controlador?menu=Producto" method="POST">
                         <div class="form-group">
-                            <label>ID Cliente </label>
-                            <input type="text" value="" name="txtIdCliente" class="form-control">
+                            <label>Nombre</label>
+                            <input type="text" value="${inventario.nombreInventario}" name="txtName" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>ID Producto</label>
-                            <input type="text" value="" name="txtIdProducto" class="form-control">
+                            <label>id Establecimento</label>
+                            <input type="text" value="${inventario.idEstablecimiento}" name="txtIdEstablecimiento" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Cantidad</label>
-                            <input type="text" value="" name="txtCantidad" class="form-control">
+                            <label for="imagenProducto">Stock</label>
+                            <input type="file" vaule="${inventario.stock}" name="txtStock" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Fecha</label>
-                            <input type="text" value="" name="txtFecha" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Total</label>
-                            <input type="text" value="" name="txtTotal" class="form-control">
+                            <label>id Producto</label>
+                            <input type="text" value="${inventario.idProducto}" name="txtIdProducto" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
@@ -51,35 +47,28 @@
             <div class="col-sm-8">
                 <%
                     List<String> lista = new ArrayList<String>();
-                    lista.add("ID PEDIDO CLIENTE");
-                    lista.add("ID CLIENTE");
-                    lista.add("ID PRODUCTO");
-                    lista.add("CANTIDAD");
-                    lista.add("FECHA");
-                    lista.add("TOTAL");
+                    lista.add("ID");
+                    lista.add("NOMBRE");
+                    lista.add("ESTABLECIMIENTO");
+                    lista.add("PRODUCTO");
+                    lista.add("STOCK");
+                    lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
                     <%--<jsp:useBean id="lista" scope="request" class="java.util.List<modelo.Categoria>"/>--%>
-                    <c:forEach var="pedidoCliente" items="${pedidoClientes}">
+                    <c:forEach var="inventario" items="${inventarios}">
                         <tr>
-                            <td>${pedidoCliente.getIdPedidoCliente()}</td>
-                            <td>${pedidoCliente.getIdCliente}</td>
-                            <td>${pedidoCliente.getIdProducto()}</td>
-                            <td>${pedidoCliente.getCantidad()}</td>
-                            <td>${pedidoCliente.getFecha()}</td>
-                            <td>${pedidoCliente.getTotal()}</td>
+                            <td>${inventario.idInventario}</td>
+                            <td>${inventario.nombreInventario}</td>
+                            <td>${inventario.idEstablecimiento}</td>
+                            <td>${inventario.stock}</td>
+                            <td>${inventario.idProducto}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=PedidoCliente&accion=Editar&codigoPedidoCliente=${categoria.getIdPedidoCliente()}">Editar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Inventario&accion=Editar&codigoInventario=${inventario.idInventario}">Editar</a>
                                 <a class="btn btn-danger" href="">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
-                        <tr>
-                            <td>.getIdCategoria</td>
-                            <td>categoria.getNombreCategoria()</td>
-                            <td>categoria.getDescripcion()</td>
-                            <td>Edit</td>
-                        </tr>
                 </custom:table>
             </div>
         </div>
@@ -88,4 +77,3 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
-
