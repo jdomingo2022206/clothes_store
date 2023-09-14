@@ -50,7 +50,8 @@ public class PedidoClienteDAO {
             ps.setInt(2, pr.getIdProducto());
             ps.setInt(3, pr.getCantidad());
             ps.setDate(4,(Date) pr.getFecha());
-            ps.setDouble(5, pr.getTotal());            
+            ps.setDouble(5, pr.getTotal());
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("No se pudo agregar al registro");
@@ -81,7 +82,6 @@ public class PedidoClienteDAO {
     
     public void eliminar(int id){
         String sql = "delete from pedidoCliente where idPedidoCliente ="+id;
-        System.out.println(id);
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -110,3 +110,4 @@ public class PedidoClienteDAO {
     }
     
 }
+

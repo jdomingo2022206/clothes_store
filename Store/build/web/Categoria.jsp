@@ -19,15 +19,15 @@
                     <form action="Controlador?menu=Categoria" method="POST">
                         <div class="form-group">
                             <label>Nombre Categoria</label>
-                            <input type="text" value="${categoria.getNombreCategoria}" name="txtNombreCategoria" class="form-control">
+                            <input type="text" value="${categoria.getNombreCategoria()}" name="txtNombreCategoria" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Descripcion</label>
-                            <input type="text" value="${categoria.getDescripcion}" name="txtDescripcion" class="form-control">
+                            <input type="text" value="${categoria.getDescripcion()}" name="txtDescripcion" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha Creacion</label>
-                            <input type="date" value="${categoria.getFechaCreacion}" name="txtFechaCreacion" class="form-control">
+                            <input type="date" value="${categoria.getFechaCreacion()}" name="txtFechaCreacion" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -52,7 +52,7 @@
                             <td>${categoria.getDescripcion()}</td>
                             <td>${categoria.getFechaCreacion()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&IdCategoria=${categoria.getIdCategoria()}">Editar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Categoria&accion=Editar&idCategoria=${categoria.getIdCategoria()}">Editar</a>
                                 <a class="btn btn-danger" onclick="return confirm('¿Esta seguro de eliminar este registro?')" href="Controlador?menu=Categoria&accion=Eliminar&idCategoria=${categoria.getIdCategoria()}">Eliminar</a>
                             </td>
                         </tr>
