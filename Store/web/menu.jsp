@@ -135,7 +135,9 @@
                 </div>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Tenetur?</div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a onclick="return confirm('¿Quieres cerrar sesión y salir?')" href="Controlador?menu=Salir">Salir</a>
+                </div>
             </div>
             <div class="flex items-center justify-center gap-3">
                 <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
