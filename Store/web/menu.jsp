@@ -44,6 +44,11 @@
                 <li data-url="Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-store"></i>
                     <a target='myTarget' href="Controlador?menu=Compra&accion=Listar" class="hide-on-click">Compra</a>
+                </li>
+                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="text-2xl fa-solid fa-cubes"></i>
+                    <a target='myTarget' href="Controlador?menu=Venta&accion=Listar" class="hide-on-click">Venta</a>
+                </li>
                 <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
                     <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
@@ -125,10 +130,14 @@
        <div class="flex flex-col w-full h-full">
         <div class="flex justify-between border px-32 py-3">
             <div class="flex gap-3">
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Lorem.</div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a target='myTarget' href="Controlador?menu=Principal">Home</a>
+                </div>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Tenetur?</div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a onclick="return confirm('¿Quieres cerrar sesión y salir?')" href="Controlador?menu=Salir">Salir</a>
+                </div>
             </div>
             <div class="flex items-center justify-center gap-3">
                 <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
