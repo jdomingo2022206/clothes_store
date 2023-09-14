@@ -510,13 +510,13 @@ public class Controlador extends HttpServlet {
                     venta.setPrecio(precio);
                     venta.setCantidad(cantid);
                     venta.setSubtotal(subtotal);
-                    listaVenta.add(venta);
-                    request.setAttribute("Ventas", listaVenta);
+//                    listaVenta.add(venta);
+  //                  request.setAttribute("Ventas", listaVenta);
                     break;
                 case "BuscarCliente":
                     int idCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
                     cliente.setIdCliente(idCliente);
-                    cliente = ventaDAO.BuscarCliente(idCliente);
+                 //   cliente = ventaDAO.BuscarCliente(idCliente);
                     request.setAttribute("cliente", cliente);
                     //request.getRequestDispatcher("Controlador?menu=Ventas&accion=Listar").forward(request, response);
                     break;
