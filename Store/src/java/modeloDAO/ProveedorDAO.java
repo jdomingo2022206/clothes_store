@@ -15,7 +15,7 @@ public class ProveedorDAO {
     ResultSet rs;
     int resp;
     
-    public List Listar(){
+    public List listar(){
         ArrayList<Proveedor> listaProveedor = new ArrayList<>();
         String sql = "select * from proveedor";
         try{
@@ -90,6 +90,8 @@ public class ProveedorDAO {
             ps.setString(1, pro.getNombreProveedor());
             ps.setString(2, pro.getDireccion());
             ps.setString(3, pro.getTelefono());
+            ps.setInt(4, pro.getIdProveedor());
+            ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
         }

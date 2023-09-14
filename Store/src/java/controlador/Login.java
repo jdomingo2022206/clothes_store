@@ -11,13 +11,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Usuario;
+import modeloDAO.UsuarioDAO;
 
 /**
  *
  * @author Jonwk._.19
  */
 public class Login extends HttpServlet {
-
+    Usuario uss = new Usuario();
+    UsuarioDAO ussDAO = new UsuarioDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,7 +38,7 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet Login</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
@@ -70,7 +73,22 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String accion = request.getParameter("accion");
+        if (accion.equalsIgnoreCase("Ingresar")) {
+            String user = request.getParameter("txtUser"); //Capturar usuario del objeto
+            String pass = request.getParameter("txtPass"); //Capturar contrasena (DPI)
+            uss = ussDAO.Validar(user, pass);
+            if (uss.getUsuario() != null) {
+                request.setAttribute("usuario", uss);
+                request.getRequestDispatcher("Controlador?menu=Menu").forward(request, response);
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        } else if(accion.equalsIgnoreCase("Agregar")){
+            request.getRequestDispatcher("NuevoUsuario.jsp").forward(request, response);
+        }else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     /**

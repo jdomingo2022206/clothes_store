@@ -2,6 +2,7 @@ package modeloDAO;
 
 import config.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class CompraDAO {
 
     public List listar() {
         ArrayList<Compra> listaCompra = new ArrayList<>();
-        String sql = "select  from compra";
+        String sql = "select * from Compra";
 
         try {
             con = cn.Conexion();
@@ -30,6 +31,7 @@ public class CompraDAO {
                 nuevaCompra.setIdProveedor(rs.getInt("idProveedor"));
                 nuevaCompra.setFecha(rs.getDate("fecha"));
                 nuevaCompra.setTotal(rs.getDouble("total"));
+                listaCompra.add(nuevaCompra);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,7 +45,7 @@ public class CompraDAO {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, comp.getIdProveedor());
-            ps.setDate(2, comp.getFecha());
+            ps.setDate(2, (Date) comp.getFecha());
             ps.setDouble(3, comp.getTotal());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -85,12 +87,12 @@ public class CompraDAO {
     }
     
     public int actualizar(Compra comp){
-        String sql = "update compras set idProveedor= ?,fecha = ?, total = ? where IdCompra = ?";
+        String sql = "update compra set idProveedor= ?,fecha = ?, total = ? where IdCompra = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setInt(1, comp.getIdProveedor());
-            ps.setDate(2, comp.getFecha());
+            ps.setDate(2, (Date) comp.getFecha());
             ps.setDouble(3, comp.getTotal());
             ps.setInt(4, comp.getIdCompra());
             ps.executeUpdate();
