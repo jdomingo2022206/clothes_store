@@ -713,7 +713,8 @@ public class Controlador extends HttpServlet {
             switch (accion) {
                 case "Listar":
                     List listaInventario = inventarioDAO.listar();
-                    request.setAttribute("Inventario", listaInventario);
+                    System.out.println(listaInventario.size());
+                    request.setAttribute("inventarios", listaInventario);
                     break;
 
                 case "Agregar":
@@ -733,12 +734,22 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Editar":
+                    inventario.setIdInventario(Integer.parseInt(request.getParameter("codigoInventario"));
                     Inventario pe = inventarioDAO.buscar(Integer.parseInt(request.getParameter("codigoInventario")));
-                    request.setAttribute("Inventario", pe);
+                    request.setAttribute("inventario", pe);
                     request.getRequestDispatcher("Controlador?menu=Inventario&accion=Listar").forward(request, response);
                     break;
 
                 case "Actualizar":
+                    System.out.println(request.getParameter("txtName"));                    System.out.println(request.getParameter("txtIdEstablecimiento"));
+                    System.out.println(request.getParameter("txtIdEstablecimiento"));
+                    System.out.println(request.getParameter("txtStock"));
+                    System.out.println(request.getParameter("txtIdProducto"));
+                    
+                    System.out.println("CODIGO INVENTARIO");                    System.out.println(inventario.getIdInventario());
+                    System.out.println(inventario.getIdInventario());
+
+
                     inventario.setNombreInventario(request.getParameter("txtName"));
                     inventario.setIdEstablecimiento(Integer.parseInt(request.getParameter("txtIdEstablecimiento")));
                     inventario.setStock(Integer.parseInt(request.getParameter("txtStock")));
