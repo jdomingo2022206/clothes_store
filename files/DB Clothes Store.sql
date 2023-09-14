@@ -30,7 +30,7 @@ Create table Categoria(
 	idCategoria int not null auto_increment,
 	nombreCategoria varchar (100) not null,
     descripcion varchar(150) not null,
-    fechaCreacion varchar(150) not null,
+    fechaCreacion date not null,
     primary key PK_idCategoria (idCategoria)
 );
 
@@ -68,7 +68,7 @@ Create table Producto(
 Create table Compra(
 	idCompra int not null auto_increment,
     idProveedor int not null,
-    fecha varchar(150) not null,
+    fecha date not null,
     total decimal(10,2) not null,
     primary key PK_idCompra (idCompra),
     constraint FK_Compra_Proveedor foreign key (idProveedor)
@@ -93,7 +93,7 @@ Create table DetalleCompra(
 Create table Venta(
 	idVenta int not null auto_increment,
 	idCliente int not null,
-    fecha varchar(150) not null,
+    fecha date not null,
     total decimal(10,2) not null,
     primary key PK_idVenta (idVenta),
     constraint FK_Venta_Cliente foreign key (idCliente)
@@ -120,7 +120,7 @@ Create table PedidoCliente(
     idCliente int not null,
     idProducto int not null,
     cantidad int not null,
-    fecha varchar(150) not null,
+    fecha date not null,
     total decimal(10,2) not null,
     primary key PK_idPedidoCliente (idPedidoCliente),
     constraint FK_PedidoCliente_Cliente foreign key (idCliente)
@@ -134,7 +134,7 @@ Create table PedidoProveedor(
     idProveedor int not null,
     idProducto int not null,
     cantidad int not null,
-    fecha varchar(150) not null,
+    fecha date not null,
     total decimal(10,2) not null,
     primary key PK_idPedidoProveedor (idPedidoProveedor),
     constraint FK_PedidoProveedor_Proveedor foreign key (idProveedor)
@@ -274,14 +274,14 @@ describe Establecimiento;
 		(5, 5, 150, '2023-08-14', 7499.50);
         
 -- TABLA DE LA ENTIDAD INVENTARIO --
-	/*INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
+	INSERT INTO Inventario (nombreInventario, idEstablecimiento, idProducto, stock)
 		VALUES
 		('Inventario1', 1, 1, 50),
 		('Inventario2', 2, 2, 75),
 		('Inventario3', 3, 3, 30),
 		('Inventario4', 4, 4, 100),
 		('Inventario5', 5, 5, 60);
-*/
+
 
 
 
