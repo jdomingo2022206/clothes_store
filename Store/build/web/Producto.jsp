@@ -55,13 +55,12 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <td><strong>ID</strong></td>
-                            <td><strong>DPI</strong></td>
-                            <td><strong>Names</strong></td>
-                            <td><strong>Image</strong></td>
-                            <td><strong>Phone</strong></td>
-                            <td><strong>Status</strong></td>
-                            <td><strong>User</strong></td>
+                            <td><strong>Nombre</strong></td>
+                            <td><strong>Descripción</strong></td>
+                            <td><strong>Precio</strong></td>
+                            <td><strong>Imagen</strong></td>
+                            <td><strong>Cod Proveedor</strong></td>
+                            <td><strong>Cod Categoría</strong></td>
                             <td><strong>Actions</strong></td>
                         </tr>
                     </thead>
