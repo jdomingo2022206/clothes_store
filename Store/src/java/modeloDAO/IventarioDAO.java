@@ -17,7 +17,6 @@ public class IventarioDAO {
             final String SQL = "SELECT * FROM inventario";
             final PreparedStatement preparedStatement = conexion.Conexion().prepareStatement(SQL);
             final ResultSet resultSet = preparedStatement.executeQuery();
-            System.out.println(resultSet);
             while (resultSet.next()) {
                 inventarios.add(resultSetToInventario(resultSet));
             }
@@ -95,7 +94,6 @@ public class IventarioDAO {
 
     // Utility classes
     private Inventario resultSetToInventario(ResultSet resultSet) throws SQLException {
-        System.out.println("is calling");
         final int idInventario = resultSet.getInt("idInventario");
         final String nombreInventario = resultSet.getString("nombreInventario");
         final int idEstablecimiento = resultSet.getInt("idEstablecimiento");
