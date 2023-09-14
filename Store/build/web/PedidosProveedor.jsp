@@ -26,23 +26,23 @@
                     <form action="Controlador?menu=PedidoProveedor" method="POST">
                         <div class="form-group">
                             <label>ID Proveedor</label>
-                            <input type="text" value="${pedidoProveedor.getIdProveedor()}" name="txtIDProveedor" class="form-control">
+                            <input type="text" value="${pedidoproveedor.getIdProveedor()}" name="txtIDProveedor" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>ID Producto</label>
-                            <input type="text" value="${pedidoProveedor.getIdProducto()}" name="txtIDProducto" class="form-control">
+                            <input type="text" value="${pedidoproveedor.getIdProducto()}" name="txtIDProducto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="text" value="${pedidoProveedor.getCantidad()}" name="txtCantidad" class="form-control">
+                            <input type="text" value="${pedidoproveedor.getCantidad()}" name="txtCantidad" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Fecha</label>
-                            <input type="date" value="${pedidoProveedor.getFecha()}" name="txtFecha" class="form-control">
+                            <input type="date" value="${pedidoproveedor.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Total</label>
-                            <input type="text" value="${pedidoProveedor.getTotal()}" name="txtTotal" class="form-control">
+                            <input type="text" value="${pedidoproveedor.getTotal()}" name="txtTotal" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-success" href="">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-info" href="">
