@@ -40,7 +40,7 @@
                             <input type="text" value="${inventario.idProducto}" name="txtIdProducto" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input  type="submit" name="accion" value="Actualizar" class="btn btn-success" href="Controlador?menu=Inventario&accion=Actualizar">Actualizar</a>
+                        <input  type="submit" name="accion" value="Actualizar" class="btn btn-success" href="Controlador?menu=Inventario&accion=Actualizar"></a>
                     </form>  
                 </div>
             </div>
@@ -50,8 +50,8 @@
                     lista.add("ID");
                     lista.add("NOMBRE");
                     lista.add("ESTABLECIMIENTO");
-                    lista.add("PRODUCTO");
                     lista.add("STOCK");
+                    lista.add("PRODUCTO");
                     lista.add("ACCIONES");
                 %>
                 <custom:table titles="<%=lista%>">
