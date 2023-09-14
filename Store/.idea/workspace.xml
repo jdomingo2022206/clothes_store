@@ -5,21 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d42ba7e-f6a0-449e-8719-d4e68255ccc5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/config/Conexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/config/Conexion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controlador/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controlador/Controlador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/lib/mysql-connector-java-5.1.23-bin.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/gfv3ee6.dpf" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/gfv3ee6.dpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/config/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/config/Conexion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controlador/Controlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/IventarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/IventarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/tags/table.tag" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/tags/table.tag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/NuevoUsuario.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/Categoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/Categoria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/Compra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/Compra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/DetalleCompra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/DetalleCompra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/Producto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/Producto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/Venta.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/Venta.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controlador/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controlador/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/modelo/Categoria.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/modelo/Categoria.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/modeloDAO/CategoriaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/modeloDAO/CategoriaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/modeloDAO/VentaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/modeloDAO/VentaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/controlador/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controlador/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modelo/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modelo/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/CategoriaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/CategoriaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/CompraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/CompraDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/DetalleCompraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/DetalleCompraDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/PedidoClienteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/PedidoClienteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/ProveedorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/ProveedorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/VentaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/VentaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Categoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Categoria.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Compra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Compra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/DetalleCompra.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/DetalleCompra.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/PedidoCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/PedidoCliente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Producto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Producto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Venta.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Venta.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../files/DB_Clothes_Store.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../files/DB_Clothes_Store.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,19 +48,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;alpha&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging alpha",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
