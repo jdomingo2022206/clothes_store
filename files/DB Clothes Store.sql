@@ -95,12 +95,23 @@ Create table Venta(
 	idCliente int not null,
     fecha date not null,
     total decimal(10,2) not null,
-	idProducto int not null,
-    cantidad int not null,
     primary key PK_idVenta (idVenta),
     constraint FK_Venta_Cliente foreign key (idCliente)
+		references Cliente (idCliente)
+);
+
+Create table DetalleVenta(
+	idDetalleVenta int not null auto_increment,
+	idVenta int not null,
+	idCliente int not null,
+    idProducto int not null,
+    cantidad int not null,
+    primary key PK_idDetalleVenta (idDetalleVenta),
+    constraint FK_DetalleVenta_Venta foreign key (idVenta)
+		references Venta (idVenta),
+	constraint FK_DetalleVenta_Cliente foreign key (idCliente)
 		references Cliente (idCliente),
-	constraint FK_DetalleVenta_Producto foreign key (idProducto)
+    constraint FK_DetalleVenta_Producto foreign key (idProducto)
 		references Producto (idProducto)
 );
 
@@ -227,15 +238,23 @@ describe Establecimiento;
 		(5, 5, 5, 12);
         
 -- TUPLAS DE LA ENTIDAD VENTA --
-	INSERT INTO Venta (idCliente, fecha, total, idProducto , cantidad)
+	INSERT INTO Venta (idCliente, fecha, total)
 		VALUES
-		(1, '2023-08-01', 350.00, 1 ,10),
-		(2, '2023-08-02', 280.00, 2 ,20),
-		(3, '2023-08-03', 210.00, 3 ,30),
-		(4, '2023-08-04', 150.00, 4 ,45),
-		(5, '2023-08-05', 420.00, 5 ,10);
+		(1, '2023-08-01', 350.00),
+		(2, '2023-08-02', 280.00),
+		(3, '2023-08-03', 210.00),
+		(4, '2023-08-04', 150.00),
+		(5, '2023-08-05', 420.00);
         
-        select * from Venta;
+-- TUPLAS DE LA ENTIDAD DETALLE VENTA --
+	INSERT INTO DetalleVenta (idVenta, idCliente, idProducto, cantidad)
+	VALUES
+		(1, 1, 1, 5),
+		(2, 2, 2, 3),
+		(3, 3, 3, 4),
+		(4, 4, 4, 2),
+		(5, 5, 5, 6);
+
 -- TUPLAS DE LA ENTIDAD PEDIDO CLIENTE --
 	INSERT INTO PedidoCliente (idCliente, idProducto, cantidad, fecha, total)
 		VALUES

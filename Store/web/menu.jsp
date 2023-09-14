@@ -44,6 +44,11 @@
                 <li data-url="Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-store"></i>
                     <a target='myTarget' href="Controlador?menu=Compra&accion=Listar" class="hide-on-click">Compra</a>
+                </li>
+                <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="text-2xl fa-solid fa-cubes"></i>
+                    <a target='myTarget' href="Controlador?menu=Venta&accion=Listar" class="hide-on-click">Venta</a>
+                </li>
                 <li class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="text-2xl fa-solid fa-cubes"></i>
                     <a target='myTarget' href="Controlador?menu=PedidoProveedor&accion=Listar" class="hide-on-click">Pedido Proveedor</a>
@@ -59,10 +64,6 @@
                 <li data-url="Detalle Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
                     <i class="fa-solid fa-file-invoice"></i>
                     <a target='myTarget' href="Controlador?menu=DetalleCompra&accion=Listar" class="hide-on-click">Detalle Compra</a>
-                </li>
-                <li data-url="Venta" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
-                    <i class="fa-solid fa-file-invoice"></i>
-                    <a target='myTarget' href="Controlador?menu=Ventas&accion=default" class="hide-on-click">Venta</a>
                 </li>
             </ul>
 
@@ -126,23 +127,25 @@
                 </div>
             </ul>
         </div>
-        <div class="flex flex-col w-full h-full">
-            <div class="flex justify-between border px-32 py-3">
-                <div class="flex gap-3">
-                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Lorem.</div>
-                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
-                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
-                    <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Tenetur?</div>
+       <div class="flex flex-col w-full h-full">
+        <div class="flex justify-between border px-32 py-3">
+            <div class="flex gap-3">
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a target='myTarget' href="Controlador?menu=Principal">Home</a>
                 </div>
-                <div class="flex items-center justify-center gap-3">
-                    <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
-                    <i class="text-2xl fa-solid fa-search"></i>
-                </div>   
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Tenetur?</div>
             </div>
-            <div class="p-5 h-full">
-                <iframe name='myTarget' class="w-full h-full" src="Principal.jsp" frameborder="0"></iframe>
-            </div>
+            <div class="flex items-center justify-center gap-3">
+                <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
+                <i class="text-2xl fa-solid fa-search"></i>
+            </div>   
         </div>
+        <div class="p-5 h-full">
+            <iframe name='myTarget' class="w-full h-full" src="Principal.jsp" frameborder="0"></iframe>
+        </div>
+       </div>
 
         <script>
             // console.log(list)
@@ -154,13 +157,13 @@
             //     console.log(liElement.firstElementChild)
             //     liElement.firstElementChild.classList.add("border-indigo-600")
             // })
-
+            
             // list.addEventListener("mouseleave", (e) => {
             //     const liElement = e.target.closest("div");
             //     if (!liElement) return;
             //     liElement.firstElementChild.classList.remove("border-indigo-600")
             // })
-
+            
             const list = document.getElementById("list");
             const sidebar = document.getElementById("sidebar");
             const btnSidebar = document.getElementById("sidebar-btn")
@@ -175,20 +178,18 @@
                 chevronDown.classList.add("hidden");
                 isShowingTeams = true;
             }
-
+            
             const hideTeams = () => {
                 list.classList.add("hidden")
                 chevronUp.classList.add("hidden");
                 chevronDown.classList.remove("hidden");
                 isShowingTeams = false;
             }
-
+            
             let isShowingTeams = false;
             teamsContainer.addEventListener("click", (e) => {
-                if (!isShowingTeams)
-                    showTeams();
-                else
-                    hideTeams()
+                if (!isShowingTeams) showTeams();
+                else hideTeams()
             })
             console.log(entitiesContainer)
             console.log(sidebar)
@@ -196,12 +197,10 @@
             let isShowingSidebar = true;
             btnSidebar.addEventListener("click", () => {
                 console.log(isShowingSidebar)
-                if (isShowingSidebar)
-                    hideSideBar();
-                else
-                    showSidebar();
+                if (isShowingSidebar) hideSideBar();
+                else showSidebar();
             })
-
+            
             const hideSideBar = () => {
                 isShowingSidebar = false;
                 const listOfElementsToHide = [...document.querySelectorAll(".hide-on-click")];
@@ -225,6 +224,6 @@
                 sidebar.classList.remove("w-fit")
                 entitiesContainer.classList.remove("items-center")
             }
-        </script>
+            </script>
     </body>
 </html>

@@ -32,8 +32,8 @@
                             <input type="text" value="${inventario.idEstablecimiento}" name="txtIdEstablecimiento" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="imagenProducto">Stock</label>
-                            <input type="file" vaule="${inventario.stock}" name="txtStock" class="form-control">
+                            <label>Stock</label>
+                            <input type="text" vaule="${inventario.stock}" name="txtStock" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>id Producto</label>
