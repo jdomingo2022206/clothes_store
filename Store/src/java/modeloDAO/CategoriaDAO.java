@@ -92,6 +92,7 @@ public class CategoriaDAO {
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
            ps.setDate(3, (Date) ca.getFechaCreacion());
+           ps.setInt(4, ca.getIdCategoria());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
