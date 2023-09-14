@@ -128,20 +128,16 @@
             </ul>
         </div>
        <div class="flex flex-col w-full h-full">
-        <div class="flex justify-between border px-32 py-3">
+        <div class="flex justify-between border ps-32 pe-28 py-3">
             <div class="flex gap-3">
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
                     <a target='myTarget' href="Controlador?menu=Principal">Home</a>
                 </div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
-                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
-                    <a onclick="return confirm('¿Quieres cerrar sesión y salir?')" href="Controlador?menu=Salir">Salir</a>
-                </div>
             </div>
             <div class="flex items-center justify-center gap-3">
-                <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
-                <i class="text-2xl fa-solid fa-search"></i>
+                <a class="text-indigo-600" onclick="return confirm('¿Quieres cerrar sesión y salir?')" href="Controlador?menu=Salir">Salir</a>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <img src="https://kinal.academy/pluginfile.php/1/theme_edumy/headerlogo_mobile/1694613307/header.png" class="w-[40px]">
             </div>   
         </div>
         <div class="p-5 h-full">
