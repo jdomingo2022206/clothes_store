@@ -70,7 +70,6 @@ public class PedidoProveedorDAO {
                 pp.setCantidad(rs.getInt(4));
                 pp.setFecha(rs.getDate(5));
                 pp.setTotal(rs.getDouble(6));
-                
                 }
         } catch (Exception e) {
             e.printStackTrace();
