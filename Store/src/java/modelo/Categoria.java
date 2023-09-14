@@ -1,7 +1,6 @@
-
 package modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 public class Categoria {
@@ -56,6 +55,5 @@ public class Categoria {
     public String toString() {
         return "Categoria{" + "idCategoria=" + idCategoria + ", nombreCategoria=" + nombreCategoria + ", descripcion=" + descripcion + ", fechaCreacion=" + fechaCreacion + '}';
     }
-    
-    
+ 
 }

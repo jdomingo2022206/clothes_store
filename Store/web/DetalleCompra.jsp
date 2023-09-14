@@ -4,12 +4,18 @@
     Author     : Edwar
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.tailwindcss.com"></script>
         <title>Detalle Compra</title>
     </head>
     <body>
@@ -38,39 +44,31 @@
                     </form>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <table class="table table-hober">
-                    <thead>
+             <%
+                    List<String> lista = new ArrayList<String>();
+                    lista.add("Id DetalleCompra");
+                    lista.add("Id Compra");
+                    lista.add("id Proveedor");
+                    lista.add("id Producto");
+                    lista.add("Cantidad");
+                    lista.add("ACCIONES");
+                %>
+                <custom:table titles="<%=lista%>">
+                    <c:forEach var="detalleCompras" items="${detalleCompras}">
                         <tr>
-                            <td>Codigo</td>
-                            <td>ID COMPRA</td>
-                            <td>ID PROVEEDOR</td>
-                            <td>ID PRODUCTO</td>
-                            <td>CANTIDAD</td>
-                            <td>ACCIONES</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="detalleCompra" items="${detalleCompras}">
-                        <tr>
-                            <td>${detalleCompra.getIdDetalleCompra()}</td>
-                            <td>${detalleCompra.getIdCompra()}</td>
-                            <td>${detalleCompra.getIdProveedor()}</td>
-                            <td>${detalleCompra.getIdProducto}</td>
-                            <td>${detalleCompra.getCantidad}</td>
+                            <td>${detalleCompras.getIdDetalleCompra()}</td>
+                            <td>${detalleCompras.getIdCompra()}</td>
+                            <td>${detalleCompras.getIdProveedor()}</td>
+                            <td>${detalleCompras.getIdProducto()}</td>
+                            <td>${detalleCompras.getCantidad()}</td>
                             <td>
-                                <a class="btn btn-warning" href="Controlador?menu=DetalleCompra&accion=Editar&idDetalleCompra=${detalleCompra.getIdDetalleCompra}">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=DetalleCompra&accion=Editar&idDetalleCompra=${detalleCompras.getIdDetalleCompra()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=DetalleCompra&accion=Eliminar&idDetalleCompra=${detalleCompras.getIdDetalleCompra()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
-                    </tbody>
-                </table>
+                </custom:table>
             </div>            
-        </div>
-
-
-
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

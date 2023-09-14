@@ -1,9 +1,9 @@
-
 package modeloDAO;
 
 import modelo.Categoria;
 import config.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -39,17 +39,17 @@ public class CategoriaDAO {
    }
    
    public int agregar(Categoria ca){
-       String sql = "insert into Categoria(nombreCategoria, descripcion, fechaCreacion) values (?,?,?)";
+       String sql = "insert into Categoria (nombreCategoria, descripcion, fechaCreacion) values(?, ?, ?)";
        try {
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
-           ps.setDate(3, ca.getFechaCreacion());
+           ps.setDate(3, (Date) ca.getFechaCreacion());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
-           System.out.println("No se pudo agregar el registro");
+           System.out.println("No se pudo agregar el registro 78464564");
        }
        return resp;
    }
@@ -91,7 +91,8 @@ public class CategoriaDAO {
            ps = con.prepareStatement(sql);
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
-           ps.setDate(3, ca.getFechaCreacion());
+           ps.setDate(3, (Date) ca.getFechaCreacion());
+           ps.setInt(4, ca.getIdCategoria());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
@@ -102,4 +103,3 @@ public class CategoriaDAO {
    
     
 }
-
