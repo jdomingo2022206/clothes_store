@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d42ba7e-f6a0-449e-8719-d4e68255ccc5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/Categoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/Categoria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/Proveedor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/Proveedor.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/glassfish-web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/glassfish-web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/config/Conexion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/config/Conexion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controlador/Controlador.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controlador/Controlador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/lib/mysql-connector-java-5.1.23-bin.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/gfv3ee6.dpf" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/gfv3ee6.dpf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Categoria.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Categoria.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Proveedor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/Proveedor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/config/Conexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/config/Conexion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/controlador/Controlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controlador/Controlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/modeloDAO/IventarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/modeloDAO/IventarioDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/WEB-INF/tags/table.tag" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/tags/table.tag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/table.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +39,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;alpha&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -55,6 +60,7 @@
       <workItem from="1694491612330" duration="64000" />
       <workItem from="1694491907830" duration="200000" />
       <workItem from="1694492305295" duration="27000" />
+      <workItem from="1694659169857" duration="13714000" />
     </task>
     <servers />
   </component>

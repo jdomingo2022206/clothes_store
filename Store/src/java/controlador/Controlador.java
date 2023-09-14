@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -60,6 +61,8 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     static String imgg;
+    IventarioDAO inventarioDAO = new IventarioDAO();
+        Inventario inventario = new Inventario();
 
     private String saveImage(String nameImage, Part imagePart) throws IOException {
         // Obtén la ruta real a la carpeta "img" en tu proyecto
@@ -98,9 +101,6 @@ public class Controlador extends HttpServlet {
 
         Establecimiento establecimiento = new Establecimiento();
         EstablecimientoDAO establecimientoDAO = new EstablecimientoDAO();
-
-        IventarioDAO inventarioDAO = new IventarioDAO();
-        Inventario inventario = new Inventario();
 
         int codEstableci = 0;
 
@@ -497,6 +497,11 @@ public class Controlador extends HttpServlet {
             double subtotal;
 
             switch (accion) {
+                 case "Listar":
+                    List<Venta> listaVenta = ventaDAO.listar();
+                    request.setAttribute("detalleCompras", listaVenta);
+                    break;
+                
                 case "Agregar":
                     item = item + 1;
                     cod = producto.getIdProducto();
@@ -510,13 +515,14 @@ public class Controlador extends HttpServlet {
                     venta.setPrecio(precio);
                     venta.setCantidad(cantid);
                     venta.setSubtotal(subtotal);
+                    listaVenta = new ArrayList<Venta>();
                     listaVenta.add(venta);
                     request.setAttribute("Ventas", listaVenta);
                     break;
                 case "BuscarCliente":
                     int idCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
                     cliente.setIdCliente(idCliente);
-                    cliente = ventaDAO.BuscarCliente(idCliente);
+                    cliente = clienteDAO.listarCodigoCliente(idCliente);
                     request.setAttribute("cliente", cliente);
                     //request.getRequestDispatcher("Controlador?menu=Ventas&accion=Listar").forward(request, response);
                     break;
@@ -642,7 +648,10 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("Inventario")) {
             switch (accion) {
                 case "Listar":
-                    List listaInventario = inventarioDAO.listar();
+                    List<Inventario> listaInventario = inventarioDAO.listar();
+                    System.out.println(listaInventario.size());
+                    System.out.println("HERE");
+                    
                     request.setAttribute("Inventario", listaInventario);
                     break;
 
