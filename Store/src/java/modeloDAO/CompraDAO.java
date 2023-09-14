@@ -31,6 +31,7 @@ public class CompraDAO {
                 nuevaCompra.setIdProveedor(rs.getInt("idProveedor"));
                 nuevaCompra.setFecha(rs.getDate("fecha"));
                 nuevaCompra.setTotal(rs.getDouble("total"));
+                listaCompra.add(nuevaCompra);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +87,7 @@ public class CompraDAO {
     }
     
     public int actualizar(Compra comp){
-        String sql = "update compras set idProveedor= ?,fecha = ?, total = ? where IdCompra = ?";
+        String sql = "update compra set idProveedor= ?,fecha = ?, total = ? where IdCompra = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
