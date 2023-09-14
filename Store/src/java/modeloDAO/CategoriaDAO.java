@@ -1,9 +1,9 @@
-
 package modeloDAO;
 
 import modelo.Categoria;
 import config.Conexion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class CategoriaDAO {
                 nuevoProducto.setIdCategoria(rs.getInt("idCategoria"));
                 nuevoProducto.setNombreCategoria(rs.getString("nombreCategoria"));
                 nuevoProducto.setDescripcion(rs.getString("descripcion"));
-                nuevoProducto.setFechaCreacion(rs.getString("fechaCreacion"));
+                nuevoProducto.setFechaCreacion(rs.getDate("fechaCreacion"));
                 listaCategoria.add(nuevoProducto);
             }
            
@@ -39,17 +39,17 @@ public class CategoriaDAO {
    }
    
    public int agregar(Categoria ca){
-       String sql = "insert into Categoria(nombreCategoria, descripcion, fechaCreacion) values (?,?,?)";
+       String sql = "insert into Categoria (nombreCategoria, descripcion, fechaCreacion) values(?, ?, ?)";
        try {
            con = cn.Conexion();
            ps = con.prepareStatement(sql);
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
-           ps.setString(3, ca.getFechaCreacion());
+           ps.setDate(3, (Date) ca.getFechaCreacion());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
-           System.out.println("No se pudo agregar el registro");
+           System.out.println("No se pudo agregar el registro 78464564");
        }
        return resp;
    }
@@ -65,7 +65,7 @@ public class CategoriaDAO {
                ca.setIdCategoria(rs.getInt(1));
                ca.setNombreCategoria(rs.getString(2));
                ca.setDescripcion(rs.getString(3));
-               ca.setFechaCreacion(rs.getString(4));
+               ca.setFechaCreacion(rs.getDate(4));
            }
        } catch (Exception e){
            e.printStackTrace();
@@ -91,7 +91,7 @@ public class CategoriaDAO {
            ps = con.prepareStatement(sql);
            ps.setString(1, ca.getNombreCategoria());
            ps.setString(2, ca.getDescripcion());
-           ps.setString(3, ca.getFechaCreacion());
+           ps.setDate(3, (Date) ca.getFechaCreacion());
            ps.executeUpdate();
        } catch (Exception e){
            e.printStackTrace();
@@ -102,4 +102,3 @@ public class CategoriaDAO {
    
     
 }
-
