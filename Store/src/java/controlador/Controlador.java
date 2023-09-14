@@ -359,7 +359,7 @@ public class Controlador extends HttpServlet {
                     String nombre = request.getParameter("txtNombreProducto");
                     String descripcion = request.getParameter("txtDescripcion");
                     String precio = request.getParameter("txtPrecio");
-                    ;
+
                     String idProveedor = request.getParameter("txtIdProveedor");
                     String idCategoria = request.getParameter("txtIdCategoria");
 
@@ -392,19 +392,30 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
                     break;
                 case "Actualizar":
-                    String nombreProducto = request.getParameter("txtNombreProducto");
-                    String descripProducto = request.getParameter("txtDescripcion");
-                    String precioProducto = request.getParameter("txtPrecio");
-                    String proveedorId = request.getParameter("txtIdProveedor");
-                    String categoriaId = request.getParameter("txtIdCategoría");
-                    producto.setNombreProducto(nombreProducto);
-                    producto.setDescripcion(descripProducto);
-                    producto.setPrecio(Double.parseDouble(precioProducto));
-                    producto.setIdProveedor(Integer.parseInt(proveedorId));
-                    producto.setIdCategoria(Integer.parseInt(categoriaId));
-                    producto.setIdProducto(codProducto);
-                    productoDAO.actualizar(producto);
-                    request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
+                    nombre = request.getParameter("txtNombreProducto");
+                    descripcion = request.getParameter("txtDescripcion");
+                    precio = request.getParameter("txtPrecio");
+
+                    idProveedor = request.getParameter("txtIdProveedor");
+                    idCategoria = request.getParameter("txtIdCategoria");
+
+                    imagePart = request.getPart("imagenProducto");
+                    nameImage = Paths.get(imagePart.getSubmittedFileName()).getFileName().toString();
+                    System.out.println("this is " + nameImage);
+                    if (nameImage != null && !nameImage.isEmpty()) {
+                        String rutaImagen = saveImage(nameImage, imagePart);
+                        producto.setNombreProducto(nombre);
+                        producto.setDescripcion(descripcion);
+                        producto.setPrecio(Double.parseDouble(precio));
+                        // test
+                        producto.setImagen(imgg);
+                        producto.setIdProveedor(Integer.parseInt(idProveedor));
+                        producto.setIdCategoria(Integer.parseInt(idCategoria));
+                        producto.setIdProducto(codProducto);
+                        productoDAO.actualizar(producto);
+                        request.getRequestDispatcher("Controlador?menu=Producto&accion=Listar").forward(request, response);
+                    }
+
                     break;
             }
             request.getRequestDispatcher("Producto.jsp").forward(request, response);
