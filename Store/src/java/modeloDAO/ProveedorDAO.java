@@ -15,7 +15,7 @@ public class ProveedorDAO {
     ResultSet rs;
     int resp;
     
-    public List Listar(){
+    public List listar(){
         ArrayList<Proveedor> listaProveedor = new ArrayList<>();
         String sql = "select * from proveedor";
         try{
