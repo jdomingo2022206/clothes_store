@@ -26,6 +26,7 @@ import modeloDAO.CategoriaDAO;
 import modeloDAO.EstablecimientoDAO;
 import modeloDAO.ProveedorDAO;
 import javax.servlet.http.Part;
+import modelo.CarritoCompra;
 import modelo.Cliente;
 import modelo.Compra;
 import modelo.DetalleCompra;
@@ -103,6 +104,14 @@ public class Controlador extends HttpServlet {
     PedidoProveedorDAO pedidoProveedorDAO = new PedidoProveedorDAO();
     int codPedidoProveedor = 0;
 
+    CarritoCompra carrito = new CarritoCompra();
+    List<CarritoCompra> listaCarrito = new ArrayList<>();
+    int cantidad;
+    int contador;
+    int posicion;
+    double subTotal;
+    double totalPagar;
+    
     static String imgg;
 
     private String saveImage(String nameImage, Part imagePart) throws IOException {
@@ -813,6 +822,131 @@ public class Controlador extends HttpServlet {
             }
 
             request.getRequestDispatcher("Inventario.jsp").forward(request, response);
+        } else if (menu.equals("Catalogo")) {
+            switch (accion) {
+                case "Listar":
+                    List listaProducto = productoDAO.listar();
+                    request.setAttribute("productos", listaProducto);
+                    break;
+                case "AgregarCarrito":
+                    cantidad = 1;
+                    codProducto = Integer.parseInt(request.getParameter("idProducto"));
+                    producto = productoDAO.listarCodigoProducto(codProducto);
+                    if (listaCarrito.size() > 0) {
+                        for (int i = 0; i < listaCarrito.size(); i++) {
+                            if (codProducto == listaCarrito.get(i).getCodigoProducto()) {
+                                posicion = i;
+                            }
+                        }
+                        if (codProducto == listaCarrito.get(posicion).getCodigoProducto()) {
+                            int res = producto.getStock();
+                            if (res == 0) {
+                                String mensajeAlerta = "Sin existencias!!";
+                                System.out.println(mensajeAlerta);
+                            } else {
+                                cantidad = listaCarrito.get(posicion).getCantidad() + cantidad;
+                                subTotal = listaCarrito.get(posicion).getPrecioProducto() * cantidad;
+                                listaCarrito.get(posicion).setCantidad(cantidad);
+                                int stock = producto.getStock() - listaCarrito.get(posicion).getCantidad();
+                                listaCarrito.get(posicion).setStockDesCom(stock);
+                                listaCarrito.get(posicion).setSubtotal(subTotal);
+                            }
+                        } else {
+                            int res = producto.getStock();
+                            if (res == 0) {
+                                String mensajeAlerta = "Sin existencias!!";
+                                System.out.println(mensajeAlerta);
+                            } else {
+                                item = item + 1;
+                                carrito = new CarritoCompra();
+                                carrito.setItem(item);
+                                carrito.setCodigoProducto(producto.getIdProducto());
+                                carrito.setDescripcionProducto(producto.getNombreProducto());
+                                carrito.setPrecioProducto(producto.getPrecio());
+                                carrito.setCantidad(cantidad);
+                                carrito.setStockActual(producto.getStock());
+                                carrito.setStockDesCom(carrito.getStockActual() - cantidad);
+                                carrito.setImagen(producto.getImagen());
+                                carrito.setSubtotal(cantidad * producto.getPrecio());
+                                listaCarrito.add(carrito);
+                            }
+                        }
+                    } else {
+                        int res = producto.getStock();
+                        if (res == 0) {
+                            String mensajeAlerta = "Sin existencias!!";
+                            System.out.println(mensajeAlerta);
+                        } else {
+                            item = item + 1;
+                            carrito = new CarritoCompra();
+                            carrito.setItem(item);
+                            carrito.setCodigoProducto(producto.getIdProducto());
+                            carrito.setDescripcionProducto(producto.getNombreProducto());
+                            carrito.setPrecioProducto(producto.getPrecio());
+                            carrito.setCantidad(cantidad);
+                            carrito.setStockActual(producto.getStock());
+                            carrito.setStockDesCom(carrito.getStockActual() - cantidad);
+                            carrito.setImagen(producto.getImagen());
+                            carrito.setSubtotal(cantidad * producto.getPrecio());
+                            listaCarrito.add(carrito);
+                        }
+                    }
+                    totalPagar = 0.0;
+                    for (int i = 0; i < listaCarrito.size(); i++) {
+                        totalPagar = totalPagar + listaCarrito.get(i).getSubtotal();
+                    }
+                    request.setAttribute("totalPagar", totalPagar);
+                    request.setAttribute("listaCarrito", listaCarrito);
+                    request.getRequestDispatcher("Controlador?menu=Catalogo&accion=Listar").forward(request, response);
+                    break;
+            }
+            request.getRequestDispatcher("Catalogo.jsp").forward(request, response);
+        } else if (menu.equals("CarritoCompra")) {
+            switch (accion) {
+                case "Eliminar":
+                    codProducto = Integer.parseInt(request.getParameter("idProducto"));
+                    if (listaCarrito.size() > 0) {
+                        for (int i = 0; i < listaCarrito.size(); i++) {
+                            if (codProducto == listaCarrito.get(i).getCodigoProducto()) {
+                                posicion = i;
+                            }
+                        }
+                        if (codProducto == listaCarrito.get(posicion).getCodigoProducto()) {
+                            contador = contador - listaCarrito.get(posicion).getCantidad();
+                            totalPagar = totalPagar - listaCarrito.get(posicion).getSubtotal();
+                            listaCarrito.remove(posicion);
+                        }
+                    }
+                    request.setAttribute("listaCarrito", listaCarrito);
+                    break;
+                case "Cancelar":
+                    if (listaCarrito.size() > 0) {
+                        listaCarrito.clear();
+                        contador = 0;
+                        totalPagar = 0.0;
+                    }
+                    request.setAttribute("totalPagar", totalPagar);
+                    request.setAttribute("listaCarrito", listaCarrito);
+                    break;
+                case "Comprar":
+                    for (int i = 0; i < listaCarrito.size(); i++) {
+                        producto = new Producto();
+                        int cant = listaCarrito.get(i).getCantidad();
+                        int codProduct = listaCarrito.get(i).getCodigoProducto();
+                        productoDAO = new ProductoDAO();
+                        producto = productoDAO.listarCodigoProducto(codProduct);
+                        int sn = producto.getStock() - cant;
+                        contador = contador - listaCarrito.get(i).getCantidad();
+                        productoDAO.actualizarStock(codProduct, sn);
+                    }
+                    listaCarrito.clear();
+                    totalPagar = 0.0;
+                    request.setAttribute("totalPagar", totalPagar);
+                    break;
+            }
+            request.setAttribute("totalPagar", totalPagar);
+            request.setAttribute("listaCarrito", listaCarrito);
+            request.getRequestDispatcher("CarritoCompra.jsp").forward(request, response);
         }
     }
 

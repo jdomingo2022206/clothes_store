@@ -134,6 +134,12 @@
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
                     <a target='myTarget' href="Controlador?menu=Principal">Home</a>
                 </div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a target='myTarget' href="Controlador?menu=Catalogo&accion=Listar">Catálogo</a>
+                </div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a target='myTarget' href="Controlador?menu=CarritoCompra&accion=default">Carrito Compra</a>
+                </div>
                 <%-- 
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
