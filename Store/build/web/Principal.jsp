@@ -12,13 +12,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
         <link href="Principal.css" rel="stylesheet" type="text/css"/>
         
         <title>Slider</title>
     </head>
     <body>
+        
         <div class="container"> 
             <div class="slider">
 
@@ -101,7 +101,8 @@
                     <div class="box4">4</div>
                     <div class="box5">5</div>
             </div>
-        </div>   
+        </div>
+        
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
         
