@@ -734,24 +734,16 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Actualizar":
-                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor")); 
-                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto")); 
-                    cantidad = Integer.parseInt(request.getParameter("txtCantidad")); 
-                    fechaString = request.getParameter("txtFecha");
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    fecha = null;
+                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor"));
+                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto"));
+                    cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+                    //fecha = request.getParameter("txtFecha"); // la variable ya estaba definida y se comento por motivos de defnicion de fecha
                     total = Double.parseDouble(request.getParameter("txtTotal"));
-                    try {
-                        fecha = new java.sql.Date(dateFormat.parse(fechaString).getTime());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                     pedidoProveedor.setIdProveedor(idProveedor);
                     pedidoProveedor.setIdProducto(idProducto);
                     pedidoProveedor.setCantidad(cantidad);
-                    pedidoProveedor.setFecha(fecha); 
+                    // pedidoProveedor.setFecha(fecha); // linea comentada motivo de definicion de fecha
                     pedidoProveedor.setTotal(total);
-                    pedidoProveedor.setIdPedidoProveedor(codPedidoProveedor);
                     pedidoProveedorDAO.updatePedidoProveedor(pedidoProveedor);
                     request.getRequestDispatcher("Controlador?menu=PedidoProveedor&accion=Listar").forward(request, response);
                     break;
