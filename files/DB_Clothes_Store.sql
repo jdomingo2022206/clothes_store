@@ -57,6 +57,7 @@ Create table Producto(
     descripcion varchar(150) not null,
     precio decimal(6,2) not null,
     imagen varchar(255),
+    stock int not null,
     idProveedor int not null,
     idCategoria int not null,
     primary key PK_idProducto (idProducto),
@@ -210,10 +211,10 @@ describe Establecimiento;
 
 -- TUPLAS DE LA ENTIDAD PRODUCTO --
 
-	INSERT INTO Producto (nombreProducto, descripcion, precio,imagen, idProveedor, idCategoria)
+	INSERT INTO Producto (nombreProducto, descripcion, precio,imagen,stock, idProveedor, idCategoria)
 		VALUES
-		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 'img/asd.jpg', 1, 1),
-		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 'img/ClothesStore1.png', 1, 1);
+		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 'img/asd.jpg',30, 1, 1),
+		('Camiseta de algodón', 'Camiseta de algodón de alta calidad', 19.99, 'img/ClothesStore1.png',20, 1, 1);
 		/*('Jeans ajustados', 'Jeans ajustados para hombre', 39.99, 2, 2),
 		('Vestido de noche', 'Elegante vestido de noche para mujer', 59.99, 3, 2),
 		('Zapatos deportivos', 'Zapatos deportivos para correr', 49.99, 4, 4),

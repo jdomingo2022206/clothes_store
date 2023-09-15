@@ -39,8 +39,8 @@
                             <label>id Producto</label>
                             <input type="text" value="${inventario.idProducto}" name="txtIdProducto" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="">
-                        <input  type="submit" name="accion" value="Actualizar" class="btn btn-success" href="Controlador?menu=Inventario&accion=Actualizar"></a>
+                        <input type="submit" name="accion" value="Agregar" class="px-2 py-1 bg-indigo-600 text-white border">
+                        <input type="submit" name="accion" value="Actualizar" class="px-2 py-1 bg-blue-600 text-white border border-blue-600">
                     </form>  
                 </div>
             </div>
