@@ -65,6 +65,10 @@
                     <i class="fa-solid fa-file-invoice"></i>
                     <a target='myTarget' href="Controlador?menu=DetalleCompra&accion=Listar" class="hide-on-click">Detalle Compra</a>
                 </li>
+                <li data-url="Carrito Compra" class="flex gap-2 hover:bg-gray-50 px-2 py-1 rounded-md hover:font-semibold items-center hover:text-indigo-600">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <a target='myTarget' href="Controlador?menu=CarritoCompra&accion=default" class="hide-on-click">Carrito Compra</a>
+                </li>
             </ul>
 
             <h3 id="teams" class="text-sm hide-on-click"><span>Your Teams</span>
@@ -75,55 +79,55 @@
             <ul id="list" class="flex flex-col list-none hidden">
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
                     <!--<div class="text-sm border px-2 py-1 rounded-md">J</div> -->
-                    <img src="img/Jonathan.png" style="width: 50px">
+                    <img class="hide-on-click" src="img/Jonathan.png" style="width: 50px">
                     <a class="hide-on-click">Jonathan Domingo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">J</div>
+                    <img class="hide-on-click" src="img/Joao.png" style="width: 50px"/>
                     <a class="hide-on-click">Joao Castillo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">J</div>
+                    <img class="hide-on-click" src="img/Galicia.png" style="width: 50px"/>
                     <a class="hide-on-click">Juan Galicia</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Flores.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Flores.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Oscar Flores</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Ambrocio.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Ambrocio.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Josue Ambrocio</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Ceferino.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Ceferino.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Jose Ceferino</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Chanquin.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Chanquin.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Rodrigo Chanquin</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Yojhan.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Yojhan.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Yojhan Stanley</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Escriba.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Escriba.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Cesar Escriba</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Chuquiej.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Chuquiej.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Gerson Chuquiej</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Chamale.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Chamale.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Edward Chamale</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <img src="img/Gary.jpg" style="width: 50px"/>
+                    <img class="hide-on-click" src="img/Gary.jpg" style="width: 50px"/>
                     <a class="hide-on-click">Gary Galindo</a>
                 </div>
                 <div class="flex gap-3 items-center px-2 py-1 hover:text-indigo-600">
-                    <div class="text-sm border px-2 py-1 rounded-md">D</div>
+                    <img class="hide-on-click" src="img/Arriola.png" style="width: 50px"/>
                     <a class="hide-on-click">Diego Arriola</a>
                 </div>
             </ul>
@@ -134,15 +138,22 @@
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
                     <a target='myTarget' href="Controlador?menu=Principal">Home</a>
                 </div>
+                <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
+                    <a target='myTarget' href="Controlador?menu=Catalogo&accion=Listar">Catálogo</a>
+                </div>
+                <%-- 
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Beatae.</div>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">Laboriosam.</div>
+                --%>
                 <div class="text-xl hover:text-indigo-600 border px-2 py-1 items-center">
                     <a onclick="return confirm('¿Quieres cerrar sesión y salir?')" href="Controlador?menu=Salir">Salir</a>
                 </div>
             </div>
             <div class="flex items-center justify-center gap-3">
+                <%-- 
                 <input class="border placeholder:text-indigo-600 px-2 py-1 outline-none" type="text" placeholder="buscar">
                 <i class="text-2xl fa-solid fa-search"></i>
+                --%>
                 <img src="img/Kinal.png" style="width: 50px"/>
             </div>   
         </div>
