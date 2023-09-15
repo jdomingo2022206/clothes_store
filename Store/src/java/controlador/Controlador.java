@@ -370,6 +370,7 @@ public class Controlador extends HttpServlet {
                     String descripcion = request.getParameter("txtDescripcion");
                     String precio = request.getParameter("txtPrecio");
 
+                    String stock = request.getParameter("txtStock");
                     String idProveedor = request.getParameter("txtIdProveedor");
                     String idCategoria = request.getParameter("txtIdCategoria");
 
@@ -383,6 +384,7 @@ public class Controlador extends HttpServlet {
                         producto.setPrecio(Double.parseDouble(precio));
                         // test
                         producto.setImagen(imgg);
+                        producto.setStock(Integer.parseInt(stock));
                         producto.setIdProveedor(Integer.parseInt(idProveedor));
                         producto.setIdCategoria(Integer.parseInt(idCategoria));
                         productoDAO.agregar(producto);
@@ -406,6 +408,7 @@ public class Controlador extends HttpServlet {
                     descripcion = request.getParameter("txtDescripcion");
                     precio = request.getParameter("txtPrecio");
 
+                    stock = request.getParameter("txtStock");
                     idProveedor = request.getParameter("txtIdProveedor");
                     idCategoria = request.getParameter("txtIdCategoria");
 
@@ -419,6 +422,7 @@ public class Controlador extends HttpServlet {
                         producto.setPrecio(Double.parseDouble(precio));
                         // test
                         producto.setImagen(imgg);
+                        producto.setStock(Integer.parseInt(stock));
                         producto.setIdProveedor(Integer.parseInt(idProveedor));
                         producto.setIdCategoria(Integer.parseInt(idCategoria));
                         producto.setIdProducto(codProducto);
@@ -605,7 +609,7 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("lista", lista);
                     request.setAttribute("cliente", cliente);
                     request.setAttribute("totalpagar", totalPagar);
-                    request.setAttribute("fecha", fecha);            
+                    request.setAttribute("fecha", fecha);
                     break;
                 case "GenerarVenta":
                     int codCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
@@ -734,9 +738,9 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Actualizar":
-                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor")); 
-                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto")); 
-                    cantidad = Integer.parseInt(request.getParameter("txtCantidad")); 
+                    idProveedor = Integer.parseInt(request.getParameter("txtIDProveedor"));
+                    idProducto = Integer.parseInt(request.getParameter("txtIDProducto"));
+                    cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
                     fechaString = request.getParameter("txtFecha");
                     dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     fecha = null;
@@ -749,7 +753,7 @@ public class Controlador extends HttpServlet {
                     pedidoProveedor.setIdProveedor(idProveedor);
                     pedidoProveedor.setIdProducto(idProducto);
                     pedidoProveedor.setCantidad(cantidad);
-                    pedidoProveedor.setFecha(fecha); 
+                    pedidoProveedor.setFecha(fecha);
                     pedidoProveedor.setTotal(total);
                     pedidoProveedor.setIdPedidoProveedor(codPedidoProveedor);
                     pedidoProveedorDAO.updatePedidoProveedor(pedidoProveedor);
@@ -789,14 +793,15 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Actualizar":
-                    System.out.println(request.getParameter("txtName"));                    System.out.println(request.getParameter("txtIdEstablecimiento"));
+                    System.out.println(request.getParameter("txtName"));
+                    System.out.println(request.getParameter("txtIdEstablecimiento"));
                     System.out.println(request.getParameter("txtIdEstablecimiento"));
                     System.out.println(request.getParameter("txtStock"));
                     System.out.println(request.getParameter("txtIdProducto"));
-                    
-                    System.out.println("CODIGO INVENTARIO");                    System.out.println(inventario.getIdInventario());
-                    System.out.println(inventario.getIdInventario());
 
+                    System.out.println("CODIGO INVENTARIO");
+                    System.out.println(inventario.getIdInventario());
+                    System.out.println(inventario.getIdInventario());
 
                     inventario.setNombreInventario(request.getParameter("txtName"));
                     inventario.setIdEstablecimiento(Integer.parseInt(request.getParameter("txtIdEstablecimiento")));

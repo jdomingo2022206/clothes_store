@@ -39,6 +39,10 @@
                             <input type="file" value="${producto.getImagen()}" id="imagenProducto" name="imagenProducto" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label>Stock</label>
+                            <input type="text" value="${producto.getStock()}" name="txtStock" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <label>Id Proveedor</label>
                             <input type="text" value="${producto.getIdProveedor()}" name="txtIdProveedor" class="form-control">
                         </div>
@@ -59,6 +63,7 @@
                             <td><strong>Descripción</strong></td>
                             <td><strong>Precio</strong></td>
                             <td><strong>Imagen</strong></td>
+                            <td><strong>Stock</strong></td>
                             <td><strong>Cod Proveedor</strong></td>
                             <td><strong>Cod Categoría</strong></td>
                             <td><strong>Actions</strong></td>
@@ -74,6 +79,7 @@
                                 <td>${producto.getPrecio()}</td>
                                 <td><img src="${producto.getImagen()}" width="50"></td>
                                 <td>${producto.getIdProveedor()}</td>
+                                <td>${producto.getStock()}</td>
                                 <td>${producto.getIdCategoria()}</td>
                                 
                                 <td>
