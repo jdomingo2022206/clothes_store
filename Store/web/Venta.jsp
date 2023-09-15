@@ -72,7 +72,7 @@
                         <div class="form-group d-flex">
                             <div class="col-sm-6 d-flex">
                                 <input type="text" name="txtCodigoCliente" value="${cliente.getIdCliente()}" placeholder="Codigo" class="form-control">
-                                <button type="submit" name="accion" value="BuscarCliente" href="Controlador?menu=Venta&accion=BuscarCliente" class="btn btn-danger">Buscar</button>
+                                <button type="submit" name="accion" value="BuscarCliente" href="Controlador?menu=Venta&accion=BuscarCliente" style="background-color: blue; color: white;">Buscar</button>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="txtNombreCliente" value="${cliente.getNombreCliente()} ${cliente.getApellidoCliente()}" placeholder="Nombre"  class="form-control">
@@ -90,7 +90,7 @@
                         <div class="form-group d-flex">
                             <div class="col-sm-6 d-flex">
                                 <input type="text" name="txtCodigoProducto" value="${producto.getIdProducto()}" class="form-control" placeholder="Codigo">
-                                <Button type="submit" name="accion" value="BuscarProducto" href="Controlador?menu=Venta&accion=BuscarProducto" class="btn btn-danger">Buscar</Button>
+                                <Button type="submit" name="accion" value="BuscarProducto" href="Controlador?menu=Venta&accion=BuscarProducto" style="background-color: blue; color: white;"> Buscar </Button>
                             </div>
                             <div class="col-sm-6">
                                 <input type="text" name="txtNombreProducto" value="${producto.getNombreProducto()}" placeholder="Producto" class="form-control">
@@ -108,7 +108,7 @@
                                 <input type="number" value="1" min="1" max="100" name="txtCantidad" class="form-control">
                             </div>
                         </div>
-                        <input type="submit" name="accion" value="Agregar"  class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="px-2 py-1 bg-indigo-600 text-white border">
                         <br>
                     </div>
                 </form>
@@ -139,7 +139,7 @@
                             </td>
                         </tr>
                     </c:forEach>
-                        <input type="submit" name="accion" value="Generar Venta" onclick="print()" class="btn btn-success">
+                        <input class="px-2 py-1 bg-green-600 text-white  border " type="submit" name="accion" value="Generar Venta" onclick="print()" class="btn btn-success">
                 </custom:table>
             </div>
         </div>
