@@ -43,8 +43,8 @@
                             <label>Total</label>
                             <input type="text" value="${pedidoCliente.getTotal()}" name="txtTotal" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="Agregar" class="btn btn-info" href="Controlador?menu=PedidoCliente&accion=Agregar&idPedidoCliente=${pedidoCliente.getIdPedidoCliente()}">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" href="">
+                        <input type="submit" name="accion" value="Agregar" class="px-2 py-1 bg-indigo-600 text-white border">
+                        <input type="submit" name="accion" value="Actualizar" class="px-2 py-1 bg-blue-600 text-white border border-blue-600">
                     </form>  
                 </div>
             </div>
